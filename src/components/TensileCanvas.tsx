@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react';
+import { useTheme } from '../context/ThemeContext';
 
 export const TensileCanvas: React.FC<{ className?: string }> = ({ className = '' }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -21,7 +23,6 @@ export const TensileCanvas: React.FC<{ className?: string }> = ({ className = ''
 
     window.addEventListener('resize', handleResize);
 
-    // Grid parameters for hyperbolic paraboloid membrane simulation
     const cols = 22;
     const rows = 14;
     let time = 0;
@@ -43,6 +44,8 @@ export const TensileCanvas: React.FC<{ className?: string }> = ({ className = ''
     canvas.addEventListener('mousemove', handleMouseMove);
     canvas.addEventListener('mouseleave', handleMouseLeave);
 
+    const isDark = theme === 'dark';
+
     const render = () => {
       time += 0.015;
       ctx.clearRect(0, 0, width, height);
@@ -51,22 +54,18 @@ export const TensileCanvas: React.FC<{ className?: string }> = ({ className = ''
       const colStep = width / (cols - 1);
       const rowStep = height / (rows - 1);
 
-      // Compute 3D Hypar curve points
       for (let r = 0; r < rows; r++) {
         points[r] = [];
-        const normY = (r / (rows - 1) - 0.5) * 2; // -1 to 1
+        const normY = (r / (rows - 1) - 0.5) * 2;
 
         for (let c = 0; c < cols; c++) {
-          const normX = (c / (cols - 1) - 0.5) * 2; // -1 to 1
-          
-          // Saddle formula: z = x^2 - y^2 with oscillating wave
+          const normX = (c / (cols - 1) - 0.5) * 2;
           const baseZ = (normX * normX - normY * normY) * 35;
           const wave = Math.sin(normX * 3 + time) * Math.cos(normY * 3 + time * 0.8) * 12;
-          
+
           let px = c * colStep;
           let py = r * rowStep + baseZ + wave;
 
-          // Subtle reaction to mouse
           if (mouse.active) {
             const dx = mouse.x - px;
             const dy = mouse.y - py;
@@ -82,7 +81,6 @@ export const TensileCanvas: React.FC<{ className?: string }> = ({ className = ''
         }
       }
 
-      // Draw tension grid lines (Weft & Warp cables)
       // Horizontal cables (Gold / Amber tint)
       for (let r = 0; r < rows; r++) {
         ctx.beginPath();
@@ -91,12 +89,14 @@ export const TensileCanvas: React.FC<{ className?: string }> = ({ className = ''
           if (c === 0) ctx.moveTo(pt.x, pt.y);
           else ctx.lineTo(pt.x, pt.y);
         }
-        ctx.strokeStyle = r % 2 === 0 ? 'rgba(212, 175, 55, 0.22)' : 'rgba(212, 175, 55, 0.12)';
+        ctx.strokeStyle = isDark
+          ? (r % 2 === 0 ? 'rgba(212, 175, 55, 0.22)' : 'rgba(212, 175, 55, 0.12)')
+          : (r % 2 === 0 ? 'rgba(180, 140, 38, 0.32)' : 'rgba(180, 140, 38, 0.16)');
         ctx.lineWidth = r % 2 === 0 ? 1.2 : 0.8;
         ctx.stroke();
       }
 
-      // Vertical cables (Cobalt / Cyan tint)
+      // Vertical cables (Cobalt / Steel tint)
       for (let c = 0; c < cols; c++) {
         ctx.beginPath();
         for (let r = 0; r < rows; r++) {
@@ -104,20 +104,22 @@ export const TensileCanvas: React.FC<{ className?: string }> = ({ className = ''
           if (r === 0) ctx.moveTo(pt.x, pt.y);
           else ctx.lineTo(pt.x, pt.y);
         }
-        ctx.strokeStyle = c % 2 === 0 ? 'rgba(56, 189, 248, 0.22)' : 'rgba(148, 163, 184, 0.1)';
+        ctx.strokeStyle = isDark
+          ? (c % 2 === 0 ? 'rgba(56, 189, 248, 0.22)' : 'rgba(148, 163, 184, 0.1)')
+          : (c % 2 === 0 ? 'rgba(15, 23, 42, 0.18)' : 'rgba(100, 116, 139, 0.1)');
         ctx.lineWidth = c % 2 === 0 ? 1.2 : 0.8;
         ctx.stroke();
       }
 
-      // Draw tension anchor node points at intersections
+      // Anchor node points
       for (let r = 0; r < rows; r += 2) {
         for (let c = 0; c < cols; c += 2) {
           const pt = points[r][c];
           ctx.beginPath();
           ctx.arc(pt.x, pt.y, 2, 0, Math.PI * 2);
           ctx.fillStyle = (r === 0 || r === rows - 1 || c === 0 || c === cols - 1)
-            ? 'rgba(250, 204, 21, 0.8)' 
-            : 'rgba(56, 189, 248, 0.5)';
+            ? (isDark ? 'rgba(250, 204, 21, 0.85)' : 'rgba(180, 140, 38, 0.9)')
+            : (isDark ? 'rgba(56, 189, 248, 0.6)' : 'rgba(15, 23, 42, 0.4)');
           ctx.fill();
         }
       }
@@ -133,7 +135,7 @@ export const TensileCanvas: React.FC<{ className?: string }> = ({ className = ''
       canvas.removeEventListener('mouseleave', handleMouseLeave);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [theme]);
 
   return (
     <canvas

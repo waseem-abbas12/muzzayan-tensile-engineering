@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { WhatsAppFloat } from './components/WhatsAppFloat';
@@ -15,7 +16,7 @@ import { ContactPage } from './pages/ContactPage';
 import { Phone, MessageCircle } from 'lucide-react';
 import { company } from './data/siteData';
 
-export function App() {
+function AppContent() {
   const [activePage, setActivePage] = useState<string>('home');
   const [surveyModalOpen, setSurveyModalOpen] = useState<boolean>(false);
 
@@ -67,12 +68,12 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-navy-950 text-slate-100 flex flex-col bg-architectural-grid">
+    <div className="min-h-screen bg-slate-50 dark:bg-navy-950 text-slate-800 dark:text-slate-100 flex flex-col bg-architectural-grid transition-colors duration-300">
       {/* Top Notification Announcement Bar */}
-      <div className="bg-gradient-to-r from-navy-900 via-slate-900 to-navy-900 border-b border-gold-500/20 py-2 px-4 text-center text-[11px] sm:text-xs text-slate-300 z-50">
+      <div className="bg-slate-100 dark:bg-navy-900/90 border-b border-slate-200 dark:border-gold-500/20 py-2 px-4 text-center text-[11px] sm:text-xs text-slate-600 dark:text-slate-300 z-50 transition-colors">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center gap-2 truncate">
-            <span className="px-2 py-0.5 rounded bg-gold-500/20 text-gold-400 font-bold text-[10px] uppercase">
+            <span className="px-2 py-0.5 rounded bg-gold-500/20 text-gold-700 dark:text-gold-400 font-bold text-[10px] uppercase">
               Free Site Survey
             </span>
             <span className="truncate">
@@ -80,15 +81,15 @@ export function App() {
             </span>
           </div>
           <div className="hidden md:flex items-center gap-4 shrink-0 font-medium">
-            <a href={`tel:${company.phone}`} className="hover:text-gold-400 transition-colors flex items-center gap-1">
-              <Phone className="w-3 h-3 text-gold-400" />
+            <a href={`tel:${company.phone}`} className="hover:text-gold-600 dark:hover:text-gold-400 transition-colors flex items-center gap-1">
+              <Phone className="w-3 h-3 text-gold-600 dark:text-gold-400" />
               {company.phoneFormatted}
             </a>
             <a
               href={`https://wa.me/${company.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-emerald-400 hover:text-emerald-300 transition-colors flex items-center gap-1 font-bold"
+              className="text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 transition-colors flex items-center gap-1 font-bold"
             >
               <MessageCircle className="w-3 h-3" />
               WhatsApp
@@ -124,6 +125,14 @@ export function App() {
         onClose={() => setSurveyModalOpen(false)}
       />
     </div>
+  );
+}
+
+export function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

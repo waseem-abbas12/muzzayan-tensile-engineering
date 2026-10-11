@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { company } from '../data/siteData';
-import { Menu, X, Phone, MessageCircle, ChevronDown, Sparkles } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
+import { Menu, X, Phone, MessageCircle, Sparkles, Sun, Moon } from 'lucide-react';
 
 interface NavbarProps {
   activePage: string;
@@ -11,6 +12,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openSurveyModal }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,8 +44,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-navy-950/95 backdrop-blur-md shadow-2xl border-b border-gold-500/20 py-3'
-          : 'bg-gradient-to-b from-navy-950/90 to-transparent py-4'
+          ? 'bg-white/95 dark:bg-navy-950/95 backdrop-blur-md shadow-md dark:shadow-2xl border-b border-slate-200 dark:border-gold-500/20 py-3'
+          : 'bg-gradient-to-b from-white/90 dark:from-navy-950/90 to-transparent py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,10 +56,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
             className="flex items-center gap-3 cursor-pointer group"
           >
             {/* Geometric Tensile SVG Icon */}
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 via-amber-500 to-gold-600 p-[1.5px] shadow-lg shadow-gold-500/20">
-              <div className="w-full h-full bg-navy-950 rounded-[10px] flex items-center justify-center relative overflow-hidden group-hover:bg-navy-900 transition-colors">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 via-amber-500 to-gold-600 p-[1.5px] shadow-md shadow-gold-500/20 shrink-0">
+              <div className="w-full h-full bg-slate-900 rounded-[10px] flex items-center justify-center relative overflow-hidden group-hover:scale-105 transition-transform">
                 <svg
-                  className="w-6 h-6 text-gold-400 transform group-hover:scale-110 transition-transform"
+                  className="w-6 h-6 text-gold-400"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -75,14 +77,14 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
 
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="font-heading font-extrabold text-base sm:text-lg tracking-wider text-white">
+                <span className="font-heading font-extrabold text-base sm:text-lg tracking-wider text-slate-900 dark:text-white">
                   MUZZAYAN
                 </span>
-                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-gold-500 text-navy-950 tracking-wider">
+                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-gold-500 text-slate-900 tracking-wider">
                   MTE
                 </span>
               </div>
-              <div className="text-[9px] uppercase tracking-widest text-gold-400 font-semibold">
+              <div className="text-[9px] uppercase tracking-widest text-gold-600 dark:text-gold-400 font-semibold">
                 Tensile Engineering
               </div>
             </div>
@@ -97,8 +99,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
                 onClick={() => handleNavClick(item.id)}
                 className={`px-3 py-2 rounded-lg text-xs font-semibold transition-all ${
                   activePage === item.id
-                    ? 'text-gold-400 bg-gold-500/10 border border-gold-500/30'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800/40'
+                    ? 'text-gold-600 dark:text-gold-400 bg-gold-500/10 border border-gold-500/30 font-bold'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40'
                 }`}
               >
                 {item.label}
@@ -106,13 +108,23 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
             ))}
           </nav>
 
-          {/* Action CTAs */}
-          <div className="hidden sm:flex items-center gap-3">
+          {/* Action CTAs + Theme Toggle */}
+          <div className="hidden sm:flex items-center gap-2.5">
+            {/* Theme Toggle Button */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-gold-400 border border-slate-200 dark:border-slate-800 transition-all flex items-center justify-center shadow-xs"
+              title={theme === 'dark' ? 'Switch to Light Daylight Mode' : 'Switch to Dark Mode'}
+            >
+              {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-700" />}
+            </button>
+
             <a
               href={`https://wa.me/${company.whatsapp}?text=Assalam-o-Alaikum MTE! I would like to inquire about tensile car parking shades and book a free site survey.`}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 transition-all flex items-center gap-1.5 text-xs font-bold"
+              className="p-2.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 transition-all flex items-center gap-1.5 text-xs font-bold"
               title="Chat on WhatsApp"
             >
               <MessageCircle className="w-4 h-4" />
@@ -122,26 +134,36 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
             <button
               type="button"
               onClick={openSurveyModal}
-              className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-navy-950 font-bold text-xs shadow-lg shadow-gold-500/20 transition-all transform hover:scale-[1.02] flex items-center gap-1.5"
+              className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-slate-950 font-bold text-xs shadow-md shadow-gold-500/20 transition-all transform hover:scale-[1.02] flex items-center gap-1.5"
             >
-              <Sparkles className="w-3.5 h-3.5 text-navy-950" />
+              <Sparkles className="w-3.5 h-3.5 text-slate-950" />
               Free Site Survey
             </button>
           </div>
 
-          {/* Mobile Menu Hamburger Button */}
-          <div className="lg:hidden flex items-center gap-2">
+          {/* Mobile Menu Hamburger + Toggle */}
+          <div className="lg:hidden flex items-center gap-1.5">
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="p-2 rounded-lg bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-gold-400 border border-slate-200 dark:border-slate-800"
+              title="Toggle Theme"
+            >
+              {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-700" />}
+            </button>
+
             <button
               type="button"
               onClick={openSurveyModal}
-              className="py-1.5 px-3 rounded-lg bg-gold-500 text-navy-950 text-xs font-bold sm:hidden"
+              className="py-1.5 px-3 rounded-lg bg-gold-500 text-slate-950 text-xs font-bold sm:hidden shadow-xs"
             >
               Survey
             </button>
+
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white"
+              className="p-2 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -151,7 +173,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-navy-950/98 backdrop-blur-xl border-b border-gold-500/20 px-4 pt-3 pb-6 animate-fadeIn shadow-2xl">
+        <div className="lg:hidden bg-white/98 dark:bg-navy-950/98 backdrop-blur-xl border-b border-slate-200 dark:border-gold-500/20 px-4 pt-3 pb-6 animate-fadeIn shadow-2xl">
           <div className="grid grid-cols-1 gap-1">
             {navItems.map((item) => (
               <button
@@ -160,8 +182,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
                 onClick={() => handleNavClick(item.id)}
                 className={`w-full text-left py-2.5 px-4 rounded-xl text-sm font-semibold transition-all ${
                   activePage === item.id
-                    ? 'bg-gold-500/15 text-gold-400 border border-gold-500/30'
-                    : 'text-slate-300 hover:bg-slate-900'
+                    ? 'bg-gold-500/15 text-gold-600 dark:text-gold-400 border border-gold-500/30'
+                    : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900'
                 }`}
               >
                 {item.label}
@@ -169,12 +191,12 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
             ))}
           </div>
 
-          <div className="mt-4 pt-4 border-t border-slate-800 flex flex-col gap-2">
+          <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-2">
             <a
               href={`https://wa.me/${company.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3 px-4 rounded-xl bg-emerald-600 text-white font-bold text-xs flex items-center justify-center gap-2"
+              className="w-full py-3 px-4 rounded-xl bg-emerald-600 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm"
             >
               <MessageCircle className="w-4 h-4" />
               Chat on WhatsApp ({company.phoneFormatted})
@@ -185,7 +207,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
                 setMobileMenuOpen(false);
                 openSurveyModal();
               }}
-              className="w-full py-3 px-4 rounded-xl bg-gold-500 text-navy-950 font-bold text-xs flex items-center justify-center gap-2"
+              className="w-full py-3 px-4 rounded-xl bg-gold-500 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 shadow-sm"
             >
               <Sparkles className="w-4 h-4" />
               Book Free On-Site Survey

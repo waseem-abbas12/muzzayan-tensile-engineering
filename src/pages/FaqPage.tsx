@@ -12,13 +12,13 @@ export const FaqPage: React.FC<FaqPageProps> = ({ openSurveyModal }) => {
     <div className="pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
       {/* Header */}
       <div className="max-w-3xl">
-        <span className="text-xs uppercase font-bold tracking-widest text-gold-400">
+        <span className="text-xs uppercase font-bold tracking-widest text-gold-600 dark:text-gold-400">
           Clarity On Pricing, Materials & Logistics
         </span>
-        <h1 className="text-3xl sm:text-5xl font-heading font-extrabold text-white mt-2">
+        <h1 className="text-3xl sm:text-5xl font-heading font-extrabold text-slate-900 dark:text-white mt-2">
           Pricing Guide & Technical FAQs
         </h1>
-        <p className="text-base text-slate-300 mt-3 leading-relaxed">
+        <p className="text-base text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
           Get transparent answers regarding per-square-foot rates, society approvals in DHA and Bahria Town, European PVDF warranty terms, and project installation timelines.
         </p>
       </div>
@@ -27,10 +27,10 @@ export const FaqPage: React.FC<FaqPageProps> = ({ openSurveyModal }) => {
       <FaqSection />
 
       {/* Support Box */}
-      <div className="glass-panel rounded-2xl p-6 sm:p-8 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div className="glass-panel rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-6">
         <div>
-          <h4 className="text-lg font-bold text-white">Have a Specific Project Dimension or Tender?</h4>
-          <p className="text-xs text-slate-300 mt-1">
+          <h4 className="text-lg font-bold text-slate-900 dark:text-white">Have a Specific Project Dimension or Tender?</h4>
+          <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">
             Send architectural blueprints, photos, or RFP tender requirements directly to our engineering desk.
           </p>
         </div>

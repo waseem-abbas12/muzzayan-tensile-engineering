@@ -9,21 +9,21 @@ export const WhatsAppFloat: React.FC = () => {
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
       {/* Pop-up Quick Prompt */}
       {isOpen && (
-        <div className="mb-3 w-72 bg-navy-900 border border-gold-500/30 rounded-2xl p-4 shadow-2xl animate-fadeIn text-xs">
-          <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+        <div className="mb-3 w-72 bg-white dark:bg-navy-900 border border-gold-500/30 rounded-2xl p-4 shadow-2xl animate-fadeIn text-xs">
+          <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800">
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-              <strong className="text-white text-xs">MTE Engineering Desk</strong>
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+              <strong className="text-slate-900 dark:text-white text-xs">MTE Engineering Desk</strong>
             </div>
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className="text-slate-400 hover:text-white"
+              className="text-slate-400 hover:text-slate-600 dark:hover:text-white"
             >
               <X className="w-4 h-4" />
             </button>
           </div>
-          <p className="text-slate-300 mt-2 leading-relaxed text-[11px]">
+          <p className="text-slate-600 dark:text-slate-300 mt-2 leading-relaxed text-[11px]">
             Assalam-o-Alaikum! Looking for cantilever car parking shades or industrial sheds in Lahore, Islamabad or Karachi?
           </p>
           <a
@@ -40,7 +40,7 @@ export const WhatsAppFloat: React.FC = () => {
       {/* Floating Action Button */}
       <div className="flex items-center gap-2">
         {!isOpen && (
-          <span className="hidden sm:inline-block px-3 py-1.5 rounded-full bg-navy-900/90 text-white text-xs font-semibold border border-gold-500/30 shadow-lg backdrop-blur-md">
+          <span className="hidden sm:inline-block px-3 py-1.5 rounded-full bg-white/95 dark:bg-navy-900/90 text-slate-800 dark:text-white text-xs font-semibold border border-gold-500/30 shadow-lg backdrop-blur-md">
             Chat with Engineer
           </span>
         )}

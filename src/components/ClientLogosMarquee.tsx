@@ -4,7 +4,7 @@ export const ClientLogosMarquee: React.FC = () => {
   const clients = [
     {
       id: 'dha',
-      name: 'DHA Defence Housing Authority',
+      name: 'DHA Housing Authority',
       city: 'Lahore · Karachi · Islamabad',
       icon: (
         <svg viewBox="0 0 60 60" width="46" height="46" xmlns="http://www.w3.org/2000/svg">
@@ -154,35 +154,33 @@ export const ClientLogosMarquee: React.FC = () => {
     }
   ];
 
-  // Duplicate for smooth infinite CSS marquee loop
   const marqueeList = [...clients, ...clients, ...clients];
 
   return (
-    <section className="py-12 border-y border-gold-500/15 bg-gradient-to-r from-navy-950 via-slate-900/60 to-navy-950 relative overflow-hidden">
+    <section className="py-12 border-y border-slate-200 dark:border-gold-500/15 bg-slate-100/70 dark:bg-gradient-to-r dark:from-navy-950 dark:via-slate-900/60 dark:to-navy-950 relative overflow-hidden transition-colors">
       <div className="max-w-7xl mx-auto px-4 mb-6 text-center">
-        <span className="text-[11px] font-bold uppercase tracking-widest text-gold-400/90 flex items-center justify-center gap-2">
+        <span className="text-[11px] font-bold uppercase tracking-widest text-slate-600 dark:text-gold-400/90 flex items-center justify-center gap-2">
           <span className="w-8 h-[1px] bg-gold-500/40" />
           Trusted By Pakistan's Premier Housing Societies, Defence & Corporate Landmarks
           <span className="w-8 h-[1px] bg-gold-500/40" />
         </span>
       </div>
 
-      {/* Infinite Scrolling Track */}
       <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]">
         <div className="flex w-max gap-6 animate-marquee hover:[animation-play-state:paused]">
           {marqueeList.map((c, idx) => (
             <div
               key={`${c.id}-${idx}`}
-              className="flex items-center gap-3.5 py-3 px-5 rounded-2xl bg-navy-900/80 border border-slate-800 hover:border-gold-500/50 shadow-md backdrop-blur-md transition-all group shrink-0"
+              className="flex items-center gap-3.5 py-3 px-5 rounded-2xl bg-white dark:bg-navy-900/80 border border-slate-200 dark:border-slate-800 hover:border-gold-500/50 shadow-sm dark:shadow-md backdrop-blur-md transition-all group shrink-0"
             >
               <div className="w-11 h-11 shrink-0 rounded-xl overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform">
                 {c.icon}
               </div>
               <div className="text-left">
-                <div className="text-xs font-bold text-white group-hover:text-gold-400 transition-colors">
+                <div className="text-xs font-bold text-slate-800 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">
                   {c.name}
                 </div>
-                <div className="text-[10px] text-slate-400 font-medium">
+                <div className="text-[10px] text-slate-500 dark:text-slate-400 font-medium">
                   {c.city}
                 </div>
               </div>

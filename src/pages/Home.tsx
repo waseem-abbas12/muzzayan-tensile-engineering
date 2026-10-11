@@ -47,10 +47,10 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
             alt="Muzzayan Tensile Engineering Cantilever Architecture"
             className="w-full h-full object-cover object-center scale-105 motion-safe:animate-pulse opacity-25 dark:opacity-20 filter contrast-125"
           />
-          {/* Deep Obsidian Architectural Vignette Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-50 via-slate-50/90 to-slate-50/70 dark:from-[#03060E] dark:via-[#050A18]/95 dark:to-[#081026]/85" />
-          <div className="absolute inset-0 bg-architectural-grid opacity-25 dark:opacity-20" />
-          <div className="absolute top-1/4 left-1/3 w-[600px] h-[600px] bg-radial-glow pointer-events-none opacity-50 dark:opacity-40" />
+          {/* Clean Executive Daylight Architectural Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-50/98 via-slate-50/92 to-white/70 dark:from-[#03060E] dark:via-[#050A18]/95 dark:to-[#081026]/85" />
+          <div className="absolute inset-0 bg-architectural-grid opacity-30 dark:opacity-20" />
+          <div className="absolute top-1/4 left-1/3 w-[600px] h-[600px] bg-radial-glow pointer-events-none opacity-60 dark:opacity-40" />
         </div>
 
         {/* Dynamic Hyperbolic Math Cable Simulation */}

@@ -133,19 +133,19 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
 
               {/* Quick Architectural Proof Metrics Bar */}
               <div className="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-slate-300/80 dark:border-slate-800/80">
-                <div className="reticle-corner p-2.5 rounded-xl bg-white/70 dark:bg-navy-900/40 border border-slate-200 dark:border-slate-800/80">
+                <div className="p-3 rounded-xl bg-white/70 dark:bg-navy-900/40 border border-slate-200 dark:border-slate-800/80">
                   <div className="text-2xl sm:text-3xl font-heading font-black text-slate-900 dark:text-white">120+</div>
                   <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Executed Sites</div>
                 </div>
-                <div className="reticle-corner p-2.5 rounded-xl bg-white/70 dark:bg-navy-900/40 border border-slate-200 dark:border-slate-800/80">
+                <div className="p-3 rounded-xl bg-white/70 dark:bg-navy-900/40 border border-slate-200 dark:border-slate-800/80">
                   <div className="text-2xl sm:text-3xl font-heading font-black gold-gradient-text">18+ Yrs</div>
                   <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Gulf & PK Heritage</div>
                 </div>
-                <div className="reticle-corner p-2.5 rounded-xl bg-white/70 dark:bg-navy-900/40 border border-slate-200 dark:border-slate-800/80">
+                <div className="p-3 rounded-xl bg-white/70 dark:bg-navy-900/40 border border-slate-200 dark:border-slate-800/80">
                   <div className="text-2xl sm:text-3xl font-heading font-black text-slate-900 dark:text-white">15 Years</div>
                   <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Full Warranty</div>
                 </div>
-                <div className="reticle-corner p-2.5 rounded-xl bg-white/70 dark:bg-navy-900/40 border border-slate-200 dark:border-slate-800/80">
+                <div className="p-3 rounded-xl bg-white/70 dark:bg-navy-900/40 border border-slate-200 dark:border-slate-800/80">
                   <div className="text-2xl sm:text-3xl font-heading font-black text-emerald-600 dark:text-emerald-400">100%</div>
                   <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">In-House Built</div>
                 </div>
@@ -154,7 +154,7 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
 
             {/* Right Column: Floating Architectural CAD Specification Card */}
             <div className="lg:col-span-5 hidden lg:block">
-              <div className="glass-panel reticle-corner rounded-3xl p-5 border border-gold-500/30 shadow-2xl space-y-4 relative overflow-hidden group">
+              <div className="glass-panel rounded-3xl p-5 border border-gold-500/30 shadow-2xl space-y-4 relative overflow-hidden group">
                 {/* Top CAD Header */}
                 <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800 font-mono text-[11px]">
                   <div className="flex items-center gap-2">

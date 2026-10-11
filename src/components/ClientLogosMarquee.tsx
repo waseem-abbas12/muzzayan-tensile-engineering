@@ -180,7 +180,7 @@ export const ClientLogosMarquee: React.FC = () => {
           {marqueeList.map((c, idx) => (
             <div
               key={`${c.id}-${idx}`}
-              className="reticle-corner flex items-center gap-3.5 py-3.5 px-5 rounded-2xl bg-white dark:bg-navy-900/90 border border-slate-200 dark:border-slate-800/90 hover:border-gold-500/60 shadow-sm dark:shadow-xl dark:hover:shadow-[0_0_25px_rgba(212,175,55,0.2)] backdrop-blur-md transition-all duration-300 group shrink-0"
+              className="flex items-center gap-3.5 py-3.5 px-5 rounded-2xl bg-white dark:bg-navy-900/90 border border-slate-200 dark:border-slate-800/90 hover:border-gold-500/60 shadow-sm dark:shadow-xl dark:hover:shadow-[0_0_25px_rgba(212,175,55,0.2)] backdrop-blur-md transition-all duration-300 group shrink-0"
             >
               <div className="w-12 h-12 shrink-0 rounded-xl overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform">
                 {c.icon}

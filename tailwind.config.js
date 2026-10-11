@@ -45,10 +45,9 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
-        heading: ['Syne', 'Outfit', 'Plus Jakarta Sans', 'sans-serif'],
-        serif: ['Cinzel', 'Playfair Display', 'serif'],
-        mono: ['Space Grotesk', 'Courier New', 'monospace'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        heading: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+        mono: ['Space Grotesk', 'monospace'],
       },
       animation: {
         'marquee': 'marquee 35s linear infinite',

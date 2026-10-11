@@ -39,7 +39,7 @@ export const ProjectsMarquee: React.FC<ProjectsMarqueeProps> = ({ onSelectProjec
             <article
               key={`${p.id}-${idx}`}
               onClick={() => onSelectProject(p)}
-              className="reticle-corner w-80 sm:w-96 rounded-2xl overflow-hidden glass-panel border border-slate-200 dark:border-slate-800/90 hover:border-gold-500/60 shadow-md dark:shadow-xl dark:hover:shadow-[0_0_30px_rgba(212,175,55,0.22)] transition-all duration-300 cursor-pointer group shrink-0 flex flex-col"
+              className="w-80 sm:w-96 rounded-2xl overflow-hidden glass-panel border border-slate-200 dark:border-slate-800/90 hover:border-gold-500/60 shadow-md dark:shadow-xl dark:hover:shadow-[0_0_30px_rgba(212,175,55,0.22)] transition-all duration-300 cursor-pointer group shrink-0 flex flex-col"
             >
               <div className="relative aspect-[16/10] overflow-hidden bg-slate-900">
                 <img

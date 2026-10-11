@@ -18,7 +18,7 @@ export const StatsCounterSection: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="glass-panel reticle-corner rounded-2xl p-5 sm:p-7 border border-slate-200 dark:border-slate-800 hover:border-gold-500/50 transition-all text-center flex flex-col items-center justify-center group shadow-xs dark:shadow-xl"
+                className="glass-panel rounded-2xl p-5 sm:p-7 border border-slate-200 dark:border-slate-800 hover:border-gold-500/50 transition-all text-center flex flex-col items-center justify-center group shadow-xs dark:shadow-xl"
               >
                 <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-xl bg-gold-500/10 text-gold-600 dark:text-gold-400 flex items-center justify-center mb-3 group-hover:bg-gold-500 group-hover:text-slate-950 transition-all duration-300">
                   <Icon className="w-5 h-5 sm:w-6 sm:h-6" />

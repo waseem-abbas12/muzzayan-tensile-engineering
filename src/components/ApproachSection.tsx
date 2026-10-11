@@ -30,11 +30,11 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onLearnProcess
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-xs font-mono">
-              <div className="reticle-corner p-4 rounded-xl bg-slate-100/90 dark:bg-navy-900/60 border border-slate-200 dark:border-slate-800">
+              <div className="p-4 rounded-xl bg-slate-100/90 dark:bg-navy-900/60 border border-slate-200 dark:border-slate-800">
                 <strong className="text-slate-900 dark:text-white block mb-1 font-sans font-bold">Tailored Site Geometry</strong>
                 <span className="text-slate-600 dark:text-slate-400 font-sans text-[11px] leading-relaxed">Custom 3D parametric forms designed specifically around your villa boundaries, trees, and entry gates.</span>
               </div>
-              <div className="reticle-corner p-4 rounded-xl bg-slate-100/90 dark:bg-navy-900/60 border border-slate-200 dark:border-slate-800">
+              <div className="p-4 rounded-xl bg-slate-100/90 dark:bg-navy-900/60 border border-slate-200 dark:border-slate-800">
                 <strong className="text-slate-900 dark:text-white block mb-1 font-sans font-bold">Zero Front-Column Clearance</strong>
                 <span className="text-slate-600 dark:text-slate-400 font-sans text-[11px] leading-relaxed">Rear-cantilevered structural members giving drivers 100% unobstructed turning radiuses.</span>
               </div>
@@ -54,7 +54,7 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onLearnProcess
 
           {/* Right Visual Architectural Feature */}
           <div className="lg:col-span-5">
-            <div className="relative rounded-3xl overflow-hidden glass-panel reticle-corner p-2.5 border border-slate-200 dark:border-gold-500/35 shadow-2xl">
+            <div className="relative rounded-3xl overflow-hidden glass-panel p-2.5 border border-slate-200 dark:border-gold-500/35 shadow-2xl">
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-slate-950">
                 <img
                   src="/images/luxury_pool.jpg"

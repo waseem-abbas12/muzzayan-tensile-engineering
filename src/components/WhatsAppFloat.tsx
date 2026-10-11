@@ -6,7 +6,7 @@ export const WhatsAppFloat: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-20 md:bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end">
       {/* Pop-up Quick Prompt */}
       {isOpen && (
         <div className="mb-3 w-72 bg-white dark:bg-navy-900 border border-gold-500/30 rounded-2xl p-4 shadow-2xl animate-fadeIn text-xs">

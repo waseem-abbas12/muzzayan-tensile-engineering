@@ -4,6 +4,7 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { WhatsAppFloat } from './components/WhatsAppFloat';
 import { SiteSurveyModal } from './components/SiteSurveyModal';
+import { MobileBottomBar } from './components/MobileBottomBar';
 import { Home } from './pages/Home';
 import { SolutionsPage } from './pages/SolutionsPage';
 import { ProjectsPage } from './pages/ProjectsPage';
@@ -68,7 +69,7 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-navy-950 text-slate-800 dark:text-slate-100 flex flex-col bg-architectural-grid transition-colors duration-300">
+    <div className="min-h-screen bg-slate-50 dark:bg-navy-950 text-slate-850 dark:text-slate-100 flex flex-col bg-architectural-grid transition-colors duration-300 pb-16 md:pb-0">
       {/* Top Notification Announcement Bar */}
       <div className="bg-slate-100 dark:bg-navy-900/90 border-b border-slate-200 dark:border-gold-500/20 py-2 px-4 text-center text-[11px] sm:text-xs text-slate-600 dark:text-slate-300 z-50 transition-colors">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
@@ -112,6 +113,13 @@ function AppContent() {
 
       {/* Footer */}
       <Footer
+        setActivePage={handlePageChange}
+        openSurveyModal={() => setSurveyModalOpen(true)}
+      />
+
+      {/* Mobile Ergonomic Bottom Bar */}
+      <MobileBottomBar
+        activePage={activePage}
         setActivePage={handlePageChange}
         openSurveyModal={() => setSurveyModalOpen(true)}
       />

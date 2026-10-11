@@ -17,7 +17,7 @@ const ThemeContext = createContext<ThemeContextType>({
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setThemeState] = useState<Theme>(() => {
     const saved = localStorage.getItem('mte_theme') as Theme | null;
-    return saved || 'light'; // Default to clean luxury daylight mode
+    return saved || 'dark'; // Signature luxury architectural dark mode as default
   });
 
   useEffect(() => {

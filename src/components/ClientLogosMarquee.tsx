@@ -157,30 +157,39 @@ export const ClientLogosMarquee: React.FC = () => {
   const marqueeList = [...clients, ...clients, ...clients];
 
   return (
-    <section className="py-12 border-y border-slate-200 dark:border-gold-500/15 bg-slate-100/70 dark:bg-gradient-to-r dark:from-navy-950 dark:via-slate-900/60 dark:to-navy-950 relative overflow-hidden transition-colors">
-      <div className="max-w-7xl mx-auto px-4 mb-6 text-center">
-        <span className="text-[11px] font-bold uppercase tracking-widest text-slate-600 dark:text-gold-400/90 flex items-center justify-center gap-2">
-          <span className="w-8 h-[1px] bg-gold-500/40" />
-          Trusted By Pakistan's Premier Housing Societies, Defence & Corporate Landmarks
-          <span className="w-8 h-[1px] bg-gold-500/40" />
-        </span>
+    <section className="py-14 border-y border-slate-200 dark:border-gold-500/20 bg-slate-50 dark:bg-[#040816] relative overflow-hidden transition-colors">
+      <div className="absolute inset-0 bg-architectural-grid opacity-15 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 mb-7 text-center relative z-10">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/30 mb-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-gold-500 animate-pulse" />
+          <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-gold-600 dark:text-gold-400">
+            REGULATORY & RESIDENTIAL INTEGRATION
+          </span>
+        </div>
+        <h3 className="text-xl sm:text-2xl font-heading font-extrabold text-slate-900 dark:text-white">
+          Trusted By Pakistan's Premier Housing Societies & Institutions
+        </h3>
+        <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-xl mx-auto">
+          Compliant with stringent bye-laws, zero front column restrictions, and seismic wind standards across all phases.
+        </p>
       </div>
 
-      <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]">
-        <div className="flex w-max gap-6 animate-marquee hover:[animation-play-state:paused]">
+      <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)] z-10">
+        <div className="flex w-max gap-5 animate-marquee hover:[animation-play-state:paused] py-1">
           {marqueeList.map((c, idx) => (
             <div
               key={`${c.id}-${idx}`}
-              className="flex items-center gap-3.5 py-3 px-5 rounded-2xl bg-white dark:bg-navy-900/80 border border-slate-200 dark:border-slate-800 hover:border-gold-500/50 shadow-sm dark:shadow-md backdrop-blur-md transition-all group shrink-0"
+              className="reticle-corner flex items-center gap-3.5 py-3.5 px-5 rounded-2xl bg-white dark:bg-navy-900/90 border border-slate-200 dark:border-slate-800/90 hover:border-gold-500/60 shadow-sm dark:shadow-xl dark:hover:shadow-[0_0_25px_rgba(212,175,55,0.2)] backdrop-blur-md transition-all duration-300 group shrink-0"
             >
-              <div className="w-11 h-11 shrink-0 rounded-xl overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform">
+              <div className="w-12 h-12 shrink-0 rounded-xl overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform">
                 {c.icon}
               </div>
               <div className="text-left">
-                <div className="text-xs font-bold text-slate-800 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">
+                <div className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">
                   {c.name}
                 </div>
-                <div className="text-[10px] text-slate-500 dark:text-slate-400 font-medium">
+                <div className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">
                   {c.city}
                 </div>
               </div>

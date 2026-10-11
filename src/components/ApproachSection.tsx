@@ -29,14 +29,14 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onLearnProcess
               From the initial laser survey to the final calibrated tension jack turnbuckle, our work bridges architectural beauty and everyday thermal comfort. We read the site, understand prevailing sun paths, and manufacture details that endure Pakistan's 50°C summer heatwaves.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-xs">
-              <div className="p-4 rounded-xl bg-slate-100/80 dark:bg-navy-900/60 border border-slate-200 dark:border-slate-800">
-                <strong className="text-slate-900 dark:text-white block mb-1">Tailored Site Geometry</strong>
-                <span className="text-slate-600 dark:text-slate-400">Custom 3D parametric forms designed specifically around your villa boundaries, trees, and entry gates.</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-xs font-mono">
+              <div className="reticle-corner p-4 rounded-xl bg-slate-100/90 dark:bg-navy-900/60 border border-slate-200 dark:border-slate-800">
+                <strong className="text-slate-900 dark:text-white block mb-1 font-sans font-bold">Tailored Site Geometry</strong>
+                <span className="text-slate-600 dark:text-slate-400 font-sans text-[11px] leading-relaxed">Custom 3D parametric forms designed specifically around your villa boundaries, trees, and entry gates.</span>
               </div>
-              <div className="p-4 rounded-xl bg-slate-100/80 dark:bg-navy-900/60 border border-slate-200 dark:border-slate-800">
-                <strong className="text-slate-900 dark:text-white block mb-1">Zero Front-Column Obstruction</strong>
-                <span className="text-slate-600 dark:text-slate-400">Rear-cantilevered structural members giving drivers 100% unobstructed turning radiuses.</span>
+              <div className="reticle-corner p-4 rounded-xl bg-slate-100/90 dark:bg-navy-900/60 border border-slate-200 dark:border-slate-800">
+                <strong className="text-slate-900 dark:text-white block mb-1 font-sans font-bold">Zero Front-Column Clearance</strong>
+                <span className="text-slate-600 dark:text-slate-400 font-sans text-[11px] leading-relaxed">Rear-cantilevered structural members giving drivers 100% unobstructed turning radiuses.</span>
               </div>
             </div>
 
@@ -44,7 +44,7 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onLearnProcess
               <button
                 type="button"
                 onClick={onLearnProcess}
-                className="py-3 px-6 rounded-xl bg-gold-500 hover:bg-gold-400 text-slate-950 font-bold text-xs shadow-md shadow-gold-500/20 transition-all inline-flex items-center gap-2"
+                className="gold-btn py-3.5 px-6 rounded-xl text-xs inline-flex items-center gap-2"
               >
                 Explore Our 4-Step Engineering Process
                 <ArrowRight className="w-4 h-4 text-slate-950" />
@@ -54,7 +54,7 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onLearnProcess
 
           {/* Right Visual Architectural Feature */}
           <div className="lg:col-span-5">
-            <div className="relative rounded-3xl overflow-hidden glass-panel p-2 border border-slate-200 dark:border-gold-500/30 shadow-xl">
+            <div className="relative rounded-3xl overflow-hidden glass-panel reticle-corner p-2.5 border border-slate-200 dark:border-gold-500/35 shadow-2xl">
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-slate-950">
                 <img
                   src="/images/luxury_pool.jpg"
@@ -63,15 +63,15 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onLearnProcess
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80" />
 
-                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/95 dark:bg-navy-950/90 backdrop-blur-md border border-slate-200 dark:border-slate-700/80 text-xs shadow-md">
+                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/95 dark:bg-navy-950/90 backdrop-blur-md border border-slate-200 dark:border-gold-500/30 text-xs shadow-xl">
                   <div className="text-[10px] text-gold-600 dark:text-gold-400 font-mono uppercase tracking-wider mb-1 font-bold">
-                    Architectural Distinction
+                    [ ARCHITECTURAL DISTINCTION // 02 ]
                   </div>
-                  <div className="text-slate-900 dark:text-white font-bold">
+                  <div className="text-slate-900 dark:text-white font-bold text-sm">
                     Clean Lines · Concealed Fasteners · Zero Flapping
                   </div>
-                  <div className="text-slate-600 dark:text-slate-400 text-[11px] mt-1">
-                    Every membrane is pre-stressed to exact tension formulas, preventing flutter and water accumulation during downpours.
+                  <div className="text-slate-600 dark:text-slate-300 text-[11px] mt-1 leading-relaxed">
+                    Every membrane is pre-stressed to exact non-linear formulas, preventing flutter and water ponding during violent monsoons.
                   </div>
                 </div>
               </div>

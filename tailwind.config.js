@@ -9,20 +9,27 @@ export default {
     extend: {
       colors: {
         navy: {
-          950: '#070D1D',
-          900: '#0B152E',
-          850: '#0F1C3C',
-          800: '#14254E',
-          700: '#1C336A',
-          600: '#27448B',
+          950: '#050A18',
+          900: '#081026',
+          850: '#0C1736',
+          800: '#111F48',
+          700: '#192C66',
+          600: '#233C85',
+        },
+        obsidian: {
+          950: '#03060E',
+          900: '#070C1B',
+          850: '#0B1226',
+          800: '#101934',
         },
         gold: {
-          300: '#FDE047',
-          400: '#FACC15',
-          500: '#E5A93C',
-          600: '#D4AF37',
-          700: '#B48C26',
+          300: '#FDE68A',
+          400: '#FCD34D',
+          500: '#D4AF37',
+          600: '#C5A059',
+          700: '#B8860B',
           800: '#926C15',
+          900: '#684E0F',
         },
         steel: {
           50: '#F8FAFC',
@@ -39,7 +46,9 @@ export default {
       },
       fontFamily: {
         sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
-        heading: ['Outfit', 'Cabinet Grotesk', 'Plus Jakarta Sans', 'sans-serif'],
+        heading: ['Syne', 'Outfit', 'Plus Jakarta Sans', 'sans-serif'],
+        serif: ['Cinzel', 'Playfair Display', 'serif'],
+        mono: ['Space Grotesk', 'Courier New', 'monospace'],
       },
       animation: {
         'marquee': 'marquee 35s linear infinite',

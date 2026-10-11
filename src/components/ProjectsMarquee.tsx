@@ -39,48 +39,48 @@ export const ProjectsMarquee: React.FC<ProjectsMarqueeProps> = ({ onSelectProjec
             <article
               key={`${p.id}-${idx}`}
               onClick={() => onSelectProject(p)}
-              className="w-80 sm:w-96 rounded-2xl overflow-hidden glass-panel border border-slate-200 dark:border-slate-800 hover:border-gold-500/60 shadow-md dark:shadow-xl transition-all cursor-pointer group shrink-0 flex flex-col"
+              className="reticle-corner w-80 sm:w-96 rounded-2xl overflow-hidden glass-panel border border-slate-200 dark:border-slate-800/90 hover:border-gold-500/60 shadow-md dark:shadow-xl dark:hover:shadow-[0_0_30px_rgba(212,175,55,0.22)] transition-all duration-300 cursor-pointer group shrink-0 flex flex-col"
             >
               <div className="relative aspect-[16/10] overflow-hidden bg-slate-900">
                 <img
                   src={p.image}
                   alt={p.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent opacity-85" />
 
                 <div className="absolute top-3 left-3 flex gap-2">
-                  <span className="px-2.5 py-0.5 rounded-full bg-slate-900/80 backdrop-blur-md text-gold-400 text-[10px] font-bold border border-gold-500/30 uppercase">
+                  <span className="px-2.5 py-0.5 rounded-full bg-slate-950/85 backdrop-blur-md text-gold-400 text-[10px] font-bold border border-gold-500/30 uppercase">
                     {p.type}
                   </span>
-                  <span className="px-2.5 py-0.5 rounded-full bg-slate-900/80 backdrop-blur-md text-slate-200 text-[10px] font-medium border border-slate-700 flex items-center gap-1">
+                  <span className="px-2.5 py-0.5 rounded-full bg-slate-950/85 backdrop-blur-md text-slate-200 text-[10px] font-medium border border-slate-700 flex items-center gap-1 font-mono">
                     <MapPin className="w-2.5 h-2.5 text-gold-400" />
                     {p.city}
                   </span>
                 </div>
 
-                <div className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-slate-900/80 text-gold-400 flex items-center justify-center border border-gold-500/30 group-hover:bg-gold-500 group-hover:text-slate-950 transition-colors">
+                <div className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-slate-950/85 text-gold-400 flex items-center justify-center border border-gold-500/30 group-hover:bg-gold-500 group-hover:text-slate-950 transition-colors">
                   <ArrowUpRight className="w-4 h-4" />
                 </div>
               </div>
 
               <div className="p-4 flex-1 flex flex-col justify-between bg-white dark:bg-transparent">
                 <div>
-                  <div className="text-[10px] text-gold-600 dark:text-gold-400/90 font-mono font-medium truncate mb-1">
-                    {p.system}
+                  <div className="text-[10px] text-gold-600 dark:text-gold-400 font-mono font-medium truncate mb-1">
+                    [ SYSTEM // {p.system} ]
                   </div>
-                  <h3 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors line-clamp-1">
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors line-clamp-1 font-heading">
                     {p.title}
                   </h3>
                 </div>
 
-                <div className="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+                <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
                   <span className="flex items-center gap-1 text-slate-700 dark:text-slate-300 font-mono">
                     <Layers className="w-3 h-3 text-gold-600 dark:text-gold-400" />
                     {p.area}
                   </span>
-                  <span>{p.year}</span>
+                  <span className="font-mono text-[10px]">{p.year}</span>
                 </div>
               </div>
             </article>

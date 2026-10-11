@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { company } from '../data/siteData';
-import { Menu, X, Phone, MessageCircle, ChevronDown, Shield, Calculator, MapPin, Sparkles } from 'lucide-react';
+import { Menu, X, Phone, MessageCircle, ChevronDown, Sparkles } from 'lucide-react';
 
 interface NavbarProps {
   activePage: string;
@@ -11,7 +11,6 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openSurveyModal }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [solutionsDropdownOpen, setSolutionsDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,12 +22,11 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
 
   const navItems = [
     { id: 'home', label: 'Home' },
-    { id: 'solutions', label: 'Shade Solutions', hasDropdown: true },
+    { id: 'solutions', label: 'Shade Solutions' },
     { id: 'projects', label: 'Projects (100+)' },
     { id: 'engineering', label: 'Engineering' },
     { id: 'process', label: 'Our Process' },
     { id: 'locations', label: 'Locations' },
-    { id: 'calculator', label: 'Cost Estimator' },
     { id: 'about', label: 'About & CEO' },
     { id: 'faq', label: 'Pricing & FAQs' },
     { id: 'contact', label: 'Contact' },
@@ -37,7 +35,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
   const handleNavClick = (id: string) => {
     setActivePage(id);
     setMobileMenuOpen(false);
-    setSolutionsDropdownOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -45,7 +42,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-navy-950/95 backdrop-blur-md shadow-xl border-b border-gold-500/20 py-3'
+          ? 'bg-navy-950/95 backdrop-blur-md shadow-2xl border-b border-gold-500/20 py-3'
           : 'bg-gradient-to-b from-navy-950/90 to-transparent py-4'
       }`}
     >
@@ -57,7 +54,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
             className="flex items-center gap-3 cursor-pointer group"
           >
             {/* Geometric Tensile SVG Icon */}
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 via-gold-500 to-amber-600 p-[1.5px] shadow-lg shadow-gold-500/20">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 via-amber-500 to-gold-600 p-[1.5px] shadow-lg shadow-gold-500/20">
               <div className="w-full h-full bg-navy-950 rounded-[10px] flex items-center justify-center relative overflow-hidden group-hover:bg-navy-900 transition-colors">
                 <svg
                   className="w-6 h-6 text-gold-400 transform group-hover:scale-110 transition-transform"
@@ -85,7 +82,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
                   MTE
                 </span>
               </div>
-              <div className="text-[9px] uppercase tracking-widest text-gold-400/90 font-semibold">
+              <div className="text-[9px] uppercase tracking-widest text-gold-400 font-semibold">
                 Tensile Engineering
               </div>
             </div>
@@ -94,20 +91,18 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
-              <div key={item.id} className="relative group">
-                <button
-                  type="button"
-                  onClick={() => handleNavClick(item.id)}
-                  className={`px-3 py-2 rounded-lg text-xs font-semibold transition-all flex items-center gap-1 ${
-                    activePage === item.id
-                      ? 'text-gold-400 bg-gold-500/10 border border-gold-500/30'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-800/40'
-                  }`}
-                >
-                  {item.label}
-                  {item.hasDropdown && <ChevronDown className="w-3 h-3 text-slate-400 group-hover:rotate-180 transition-transform" />}
-                </button>
-              </div>
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => handleNavClick(item.id)}
+                className={`px-3 py-2 rounded-lg text-xs font-semibold transition-all ${
+                  activePage === item.id
+                    ? 'text-gold-400 bg-gold-500/10 border border-gold-500/30'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-800/40'
+                }`}
+              >
+                {item.label}
+              </button>
             ))}
           </nav>
 

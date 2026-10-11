@@ -1,6 +1,5 @@
 import React from 'react';
 import { FaqSection } from '../components/FaqSection';
-import { CostCalculator } from '../components/CostCalculator';
 import { HelpCircle, MessageCircle, Phone, Calendar } from 'lucide-react';
 import { company } from '../data/siteData';
 
@@ -27,19 +26,6 @@ export const FaqPage: React.FC<FaqPageProps> = ({ openSurveyModal }) => {
       {/* Main FAQ Accordion */}
       <FaqSection />
 
-      {/* Embedded Cost Calculator */}
-      <div className="space-y-4">
-        <div className="max-w-xl">
-          <span className="text-xs uppercase font-bold tracking-wider text-gold-400">
-            Interactive Budgeting
-          </span>
-          <h2 className="text-2xl font-heading font-bold text-white mt-1">
-            Calculate Your Estimated Project Cost
-          </h2>
-        </div>
-        <CostCalculator />
-      </div>
-
       {/* Support Box */}
       <div className="glass-panel rounded-2xl p-6 sm:p-8 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-6">
         <div>
@@ -58,6 +44,13 @@ export const FaqPage: React.FC<FaqPageProps> = ({ openSurveyModal }) => {
             <MessageCircle className="w-4 h-4" />
             WhatsApp Hotline
           </a>
+          <button
+            type="button"
+            onClick={openSurveyModal}
+            className="py-3 px-5 rounded-xl bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold text-xs shadow-md transition-all"
+          >
+            Book Free Survey
+          </button>
         </div>
       </div>
     </div>

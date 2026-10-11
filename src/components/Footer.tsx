@@ -1,6 +1,6 @@
 import React from 'react';
 import { company, offices, solutions } from '../data/siteData';
-import { MapPin, Phone, Mail, Clock, MessageCircle, ShieldCheck, ArrowUp } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, ShieldCheck, ArrowUp } from 'lucide-react';
 
 interface FooterProps {
   setActivePage: (page: string) => void;
@@ -14,7 +14,6 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage, openSurveyModal }
 
   return (
     <footer className="relative bg-navy-950 border-t border-gold-500/20 pt-16 pb-12 overflow-hidden text-slate-300">
-      {/* Background radial glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-64 bg-radial-glow pointer-events-none opacity-40" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -120,18 +119,6 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage, openSurveyModal }
                   </button>
                 </li>
               ))}
-              <li className="pt-2">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setActivePage('calculator');
-                    scrollToTop();
-                  }}
-                  className="hover:text-gold-400 transition-colors font-semibold text-gold-400"
-                >
-                  Online Cost Estimator →
-                </button>
-              </li>
             </ul>
           </div>
 

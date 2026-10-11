@@ -1,26 +1,31 @@
-import React from 'react';
-import { company, solutions, processSteps, testimonials, ceo } from '../data/siteData';
+import React, { useState } from 'react';
+import { company, solutions, processSteps, testimonials, Project } from '../data/siteData';
 import { TensileCanvas } from '../components/TensileCanvas';
-import { CostCalculator } from '../components/CostCalculator';
+import { TextMarquee } from '../components/TextMarquee';
+import { ClientLogosMarquee } from '../components/ClientLogosMarquee';
+import { StatsCounterSection } from '../components/StatsCounterSection';
+import { ApproachSection } from '../components/ApproachSection';
+import { BlueprintBand } from '../components/BlueprintBand';
+import { ProjectsMarquee } from '../components/ProjectsMarquee';
+import { VideoGallerySection } from '../components/VideoGallerySection';
 import { CantileverComparison } from '../components/CantileverComparison';
 import { FabricInspector } from '../components/FabricInspector';
 import { ProjectGallery } from '../components/ProjectGallery';
 import { LocationsSection } from '../components/LocationsSection';
 import { FaqSection } from '../components/FaqSection';
 import { 
-  ShieldCheck, 
   ArrowRight, 
   MessageCircle, 
   Calendar, 
   CheckCircle2, 
   Sparkles, 
-  Award, 
-  Wind, 
-  Wrench, 
-  Building,
-  Quote,
-  Layers,
-  ChevronRight
+  Quote, 
+  ChevronRight,
+  ShieldCheck,
+  Maximize2,
+  X,
+  MapPin,
+  Layers
 } from 'lucide-react';
 
 interface HomeProps {
@@ -29,16 +34,16 @@ interface HomeProps {
 }
 
 export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) => {
+  const [selectedMarqueeProject, setSelectedMarqueeProject] = useState<Project | null>(null);
+
   return (
-    <div className="space-y-24 sm:space-y-32">
-      {/* HERO SECTION */}
+    <div className="space-y-20 sm:space-y-28">
+      {/* 1. HERO SECTION */}
       <section className="relative min-h-[92vh] flex items-center pt-24 pb-16 overflow-hidden bg-radial-glow">
-        {/* Interactive 3D Tensile Canvas Animation in background */}
         <TensileCanvas className="opacity-40" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           <div className="max-w-3xl space-y-6">
-            {/* Top Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-gold-400 animate-pulse" />
               <span className="text-xs font-bold text-gold-400 tracking-wider uppercase">
@@ -46,17 +51,14 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
               </span>
             </div>
 
-            {/* Main Title */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-white tracking-tight leading-[1.15]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-white tracking-tight leading-[1.14]">
               Pakistan's Premier <span className="gold-gradient-text">Tensile Architecture</span> & Cantilever Shades
             </h1>
 
-            {/* Subtitle */}
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
-              Engineered cantilever car parking shades, large-span architectural membrane roofs, and industrial factory steel sheds across Lahore, Islamabad, Rawalpindi & Karachi. In-house fabrication, German Mehler PVDF fabric, and 15-year warranty.
+              Engineered cantilever car parking shades, architectural membrane roofs, and industrial factory steel sheds across Lahore, Islamabad, Rawalpindi & Karachi. In-house fabrication, German Mehler PVDF fabric, and 15-year warranty.
             </p>
 
-            {/* Call to Actions */}
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <button
                 type="button"
@@ -69,10 +71,10 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
 
               <button
                 type="button"
-                onClick={() => setActivePage('calculator')}
+                onClick={() => setActivePage('projects')}
                 className="py-4 px-6 rounded-xl bg-navy-900/80 hover:bg-navy-800 text-white font-semibold text-sm border border-slate-700 hover:border-gold-500/50 backdrop-blur-md transition-all flex items-center gap-2"
               >
-                Calculate Cost Online
+                Explore 100+ Projects
                 <ArrowRight className="w-4 h-4 text-gold-400" />
               </button>
 
@@ -87,7 +89,7 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
               </a>
             </div>
 
-            {/* Social Proof Stats Bar */}
+            {/* Quick Proof Metrics */}
             <div className="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-slate-800/80">
               <div>
                 <div className="text-2xl sm:text-3xl font-heading font-extrabold text-white">100+</div>
@@ -110,7 +112,19 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
         </div>
       </section>
 
-      {/* SOLUTIONS SECTION */}
+      {/* 2. RUNNING TEXT CAPABILITIES TICKER MARQUEE */}
+      <TextMarquee />
+
+      {/* 3. ANIMATED STATS SECTION */}
+      <StatsCounterSection />
+
+      {/* 4. CLIENT LOGOS & HOUSING SOCIETIES MARQUEE */}
+      <ClientLogosMarquee />
+
+      {/* 5. APPROACH SECTION */}
+      <ApproachSection onLearnProcess={() => setActivePage('process')} />
+
+      {/* 6. SOLUTIONS SHOWCASE SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
@@ -192,28 +206,32 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
         </div>
       </section>
 
-      {/* CANTILEVER COMPARISON */}
+      {/* 7. CANTILEVER VS TRADITIONAL 4-POST SHED COMPARISON */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <CantileverComparison />
       </section>
 
-      {/* INTERACTIVE COST CALCULATOR */}
-      <section id="cost-calculator" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <CostCalculator />
-      </section>
+      {/* 8. BLUEPRINT BAND ARCHITECTURAL STATEMENT */}
+      <BlueprintBand onExploreEngineering={() => setActivePage('engineering')} />
 
-      {/* PORTFOLIO PROJECTS SHOWCASE */}
+      {/* 9. PROJECTS MARQUEE INFINITE REEL */}
+      <ProjectsMarquee
+        onSelectProject={(p) => setSelectedMarqueeProject(p)}
+        openSurveyModal={openSurveyModal}
+      />
+
+      {/* 10. COMPLETE FILTERABLE PORTFOLIO GALLERY */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
             <span className="text-xs uppercase font-bold tracking-widest text-gold-400">
-              Proven Track Record
+              Comprehensive Portfolio
             </span>
             <h2 className="text-3xl sm:text-4xl font-heading font-bold text-white mt-1">
-              Completed Engineering Projects Across Pakistan
+              Executed Projects Across Pakistan
             </h2>
             <p className="text-sm text-slate-400 mt-1">
-              Explore 100+ executed projects for corporate parks, residential villas, hospitals, and defence installations.
+              Filter by society, sector, or structural steel system.
             </p>
           </div>
           <button
@@ -221,14 +239,17 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
             onClick={() => setActivePage('projects')}
             className="text-xs font-bold text-gold-400 hover:text-gold-300 flex items-center gap-1 self-start md:self-auto"
           >
-            View Complete Gallery <ChevronRight className="w-4 h-4" />
+            All 100+ Projects <ChevronRight className="w-4 h-4" />
           </button>
         </div>
 
         <ProjectGallery />
       </section>
 
-      {/* 4-STEP WORKFLOW */}
+      {/* 11. VIDEO SHOWCASE IN MOTION */}
+      <VideoGallerySection openSurveyModal={openSurveyModal} />
+
+      {/* 12. 4-STEP WORKFLOW */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="glass-panel rounded-2xl p-6 md:p-10 border border-gold-500/20">
           <div className="max-w-2xl mx-auto text-center mb-12">
@@ -274,17 +295,17 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
         </div>
       </section>
 
-      {/* FABRICS & TECHNICAL INSPECTOR */}
+      {/* 13. FABRIC & MATERIAL SPECIFICATIONS INSPECTOR */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FabricInspector />
       </section>
 
-      {/* LOCATIONS SECTION */}
+      {/* 14. NATIONWIDE LOCATIONS SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <LocationsSection />
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* 15. TESTIMONIALS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="text-xs uppercase font-bold tracking-widest text-gold-400">
@@ -321,12 +342,12 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
         </div>
       </section>
 
-      {/* FAQS SECTION */}
+      {/* 16. FAQS SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FaqSection />
       </section>
 
-      {/* BOTTOM CTA BANNER */}
+      {/* 17. BOTTOM CTA BANNER */}
       <section id="contact-survey" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-3xl overflow-hidden p-8 sm:p-12 lg:p-16 border border-gold-500/30 bg-gradient-to-br from-navy-900 via-navy-950 to-slate-900 shadow-2xl">
           <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-gold-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -365,6 +386,86 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
           </div>
         </div>
       </section>
+
+      {/* Project Modal Preview from Marquee */}
+      {selectedMarqueeProject && (
+        <div className="fixed inset-0 z-50 bg-navy-950/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
+          <div className="bg-navy-900 border border-gold-500/30 rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl relative max-h-[90vh] flex flex-col">
+            <button
+              type="button"
+              onClick={() => setSelectedMarqueeProject(null)}
+              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-navy-950/80 text-slate-300 hover:text-white flex items-center justify-center border border-slate-700"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="relative aspect-[16/9] w-full bg-slate-950 shrink-0">
+              <img
+                src={selectedMarqueeProject.image}
+                alt={selectedMarqueeProject.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent to-transparent opacity-90" />
+            </div>
+
+            <div className="p-6 overflow-y-auto space-y-4">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="px-2.5 py-1 rounded bg-gold-500/10 text-gold-400 text-xs font-bold border border-gold-500/30 uppercase">
+                  {selectedMarqueeProject.type}
+                </span>
+                <span className="px-2.5 py-1 rounded bg-slate-800 text-slate-300 text-xs font-medium flex items-center gap-1">
+                  <MapPin className="w-3 h-3 text-gold-400" />
+                  {selectedMarqueeProject.city}
+                </span>
+                <span className="px-2.5 py-1 rounded bg-slate-800 text-slate-300 text-xs font-mono">
+                  {selectedMarqueeProject.year}
+                </span>
+              </div>
+
+              <h3 className="text-2xl font-heading font-bold text-white">
+                {selectedMarqueeProject.title}
+              </h3>
+
+              <p className="text-sm text-slate-300 leading-relaxed">
+                {selectedMarqueeProject.description}
+              </p>
+
+              <div className="grid grid-cols-2 gap-3 py-3 border-y border-slate-800 text-xs">
+                <div>
+                  <span className="text-slate-400 block mb-0.5">Structural System:</span>
+                  <strong className="text-white font-mono">{selectedMarqueeProject.system}</strong>
+                </div>
+                <div>
+                  <span className="text-slate-400 block mb-0.5">Covered Footprint:</span>
+                  <strong className="text-white font-mono">{selectedMarqueeProject.area}</strong>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                <a
+                  href={`https://wa.me/${company.whatsapp}?text=Assalam-o-Alaikum MTE! I am interested in building a structure similar to your project: "${selectedMarqueeProject.title}" in ${selectedMarqueeProject.city}.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-3 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  Inquire on WhatsApp
+                </a>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedMarqueeProject(null);
+                    openSurveyModal();
+                  }}
+                  className="py-3 px-5 rounded-xl bg-gold-500 text-navy-950 font-bold text-xs"
+                >
+                  Book Free Site Survey
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

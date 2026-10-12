@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { company } from '../data/siteData';
 import { useTheme } from '../context/ThemeContext';
-import { Menu, X, Phone, MessageCircle, Sparkles, Sun, Moon } from 'lucide-react';
+import { Menu, X, Phone, MessageCircle, Sparkles, Sun, Moon, Download, Smartphone } from 'lucide-react';
 
 interface NavbarProps {
   activePage: string;
   setActivePage: (page: string) => void;
   openSurveyModal: () => void;
+  openDownloadModal: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openSurveyModal }) => {
+export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openSurveyModal, openDownloadModal }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
@@ -80,7 +81,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
                 <span className="font-heading font-extrabold text-base sm:text-lg tracking-wider text-slate-900 dark:text-white">
                   MUZZAYAN
                 </span>
-                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-gold-500 text-slate-900 tracking-wider">
+                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-gold-500 text-slate-950 tracking-wider">
                   MTE
                 </span>
               </div>
@@ -110,6 +111,17 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
 
           {/* Action CTAs + Theme Toggle */}
           <div className="hidden sm:flex items-center gap-2.5">
+            {/* Download Mobile App Button */}
+            <button
+              type="button"
+              onClick={openDownloadModal}
+              className="py-2 px-3.5 rounded-xl bg-gold-500/15 hover:bg-gold-500/25 text-gold-700 dark:text-gold-400 border border-gold-500/40 transition-all flex items-center gap-1.5 text-xs font-bold shadow-xs transform hover:scale-[1.02]"
+              title="Download MTE Mobile App"
+            >
+              <Smartphone className="w-3.5 h-3.5 text-gold-600 dark:text-gold-400" />
+              <span>Download App</span>
+            </button>
+
             {/* Theme Toggle Button */}
             <button
               type="button"
@@ -141,8 +153,18 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
             </button>
           </div>
 
-          {/* Mobile Menu Hamburger + Toggle */}
+          {/* Mobile Menu Hamburger + Quick App Download */}
           <div className="lg:hidden flex items-center gap-1.5">
+            <button
+              type="button"
+              onClick={openDownloadModal}
+              className="py-1.5 px-2.5 rounded-lg bg-gold-500/20 text-gold-700 dark:text-gold-400 border border-gold-500/40 text-[11px] font-bold flex items-center gap-1"
+              title="Download App"
+            >
+              <Smartphone className="w-3.5 h-3.5" />
+              <span>App</span>
+            </button>
+
             <button
               type="button"
               onClick={toggleTheme}
@@ -174,6 +196,28 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white/98 dark:bg-navy-950/98 backdrop-blur-xl border-b border-slate-200 dark:border-gold-500/20 px-4 pt-3 pb-6 animate-fadeIn shadow-2xl">
+          {/* Quick App Install Card inside Mobile Nav */}
+          <div
+            onClick={() => {
+              setMobileMenuOpen(false);
+              openDownloadModal();
+            }}
+            className="mb-3.5 p-3.5 rounded-2xl bg-gradient-to-r from-navy-950 via-navy-900 to-[#102331] text-white flex items-center justify-between cursor-pointer border border-gold-500/40 shadow-lg"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-gold-500/20 text-gold-400 flex items-center justify-center border border-gold-500/30">
+                <Smartphone className="w-5 h-5 text-gold-400" />
+              </div>
+              <div>
+                <div className="text-xs font-bold text-white">MTE Tensile Mobile App</div>
+                <div className="text-[10px] text-slate-300">1-Tap Install · Works Offline</div>
+              </div>
+            </div>
+            <span className="px-2.5 py-1 rounded-full bg-gold-500 text-slate-950 text-[10px] font-extrabold uppercase">
+              INSTALL
+            </span>
+          </div>
+
           <div className="grid grid-cols-1 gap-1">
             {navItems.map((item) => (
               <button

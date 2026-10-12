@@ -1,0 +1,66 @@
+{
+  "name": "Muzzayan Tensile Engineering (MTE)",
+  "short_name": "MTE Tensile",
+  "description": "Pakistan's #1 Architectural Tensile Structures & Cantilever Car Parking Shades App. Free site survey, 3D designs & project portfolio across Lahore, Islamabad, Rawalpindi & Karachi.",
+  "id": "com.muzzayantensile.app",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#F8FAFC",
+  "theme_color": "#0A1E29",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Free On-Site Survey",
+      "short_name": "Survey",
+      "description": "Book a free site survey and get 3D layout designs in Pakistan",
+      "url": "/#contact",
+      "icons": [
+        {
+          "src": "/favicon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Projects Portfolio",
+      "short_name": "Projects",
+      "description": "View 100+ completed tensile projects across Pakistan",
+      "url": "/#projects",
+      "icons": [
+        {
+          "src": "/favicon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Direct WhatsApp Inquiry",
+      "short_name": "WhatsApp",
+      "description": "Chat directly with MTE Chief Structural Engineer",
+      "url": "https://wa.me/923024001063",
+      "icons": [
+        {
+          "src": "/favicon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "categories": ["business", "productivity", "utilities", "construction"]
+}

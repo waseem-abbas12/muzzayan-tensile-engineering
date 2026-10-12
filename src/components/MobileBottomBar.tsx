@@ -1,17 +1,19 @@
 import React from 'react';
-import { Home, Layers, Image as ImageIcon, Cpu, Phone } from 'lucide-react';
+import { Home, Layers, Image as ImageIcon, Smartphone, Phone } from 'lucide-react';
 import { company } from '../data/siteData';
 
 interface MobileBottomBarProps {
   activePage: string;
   setActivePage: (page: string) => void;
   openSurveyModal: () => void;
+  openDownloadModal: () => void;
 }
 
 export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({
   activePage,
   setActivePage,
   openSurveyModal,
+  openDownloadModal,
 }) => {
   return (
     <nav
@@ -24,7 +26,7 @@ export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({
           setActivePage('home');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
-        className={`flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl transition-all ${
+        className={`flex flex-col items-center gap-1 py-1 px-2 rounded-xl transition-all ${
           activePage === 'home'
             ? 'text-gold-600 dark:text-gold-400 font-bold'
             : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
@@ -40,7 +42,7 @@ export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({
           setActivePage('solutions');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
-        className={`flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl transition-all ${
+        className={`flex flex-col items-center gap-1 py-1 px-2 rounded-xl transition-all ${
           activePage === 'solutions'
             ? 'text-gold-600 dark:text-gold-400 font-bold'
             : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
@@ -56,7 +58,7 @@ export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({
           setActivePage('projects');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
-        className={`flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl transition-all ${
+        className={`flex flex-col items-center gap-1 py-1 px-2 rounded-xl transition-all ${
           activePage === 'projects'
             ? 'text-gold-600 dark:text-gold-400 font-bold'
             : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
@@ -68,18 +70,12 @@ export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({
 
       <button
         type="button"
-        onClick={() => {
-          setActivePage('engineering');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
-        className={`flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl transition-all ${
-          activePage === 'engineering'
-            ? 'text-gold-600 dark:text-gold-400 font-bold'
-            : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-        }`}
+        onClick={openDownloadModal}
+        className="flex flex-col items-center gap-1 py-1 px-2 rounded-xl text-amber-600 dark:text-gold-400 font-bold hover:scale-105 transition-all"
+        title="Download MTE Mobile App"
       >
-        <Cpu className="w-4 h-4" />
-        <span className="text-[10px]">Specs</span>
+        <Smartphone className="w-4 h-4" />
+        <span className="text-[10px]">App</span>
       </button>
 
       <button

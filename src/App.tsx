@@ -14,18 +14,22 @@ import { LocationsPage } from './pages/LocationsPage';
 import { AboutPage } from './pages/AboutPage';
 import { FaqPage } from './pages/FaqPage';
 import { ContactPage } from './pages/ContactPage';
+import { DownloadAppModal } from './components/DownloadAppModal';
 import { Phone, MessageCircle } from 'lucide-react';
 import { company } from './data/siteData';
 
 function AppContent() {
   const [activePage, setActivePage] = useState<string>('home');
   const [surveyModalOpen, setSurveyModalOpen] = useState<boolean>(false);
+  const [downloadModalOpen, setDownloadModalOpen] = useState<boolean>(false);
 
   // Sync hash routing
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash.replace('#', '').toLowerCase();
-      if (['solutions', 'projects', 'engineering', 'process', 'locations', 'about', 'faq', 'contact'].includes(hash)) {
+      if (hash === 'app') {
+        setDownloadModalOpen(true);
+      } else if (['solutions', 'projects', 'engineering', 'process', 'locations', 'about', 'faq', 'contact'].includes(hash)) {
         setActivePage(hash);
       } else if (hash === '' || hash === 'home') {
         setActivePage('home');
@@ -104,6 +108,7 @@ function AppContent() {
         activePage={activePage}
         setActivePage={handlePageChange}
         openSurveyModal={() => setSurveyModalOpen(true)}
+        openDownloadModal={() => setDownloadModalOpen(true)}
       />
 
       {/* Main Page Content */}
@@ -122,6 +127,7 @@ function AppContent() {
         activePage={activePage}
         setActivePage={handlePageChange}
         openSurveyModal={() => setSurveyModalOpen(true)}
+        openDownloadModal={() => setDownloadModalOpen(true)}
       />
 
       {/* Floating WhatsApp Quick Action Button */}
@@ -131,6 +137,13 @@ function AppContent() {
       <SiteSurveyModal
         isOpen={surveyModalOpen}
         onClose={() => setSurveyModalOpen(false)}
+      />
+
+      {/* Modal for Mobile App Installation (PWA 1-Tap) */}
+      <DownloadAppModal
+        isOpen={downloadModalOpen}
+        onClose={() => setDownloadModalOpen(false)}
+        openSurveyModal={() => setSurveyModalOpen(true)}
       />
     </div>
   );

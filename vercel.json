@@ -1,5 +1,4 @@
 {
-  "name": "muzzayan-tensile-engineering",
   "framework": "vite",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",

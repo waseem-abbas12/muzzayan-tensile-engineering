@@ -173,7 +173,7 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
                 {/* Visual Imagery */}
                 <div className="relative aspect-[16/11] rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl">
                   <img
-                    src="/images/project_cantilever_parking.jpg"
+                    src="/images/hero.jpg"
                     alt="Cantilever Car Parking Engineering Demonstration"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     onError={(e) => {
@@ -181,13 +181,13 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
                       if (!t.src.includes('hero.jpg')) t.src = '/images/hero.jpg';
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent opacity-50" />
-                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-navy-950/85 backdrop-blur-md text-gold-400 text-[10px] font-bold border border-gold-500/30 uppercase tracking-wider">
-                    Cantilever Vehicle Bay
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-60" />
+                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md text-gold-400 text-[10px] font-bold border border-gold-500/30 uppercase tracking-wider">
+                    Flagship Executive Cantilever Bay
                   </div>
                   <div className="absolute bottom-3 left-3 right-3 text-white text-xs">
-                    <span className="font-heading font-bold text-sm block">DHA Phase 6 Commercial Installation</span>
-                    <span className="text-[11px] text-slate-300">Zero front column obstruction • Full SUV door clearance</span>
+                    <span className="font-heading font-bold text-sm block">DHA Phase 6 Executive Fleet Shade</span>
+                    <span className="text-[11px] text-slate-300">Zero front column obstruction • Full SUV door clearance • 316 Marine SS Rigging</span>
                   </div>
                 </div>
 

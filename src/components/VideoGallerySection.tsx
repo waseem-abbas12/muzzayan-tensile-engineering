@@ -65,6 +65,10 @@ export const VideoGallerySection: React.FC<VideoGallerySectionProps> = ({ openSu
                     src={item.poster}
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => {
+                      const t = e.currentTarget;
+                      if (!t.src.includes('hero.jpg')) t.src = '/images/hero.jpg';
+                    }}
                   />
                   <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-colors" />
 

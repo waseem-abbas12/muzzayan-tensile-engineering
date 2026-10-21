@@ -149,6 +149,64 @@ export const LocationsSection: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Local Landmark Installations Grid */}
+      {city.localProjects && city.localProjects.length > 0 && (
+        <div className="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <span className="text-[11px] font-bold tracking-wider text-gold-600 dark:text-gold-400 uppercase">
+                Proven Footprint
+              </span>
+              <h5 className="text-base sm:text-lg font-heading font-bold text-slate-900 dark:text-white">
+                Completed Landmark Structures in {city.name}
+              </h5>
+            </div>
+            <span className="text-xs text-slate-500 font-mono hidden sm:inline">
+              100% In-House Fabricated
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {city.localProjects.map((p: any, idx: number) => (
+              <div
+                key={idx}
+                className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-navy-900 flex flex-col group shadow-xs"
+              >
+                <div className="relative aspect-[16/10] overflow-hidden bg-slate-950">
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => {
+                      const t = e.currentTarget;
+                      if (!t.src.includes('hero.jpg')) t.src = '/images/hero.jpg';
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-60" />
+                  <span className="absolute top-2 left-2 px-2 py-0.5 rounded bg-slate-950/80 backdrop-blur-md text-gold-400 text-[9px] font-bold border border-gold-500/30 uppercase">
+                    {p.type}
+                  </span>
+                  <span className="absolute bottom-2 left-2 text-[10px] text-slate-200 font-medium">
+                    {p.location}
+                  </span>
+                </div>
+                <div className="p-3 flex-1 flex flex-col justify-between">
+                  <h6 className="font-heading font-bold text-xs text-slate-900 dark:text-white line-clamp-1 group-hover:text-gold-500 transition-colors">
+                    {p.title}
+                  </h6>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">
+                    {p.description}
+                  </p>
+                  <div className="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-[10px] text-gold-600 dark:text-gold-400 font-mono font-semibold">
+                    Area: {p.area}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

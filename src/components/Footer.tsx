@@ -87,6 +87,18 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage, openSurveyModal }
                 <button
                   type="button"
                   onClick={() => {
+                    setActivePage('calculator');
+                    scrollToTop();
+                  }}
+                  className="hover:text-gold-400 transition-colors text-left font-semibold text-gold-400"
+                >
+                  Instant Tensile Cost Calculator →
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
                     setActivePage('engineering');
                     scrollToTop();
                   }}

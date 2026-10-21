@@ -12,6 +12,8 @@ import { CantileverComparison } from '../components/CantileverComparison';
 import { FabricInspector } from '../components/FabricInspector';
 import { ProjectGallery } from '../components/ProjectGallery';
 import { LocationsSection } from '../components/LocationsSection';
+import { CostCalculator } from '../components/CostCalculator';
+import { InteractiveSolutionsShowcase } from '../components/InteractiveSolutionsShowcase';
 import { FaqSection } from '../components/FaqSection';
 import { 
   ArrowRight, 
@@ -174,8 +176,12 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
                     src="/images/project_cantilever_parking.jpg"
                     alt="Cantilever Car Parking Engineering Demonstration"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    onError={(e) => {
+                      const t = e.currentTarget;
+                      if (!t.src.includes('hero.jpg')) t.src = '/images/hero.jpg';
+                    }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent opacity-75" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent opacity-50" />
                   <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-navy-950/85 backdrop-blur-md text-gold-400 text-[10px] font-bold border border-gold-500/30 uppercase tracking-wider">
                     Cantilever Vehicle Bay
                   </div>
@@ -235,6 +241,12 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
       {/* 5. APPROACH SECTION */}
       <ApproachSection onLearnProcess={() => setActivePage('process')} />
 
+      {/* 5B. SIGNATURE INTERACTIVE SOLUTIONS SHOWCASE */}
+      <InteractiveSolutionsShowcase
+        openSurveyModal={openSurveyModal}
+        onExploreSolutions={() => setActivePage('solutions')}
+      />
+
       {/* 6. SOLUTIONS SHOWCASE SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
@@ -266,8 +278,12 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
                   src={sol.image}
                   alt={sol.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => {
+                    const t = e.currentTarget;
+                    if (!t.src.includes('hero.jpg')) t.src = '/images/hero.jpg';
+                  }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent opacity-85" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-transparent to-transparent opacity-45" />
                 <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-navy-950/80 backdrop-blur-md text-gold-400 text-[10px] font-bold border border-gold-500/30">
                   {sol.id}
                 </span>
@@ -411,6 +427,11 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
         <FabricInspector />
       </section>
 
+      {/* 13B. INTERACTIVE TENSILE & STEEL COST CALCULATOR */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <CostCalculator openSurveyModal={openSurveyModal} />
+      </section>
+
       {/* 14. NATIONWIDE LOCATIONS SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <LocationsSection />
@@ -515,8 +536,12 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
                 src={selectedMarqueeProject.image}
                 alt={selectedMarqueeProject.title}
                 className="w-full h-full object-cover"
+                onError={(e) => {
+                  const t = e.currentTarget;
+                  if (!t.src.includes('hero.jpg')) t.src = '/images/hero.jpg';
+                }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent opacity-90" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent opacity-50" />
             </div>
 
             <div className="p-6 overflow-y-auto space-y-4">

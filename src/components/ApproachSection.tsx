@@ -60,8 +60,12 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onLearnProcess
                   src="/images/luxury_pool.jpg"
                   alt="MTE Tensile Engineering Approach"
                   className="w-full h-full object-cover"
+                  onError={(e) => {
+                    const t = e.currentTarget;
+                    if (!t.src.includes('hero.jpg')) t.src = '/images/hero.jpg';
+                  }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-50" />
 
                 <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/95 dark:bg-navy-950/90 backdrop-blur-md border border-slate-200 dark:border-gold-500/30 text-xs shadow-xl">
                   <div className="text-[10px] text-gold-600 dark:text-gold-400 font-mono uppercase tracking-wider mb-1 font-bold">

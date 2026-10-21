@@ -31,6 +31,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ openSurveyModal }) => {
                 src="/images/detail.jpg"
                 alt={ceo.name}
                 className="w-full h-full object-cover"
+                onError={(e) => {
+                  const t = e.currentTarget;
+                  if (!t.src.includes('hero.jpg')) t.src = '/images/hero.jpg';
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent opacity-90" />
               <div className="absolute bottom-4 left-4 right-4">

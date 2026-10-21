@@ -46,9 +46,13 @@ export const ProjectsMarquee: React.FC<ProjectsMarqueeProps> = ({ onSelectProjec
                   src={p.image}
                   alt={p.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  loading="lazy"
+                  loading="eager"
+                  onError={(e) => {
+                    const t = e.currentTarget;
+                    if (!t.src.includes('hero.jpg')) t.src = '/images/hero.jpg';
+                  }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent opacity-85" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-60" />
 
                 <div className="absolute top-3 left-3 flex gap-2">
                   <span className="px-2.5 py-0.5 rounded-full bg-slate-950/85 backdrop-blur-md text-gold-400 text-[10px] font-bold border border-gold-500/30 uppercase">

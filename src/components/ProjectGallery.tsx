@@ -72,9 +72,12 @@ export const ProjectGallery: React.FC = () => {
                 src={p.image}
                 alt={p.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
+                onError={(e) => {
+                  const t = e.currentTarget;
+                  if (!t.src.includes('hero.jpg')) t.src = '/images/hero.jpg';
+                }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-50" />
               
               <div className="absolute top-3 left-3 flex gap-1.5">
                 <span className="px-2.5 py-0.5 rounded-full bg-slate-900/80 backdrop-blur-md text-gold-400 text-[10px] font-bold border border-gold-500/30 uppercase tracking-wider">
@@ -140,8 +143,12 @@ export const ProjectGallery: React.FC = () => {
                 src={selectedProject.image}
                 alt={selectedProject.title}
                 className="w-full h-full object-cover"
+                onError={(e) => {
+                  const t = e.currentTarget;
+                  if (!t.src.includes('hero.jpg')) t.src = '/images/hero.jpg';
+                }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent opacity-90" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-50" />
             </div>
 
             <div className="p-6 overflow-y-auto space-y-4">

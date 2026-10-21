@@ -64,8 +64,12 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({ openSurveyModal })
                       src={sol.image}
                       alt={sol.name}
                       className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const t = e.currentTarget;
+                        if (!t.src.includes('hero.jpg')) t.src = '/images/hero.jpg';
+                      }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent opacity-60" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-transparent to-transparent opacity-40" />
                     <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-navy-950/80 backdrop-blur-md text-gold-400 text-xs font-bold border border-gold-500/30">
                       Solution {sol.id}
                     </span>

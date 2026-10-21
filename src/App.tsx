@@ -14,6 +14,8 @@ import { LocationsPage } from './pages/LocationsPage';
 import { AboutPage } from './pages/AboutPage';
 import { FaqPage } from './pages/FaqPage';
 import { ContactPage } from './pages/ContactPage';
+import { CostCalculator } from './components/CostCalculator';
+import { AiAssistant } from './components/AiAssistant';
 import { DownloadAppModal } from './components/DownloadAppModal';
 import { Phone, MessageCircle } from 'lucide-react';
 import { company } from './data/siteData';
@@ -29,7 +31,7 @@ function AppContent() {
       const hash = window.location.hash.replace('#', '').toLowerCase();
       if (hash === 'app') {
         setDownloadModalOpen(true);
-      } else if (['solutions', 'projects', 'engineering', 'process', 'locations', 'about', 'faq', 'contact'].includes(hash)) {
+      } else if (['solutions', 'projects', 'calculator', 'engineering', 'process', 'locations', 'about', 'faq', 'contact'].includes(hash)) {
         setActivePage(hash);
       } else if (hash === '' || hash === 'home') {
         setActivePage('home');
@@ -54,6 +56,12 @@ function AppContent() {
         return <SolutionsPage openSurveyModal={() => setSurveyModalOpen(true)} />;
       case 'projects':
         return <ProjectsPage openSurveyModal={() => setSurveyModalOpen(true)} />;
+      case 'calculator':
+        return (
+          <div className="pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <CostCalculator openSurveyModal={() => setSurveyModalOpen(true)} />
+          </div>
+        );
       case 'engineering':
         return <EngineeringPage openSurveyModal={() => setSurveyModalOpen(true)} />;
       case 'process':
@@ -132,6 +140,9 @@ function AppContent() {
 
       {/* Floating WhatsApp Quick Action Button */}
       <WhatsAppFloat />
+
+      {/* Floating Tensile AI Architectural Consultant Assistant */}
+      <AiAssistant openSurveyModal={() => setSurveyModalOpen(true)} />
 
       {/* Modal for Free Site Survey Booking */}
       <SiteSurveyModal

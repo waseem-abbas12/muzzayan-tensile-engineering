@@ -71,6 +71,17 @@ export interface LocationData {
     warranty: string;
     bestFor: string;
   }[];
+  localProjects?: {
+    title: string;
+    type: string;
+    area: string;
+    location: string;
+    image: string;
+    description: string;
+  }[];
+  climateChallenge?: string;
+  whyChoosePoints?: { title: string; desc: string }[];
+  faqs?: { question: string; answer: string }[];
 }
 
 export const company = {
@@ -731,7 +742,7 @@ export const locations: Record<string, LocationData> = {
     "faqs": [
       {
         "question": "Do you offer car parking shade fabrication in Islamabad?",
-        "answer": "Yes, TSP Tensile has an active installation footprint and representative office in F-8 Markaz Islamabad. We offer free on-site survey and laser measurement across all F, G, E, and H sectors, Blue Area, DHA Islamabad, and Bahria Town."
+        "answer": "Yes, Muzzayan Tensile Engineering (MTE) has an active installation footprint and representative office in F-8 Markaz Islamabad. We offer free on-site survey and laser measurement across all F, G, E, and H sectors, Blue Area, DHA Islamabad, and Bahria Town."
       },
       {
         "question": "Can tensile shades withstand hailstorms in Islamabad?",
@@ -959,7 +970,7 @@ export const locations: Record<string, LocationData> = {
     "faqs": [
       {
         "question": "Why do regular parking sheds rust so quickly in Karachi?",
-        "answer": "Standard mild steel and electro-plated bolts react aggressively with Karachi's airborne sea salts. TSP Tensile solves this with certified hot-dip galvanizing (minimum 85 microns zinc coating) and 316 marine-grade stainless steel rigging that guarantees zero rust for decades."
+        "answer": "Standard mild steel and electro-plated bolts react aggressively with Karachi's airborne sea salts. MTE solves this with certified hot-dip galvanizing (minimum 85 microns zinc coating) and 316 marine-grade stainless steel rigging that guarantees zero rust for decades."
       },
       {
         "question": "Do you install tensile shades in Bahria Town Karachi and DHA Phase 8?",

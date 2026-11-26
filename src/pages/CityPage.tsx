@@ -1,8 +1,8 @@
 import React from 'react';
 import { LocationsSection } from '../components/LocationsSection';
 import { locations, company, solutions } from '../data/siteData';
-import { cityPath, CITY_KEYS } from '../seo/routes';
-import { MapPin, MessageCircle, Calendar, ChevronRight } from 'lucide-react';
+import { cityPath, CITY_KEYS, SERVICE_CITY_DEFS, PRIORITY_CITY_KEYS, serviceCityPath, cityFaqs } from '../seo/routes';
+import { MapPin, MessageCircle, Calendar, ChevronRight, CloudSun, ShieldCheck, HelpCircle } from 'lucide-react';
 
 interface CityPageProps {
   cityKey: string;
@@ -65,7 +65,7 @@ export const CityPage: React.FC<CityPageProps> = ({ cityKey, setActivePage, open
       {/* Direct answer block (answer-engine friendly) */}
       <section className="glass-panel rounded-2xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 space-y-3">
         <h2 className="text-xl sm:text-2xl font-heading font-bold text-slate-900 dark:text-white">
-          How much does a car parking shade cost in {city.name}?
+          Car parking shade prices in {city.name} at a glance
         </h2>
         <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
           In {city.name}, an installed car parking shade or tensile canopy from {company.name} typically costs{' '}
@@ -78,6 +78,35 @@ export const CityPage: React.FC<CityPageProps> = ({ cityKey, setActivePage, open
 
       {/* City details, service areas, local projects */}
       <LocationsSection initialCity={cityKey} onCitySelect={(key) => setActivePage(cityPath(key))} />
+
+      {/* Local climate + why choose MTE in this city */}
+      {(city.climateChallenge || city.whyChoosePoints) && (
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {city.climateChallenge && (
+            <div className="glass-panel rounded-2xl p-6 md:p-8 border border-slate-200 dark:border-slate-800">
+              <h2 className="text-xl sm:text-2xl font-heading font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <CloudSun className="w-5 h-5 text-gold-500" /> Built for {city.name}&apos;s Weather
+              </h2>
+              <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed mt-3">{city.climateChallenge}</p>
+            </div>
+          )}
+          {city.whyChoosePoints && (
+            <div className="glass-panel rounded-2xl p-6 md:p-8 border border-slate-200 dark:border-slate-800">
+              <h2 className="text-xl sm:text-2xl font-heading font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <ShieldCheck className="w-5 h-5 text-gold-500" /> Why {city.name} Clients Choose MTE
+              </h2>
+              <ul className="mt-3 space-y-3">
+                {city.whyChoosePoints.map((p) => (
+                  <li key={p.title}>
+                    <h3 className="text-sm font-bold text-slate-900 dark:text-white">{p.title}</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-0.5">{p.desc}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </section>
+      )}
 
       {/* Pricing table */}
       <section className="glass-panel rounded-2xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 space-y-6">
@@ -140,6 +169,49 @@ export const CityPage: React.FC<CityPageProps> = ({ cityKey, setActivePage, open
           ))}
         </ul>
       </section>
+
+      {/* Dedicated service pages for priority cities */}
+      {(PRIORITY_CITY_KEYS as readonly string[]).includes(cityKey) && (
+        <section className="space-y-3">
+          <h2 className="text-lg font-heading font-bold text-slate-900 dark:text-white">More {city.name} services</h2>
+          <div className="flex flex-wrap gap-2">
+            {SERVICE_CITY_DEFS.map((d) => (
+              <a
+                key={d.key}
+                href={serviceCityPath(d.key, cityKey)}
+                onClick={(e) => go(e, serviceCityPath(d.key, cityKey))}
+                className="px-4 py-2 rounded-xl border border-gold-500/40 bg-gold-500/10 text-xs font-bold text-gold-700 dark:text-gold-400 hover:bg-gold-500/20"
+              >
+                {d.name} in {city.name} →
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* City FAQs (visible text matches FAQPage schema) */}
+      {cityFaqs(cityKey).length > 0 && (
+        <section className="space-y-4">
+          <h2 className="text-2xl font-heading font-bold text-slate-900 dark:text-white">
+            {city.name} FAQs: Car Parking Shades & Tensile Structures
+          </h2>
+          <div className="space-y-3">
+            {cityFaqs(cityKey).map((f) => (
+              <details
+                key={f.question}
+                open
+                className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-navy-900/60 p-5 group"
+              >
+                <summary className="cursor-pointer list-none flex items-start gap-2.5">
+                  <HelpCircle className="w-4 h-4 text-gold-500 shrink-0 mt-0.5" />
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-white">{f.question}</h3>
+                </summary>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mt-2.5 pl-6">{f.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Other cities */}
       <section className="space-y-3">

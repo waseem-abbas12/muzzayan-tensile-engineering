@@ -20,6 +20,7 @@ import { DownloadAppModal } from './components/DownloadAppModal';
 import { Phone, MessageCircle } from 'lucide-react';
 import { company } from './data/siteData';
 import { CityPage } from './pages/CityPage';
+import { ServiceCityPage } from './pages/ServiceCityPage';
 import { routes, findRoute, pathForPage, legacyHashMap, normalizePath, type RouteDef, type PageId } from './seo/routes';
 import { applyHead } from './seo/applyHead';
 
@@ -30,7 +31,7 @@ function AppContent({ initialPath }: { initialPath: string }) {
   const [route, setRoute] = useState<RouteDef>(() => resolveRoute(initialPath));
   const [surveyModalOpen, setSurveyModalOpen] = useState<boolean>(false);
   const [downloadModalOpen, setDownloadModalOpen] = useState<boolean>(false);
-  const activePage: string = route.page === 'city' ? 'locations' : route.page;
+  const activePage: string = route.page === 'city' || route.page === 'serviceCity' ? 'locations' : route.page;
 
   // Real URL routing (History API) + backwards-compatible old #hash links
   useEffect(() => {
@@ -70,6 +71,15 @@ function AppContent({ initialPath }: { initialPath: string }) {
       case 'city':
         return (
           <CityPage
+            cityKey={route.cityKey ?? 'lahore'}
+            setActivePage={handlePageChange}
+            openSurveyModal={() => setSurveyModalOpen(true)}
+          />
+        );
+      case 'serviceCity':
+        return (
+          <ServiceCityPage
+            serviceKey={route.serviceKey ?? 'tensile-structures'}
             cityKey={route.cityKey ?? 'lahore'}
             setActivePage={handlePageChange}
             openSurveyModal={() => setSurveyModalOpen(true)}

@@ -577,6 +577,20 @@ export function buildJsonLd(route: RouteDef) {
           });
       }
       if (t.faqs.length) Object.assign(graph[2], { mainEntity: faqEntities(t.faqs) });
+      if (t.article)
+        graph.push({
+          '@type': 'BlogPosting',
+          '@id': `${abs(route.path)}#article`,
+          headline: t.h1,
+          description: t.description,
+          image: abs(t.ogImage),
+          datePublished: t.article.published,
+          dateModified: t.article.updated,
+          inLanguage: t.rtl ? 'ur-PK' : 'en-PK',
+          author: { '@type': 'Organization', name: 'MTE engineering team', url: `${SITE_URL}/about` },
+          publisher: { '@id': BUSINESS_ID },
+          mainEntityOfPage: { '@id': `${abs(route.path)}#webpage` },
+        });
     }
   }
   if (route.page === 'faq') {

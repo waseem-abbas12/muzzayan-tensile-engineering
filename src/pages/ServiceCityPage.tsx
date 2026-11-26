@@ -5,7 +5,7 @@ import {
   serviceCityPath,
   serviceCityFaqs,
   SERVICE_CITY_DEFS,
-  PRIORITY_CITY_KEYS,
+  SERVICE_CITY_KEYS,
 } from '../seo/routes';
 import { MapPin, MessageCircle, Calendar, ChevronRight, Check, HelpCircle } from 'lucide-react';
 
@@ -238,7 +238,7 @@ export const ServiceCityPage: React.FC<ServiceCityPageProps> = ({ serviceKey, ci
               {d.name} in {city.name}
             </a>
           ))}
-          {PRIORITY_CITY_KEYS.filter((k) => k !== cityKey).map((k) => (
+          {SERVICE_CITY_KEYS.filter((k) => k !== cityKey).map((k) => (
             <a
               key={k}
               href={serviceCityPath(def.key, k)}

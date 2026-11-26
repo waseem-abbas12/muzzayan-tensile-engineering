@@ -140,6 +140,10 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage, openSurveyModal }
                 ['/tensile-structures-islamabad', 'Tensile Structures Islamabad'],
                 ['/industrial-sheds-lahore', 'Industrial Sheds Lahore'],
                 ['/industrial-sheds-islamabad', 'Industrial Sheds Islamabad'],
+                ['/tensile-structures-rawalpindi', 'Tensile Structures Rawalpindi'],
+                ['/car-parking-shades-dha-lahore', 'Car Parking Shades DHA Lahore'],
+                ['/car-parking-shade-price', 'Car Parking Shade Price 2026'],
+                ['/cantilever-car-parking-shades', 'Cantilever Car Parking Shades'],
               ].map(([href, label]) => (
                 <li key={href}>
                   <a

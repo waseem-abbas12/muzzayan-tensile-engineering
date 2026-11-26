@@ -71,41 +71,44 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage, openSurveyModal }
             <ul className="space-y-2 text-xs">
               {solutions.map((s) => (
                 <li key={s.id}>
-                  <button
-                    type="button"
-                    onClick={() => {
+                  <a
+                    href={`/solutions#${s.slug}`}
+                    onClick={(e) => {
+                      e.preventDefault();
                       setActivePage('solutions');
                       scrollToTop();
                     }}
                     className="hover:text-gold-400 transition-colors text-left"
                   >
                     {s.name}
-                  </button>
+                  </a>
                 </li>
               ))}
               <li>
-                <button
-                  type="button"
-                  onClick={() => {
+                <a
+                  href="/cost-calculator"
+                  onClick={(e) => {
+                    e.preventDefault();
                     setActivePage('calculator');
                     scrollToTop();
                   }}
                   className="hover:text-gold-400 transition-colors text-left font-semibold text-gold-400"
                 >
                   Instant Tensile Cost Calculator →
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => {
+                <a
+                  href="/engineering"
+                  onClick={(e) => {
+                    e.preventDefault();
                     setActivePage('engineering');
                     scrollToTop();
                   }}
                   className="hover:text-gold-400 transition-colors text-left font-semibold text-slate-200"
                 >
                   German PVDF & PTFE Specifications →
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -118,17 +121,18 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage, openSurveyModal }
             <ul className="space-y-2 text-xs">
               {['Lahore', 'Islamabad', 'Rawalpindi', 'Karachi'].map((city) => (
                 <li key={city}>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setActivePage('locations');
+                  <a
+                    href={`/car-parking-shades-${city.toLowerCase()}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setActivePage(`/car-parking-shades-${city.toLowerCase()}`);
                       scrollToTop();
                     }}
                     className="hover:text-gold-400 transition-colors flex items-center gap-1.5"
                   >
                     <MapPin className="w-3 h-3 text-gold-400/80" />
-                    {city} Desk
-                  </button>
+                    Car Parking Shades {city}
+                  </a>
                 </li>
               ))}
             </ul>

@@ -29,7 +29,7 @@
       "name": "Free On-Site Survey",
       "short_name": "Survey",
       "description": "Book a free site survey and get 3D layout designs in Pakistan",
-      "url": "/#contact",
+      "url": "/contact",
       "icons": [
         {
           "src": "/favicon-192x192.png",
@@ -41,7 +41,7 @@
       "name": "Projects Portfolio",
       "short_name": "Projects",
       "description": "View 100+ completed tensile projects across Pakistan",
-      "url": "/#projects",
+      "url": "/projects",
       "icons": [
         {
           "src": "/favicon-192x192.png",

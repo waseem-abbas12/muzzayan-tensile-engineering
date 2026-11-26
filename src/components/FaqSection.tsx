@@ -72,44 +72,54 @@ export const FaqSection: React.FC = () => {
         </div>
       )}
 
-      {/* FAQ Accordion Items */}
+      {/* FAQ Accordion Items — every answer stays in the HTML (crawlers & AI engines can read it) */}
       <div className="max-w-3xl mx-auto space-y-3">
-        {filteredFaqs.map((faq, idx) => {
-          const isOpen = openFaqIdx === idx;
-          return (
-            <div
-              key={idx}
-              className={`rounded-xl border transition-all overflow-hidden ${
-                isOpen
-                  ? 'bg-white dark:bg-navy-900/90 border-gold-500/50 shadow-sm dark:shadow-md'
-                  : 'bg-white dark:bg-navy-900/40 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
-              }`}
-            >
-              <button
-                type="button"
-                onClick={() => toggleFaq(idx)}
-                className="w-full py-4 px-5 text-left flex items-center justify-between gap-4"
-              >
-                <span className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2.5">
-                  <HelpCircle className="w-4 h-4 text-gold-500 shrink-0" />
-                  {faq.question}
-                </span>
-                <span className="text-slate-400 shrink-0">
-                  {isOpen ? (
-                    <Minus className="w-4 h-4 text-gold-500" />
-                  ) : (
-                    <Plus className="w-4 h-4" />
-                  )}
-                </span>
-              </button>
-              {isOpen && (
-                <div className="px-5 pb-5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/80 pt-3">
-                  {faq.answer}
+        {(searchQuery.trim()
+          ? [{ name: 'Search results', faqs: filteredFaqs, catIdx: -1 }]
+          : faqCategories.map((c, catIdx) => ({ ...c, catIdx }))
+        ).map((group) => (
+          <div key={group.name} hidden={group.catIdx !== -1 && group.catIdx !== activeCategoryIdx} className="space-y-3">
+            {group.faqs.map((faq, idx) => {
+              const isOpen = openFaqIdx === idx && (group.catIdx === -1 || group.catIdx === activeCategoryIdx);
+              const panelId = `faq-${group.catIdx}-${idx}`;
+              return (
+                <div
+                  key={idx}
+                  className={`rounded-xl border transition-all overflow-hidden ${
+                    isOpen
+                      ? 'bg-white dark:bg-navy-900/90 border-gold-500/50 shadow-sm dark:shadow-md'
+                      : 'bg-white dark:bg-navy-900/40 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
+                  }`}
+                >
+                  <h4>
+                    <button
+                      type="button"
+                      onClick={() => toggleFaq(idx)}
+                      aria-expanded={isOpen}
+                      aria-controls={panelId}
+                      className="w-full py-4 px-5 text-left flex items-center justify-between gap-4"
+                    >
+                      <span className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2.5">
+                        <HelpCircle className="w-4 h-4 text-gold-500 shrink-0" />
+                        {faq.question}
+                      </span>
+                      <span className="text-slate-400 shrink-0">
+                        {isOpen ? <Minus className="w-4 h-4 text-gold-500" /> : <Plus className="w-4 h-4" />}
+                      </span>
+                    </button>
+                  </h4>
+                  <div
+                    id={panelId}
+                    hidden={!isOpen}
+                    className="px-5 pb-5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/80 pt-3"
+                  >
+                    {faq.answer}
+                  </div>
                 </div>
-              )}
-            </div>
-          );
-        })}
+              );
+            })}
+          </div>
+        ))}
 
         {filteredFaqs.length === 0 && (
           <div className="text-center py-10 text-slate-500 text-xs">

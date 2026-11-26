@@ -374,6 +374,27 @@ export const testimonials = [
 ];
 export const faqCategories = [
   {
+    "name": "Pricing & Costs",
+    "faqs": [
+      {
+        "question": "How much does a car parking shade cost in Pakistan?",
+        "answer": "An installed car parking shade in Pakistan typically costs PKR 350–550 per sq ft with Australian HDPE shade cloth, PKR 750–1,150 per sq ft with German Mehler PVC (900 GSM), PKR 1,200–1,850 per sq ft with French Serge Ferrari PVDF, and PKR 2,200–3,500 per sq ft with PTFE glass-fibre membrane. Rates include steel fabrication, fabric, paint finish and on-site tensioning; the final price is confirmed after a free site survey."
+      },
+      {
+        "question": "What affects the price of a tensile shade structure?",
+        "answer": "The main factors are the fabric grade (HDPE, PVC, PVDF or PTFE), the covered area and cantilever span, the number of car bays, the steel pipe specification and finish (hot-dip galvanizing, PU paint), foundation conditions on site, and any extras such as LED lighting or rainwater gutters."
+      },
+      {
+        "question": "Is a cantilever car parking shade better than a 4-post shed?",
+        "answer": "A cantilever shade places all columns at the rear, so the front is completely open — no door dings, easier turning and full use of every bay. A traditional 4-post shed is cheaper on steel but its front columns obstruct parking. For villas in DHA and Bahria Town, offices and plazas, cantilever is usually the preferred choice."
+      },
+      {
+        "question": "Which is better for a parking shade: HDPE, PVC or PVDF?",
+        "answer": "HDPE is the most affordable and breathable but not waterproof, lasting about 7–10 years. Mehler PVC is fully waterproof and lasts 15–20 years. Serge Ferrari PVDF has a self-cleaning top coat and lasts 25+ years, making it the best long-term value for commercial and premium residential projects."
+      }
+    ]
+  },
+  {
     "name": "Getting started",
     "faqs": [
       {

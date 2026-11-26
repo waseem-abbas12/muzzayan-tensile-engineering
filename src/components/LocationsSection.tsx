@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { cityPath } from '../seo/routes';
 import { locations, company } from '../data/siteData';
 import { MapPin, Phone, MessageCircle, ShieldCheck, Check, Building2 } from 'lucide-react';
 
-export const LocationsSection: React.FC = () => {
-  const [activeCityKey, setActiveCityKey] = useState<string>('lahore');
+interface LocationsSectionProps {
+  initialCity?: string;
+  /** When provided, city tabs become real links to the dedicated city pages */
+  onCitySelect?: (key: string) => void;
+}
+
+export const LocationsSection: React.FC<LocationsSectionProps> = ({ initialCity = 'lahore', onCitySelect }) => {
+  const [activeCityKey, setActiveCityKey] = useState<string>(initialCity);
+  useEffect(() => setActiveCityKey(initialCity), [initialCity]);
   const city = locations[activeCityKey] || locations.lahore;
 
   const cityTabs = [
@@ -36,10 +44,14 @@ export const LocationsSection: React.FC = () => {
       {/* City Switcher Tabs */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-8">
         {cityTabs.map((t) => (
-          <button
+          <a
             key={t.key}
-            type="button"
-            onClick={() => setActiveCityKey(t.key)}
+            href={cityPath(t.key)}
+            onClick={(e) => {
+              e.preventDefault();
+              if (onCitySelect) onCitySelect(t.key);
+              else setActiveCityKey(t.key);
+            }}
             className={`p-3 rounded-xl border text-left transition-all ${
               activeCityKey === t.key
                 ? 'bg-gold-500 text-slate-950 font-bold border-gold-400 shadow-md shadow-gold-500/20'
@@ -53,7 +65,7 @@ export const LocationsSection: React.FC = () => {
             <div className={`text-[10px] mt-0.5 ${activeCityKey === t.key ? 'text-slate-900 font-medium' : 'text-slate-500'}`}>
               {t.region}
             </div>
-          </button>
+          </a>
         ))}
       </div>
 

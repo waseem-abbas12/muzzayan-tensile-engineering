@@ -128,7 +128,8 @@ const STRUCTURES: StructureOption[] = [
   }
 ];
 
-export const CostCalculator: React.FC<{ openSurveyModal?: () => void }> = ({ openSurveyModal }) => {
+export const CostCalculator: React.FC<{ openSurveyModal?: () => void; asPageHeading?: boolean }> = ({ openSurveyModal, asPageHeading = false }) => {
+  const Heading = asPageHeading ? 'h1' : 'h2';
   const [selectedStructureId, setSelectedStructureId] = useState<string>('cantilever_car');
   const [selectedFabricId, setSelectedFabricId] = useState<string>('german_pvdf_900');
   const [lengthFt, setLengthFt] = useState<number>(20);
@@ -173,9 +174,9 @@ Please confirm this estimate and schedule a free laser survey.`;
             <CalcIcon className="w-3.5 h-3.5" />
             Turnkey Turnout Rate Estimator
           </div>
-          <h2 className="text-2xl sm:text-4xl font-heading font-extrabold text-slate-900 dark:text-white">
+          <Heading className="text-2xl sm:text-4xl font-heading font-extrabold text-slate-900 dark:text-white">
             Instant Tensile Shade & Steel Shed Cost Calculator
-          </h2>
+          </Heading>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1 max-w-2xl">
             Real-time turnkey pricing including structural steel fabrication, high-grade imported membrane, primer/paint finish, and on-site tensioning erection across Pakistan.
           </p>

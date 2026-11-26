@@ -9,7 +9,8 @@ export type TopicBlock =
   | { kind: 'cityPrices'; h2: string; intro?: string; cities: string[] }
   | { kind: 'compare'; h2: string; headers: string[]; rows: string[][] }
   | { kind: 'projects'; h2: string; items: { title: string; image: string; place: string; area: string; description: string }[] }
-  | { kind: 'links'; h2: string; links: [string, string][] };
+  | { kind: 'links'; h2: string; links: [string, string][] }
+  | { kind: 'section'; h2: string; paras?: string[]; items?: string[]; after?: string[] };
 
 export interface TopicDef {
   key: string;
@@ -25,6 +26,9 @@ export interface TopicDef {
   breadcrumbParent?: [string, string];
   blocks: TopicBlock[];
   faqs: { question: string; answer: string }[];
+  /** Blog articles: show byline + Article schema */
+  article?: { published: string; updated: string; readMins: number };
+  rtl?: boolean;
 }
 
 const sol = (slug: string) => solutions.find((s) => s.slug === slug)!;
@@ -409,6 +413,17 @@ export const MORE_TOPICS: TopicDef[] = [
           ['/blog/how-long-does-a-tensile-shade-last', 'How Long Does a Tensile Shade Last in Pakistan?'],
           ['/blog/how-to-choose-a-tensile-shade-company', 'How to Choose a Tensile Shade Company: 10 Checks'],
           ['/cantilever-car-parking-shades', 'Cantilever vs 4-Post Car Parking Shades'],
+          ['/blog/car-parking-shade-designs-pakistan', 'Car Parking Shade Designs: 7 Types Explained'],
+          ['/blog/car-parking-shade-size-guide', 'Car Parking Shade Size Guide (1, 2, 4, 10 Cars)'],
+          ['/blog/tensile-vs-fiberglass-vs-polycarbonate-shades', 'Tensile vs Fiberglass vs Polycarbonate'],
+          ['/blog/can-tensile-shades-survive-storms', 'Can Tensile Shades Survive Storms and Hail?'],
+          ['/blog/tensile-shade-maintenance-guide', 'Tensile Shade Maintenance Guide'],
+          ['/blog/car-shade-approval-dha-lda-cda', 'Do You Need DHA, LDA or CDA Approval?'],
+          ['/blog/car-parking-shades-for-commercial-buildings', 'Parking Shades for Plazas, Hospitals & Societies'],
+          ['/blog/what-is-a-tensile-structure', 'What Is a Tensile Structure?'],
+          ['/blog/peb-vs-conventional-steel-vs-rcc-sheds', 'PEB vs Conventional Steel vs RCC'],
+          ['/blog/dairy-farm-shed-design-guide', 'Dairy Farm Shed Design Guide'],
+          ['/blog/car-parking-shade-price-urdu', 'کار پارکنگ شیڈ کی قیمت 2026 (اردو)'],
         ],
       },
     ],
@@ -416,6 +431,7 @@ export const MORE_TOPICS: TopicDef[] = [
   },
   {
     key: 'blog-fabrics',
+    article: { published: '2026-11-26', updated: '2026-11-26', readMins: 5 },
     path: '/blog/pvc-vs-pvdf-vs-hdpe-tensile-fabric',
     label: 'PVC vs PVDF vs HDPE',
     title: 'PVC vs PVDF vs HDPE Tensile Fabric: Which Is Best? | MTE',
@@ -448,6 +464,7 @@ export const MORE_TOPICS: TopicDef[] = [
   },
   {
     key: 'blog-lifespan',
+    article: { published: '2026-11-26', updated: '2026-11-26', readMins: 5 },
     path: '/blog/how-long-does-a-tensile-shade-last',
     label: 'How Long Does a Tensile Shade Last',
     title: 'How Long Does a Tensile Shade Last in Pakistan? | MTE',
@@ -477,6 +494,7 @@ export const MORE_TOPICS: TopicDef[] = [
   },
   {
     key: 'blog-choose-company',
+    article: { published: '2026-11-26', updated: '2026-11-26', readMins: 5 },
     path: '/blog/how-to-choose-a-tensile-shade-company',
     label: 'How to Choose a Tensile Shade Company',
     title: 'How to Choose a Tensile Shade Company in Pakistan: 10 Checks',
@@ -516,5 +534,6 @@ export const MORE_TOPICS: TopicDef[] = [
   },
 ];
 
-export const ALL_TOPICS: TopicDef[] = [...TOPICS, ...MORE_TOPICS];
+import { ARTICLES } from './articles';
+export const ALL_TOPICS: TopicDef[] = [...TOPICS, ...MORE_TOPICS, ...ARTICLES];
 export const findTopic = (key?: string) => ALL_TOPICS.find((t) => t.key === key);

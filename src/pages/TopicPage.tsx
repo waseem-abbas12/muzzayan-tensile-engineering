@@ -91,7 +91,7 @@ export const TopicPage: React.FC<TopicPageProps> = ({ topicKey, setActivePage, o
             {b.cities.map((ck) => {
               const c = locations[ck];
               return (
-                <div key={ck} className="overflow-x-auto">
+                <div key={ck} dir="ltr" className="overflow-x-auto">
                   {b.cities.length > 1 && (
                     <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-2">
                       <a href={`/car-parking-shades-${ck}`} onClick={(e) => go(e, `/car-parking-shades-${ck}`)} className="hover:text-gold-600">
@@ -128,7 +128,7 @@ export const TopicPage: React.FC<TopicPageProps> = ({ topicKey, setActivePage, o
         );
       case 'compare':
         return (
-          <section key={i} className={`${panel} overflow-x-auto`}>
+          <section key={i} dir="ltr" className={`${panel} overflow-x-auto`}>
             <h2 className={h2c}>{b.h2}</h2>
             <table className="w-full text-left text-sm mt-4 border-collapse">
               <thead>
@@ -171,6 +171,25 @@ export const TopicPage: React.FC<TopicPageProps> = ({ topicKey, setActivePage, o
             </div>
           </section>
         );
+      case 'section':
+        return (
+          <section key={i} className="max-w-3xl">
+            <h2 className={h2c}>{b.h2}</h2>
+            {b.paras?.map((p) => (
+              <p key={p} className="text-[15px] text-slate-700 dark:text-slate-300 leading-relaxed mt-3">{p}</p>
+            ))}
+            {b.items && (
+              <ul className="mt-3 space-y-2 list-disc pl-5 marker:text-gold-500">
+                {b.items.map((it) => (
+                  <li key={it} className="text-[15px] text-slate-700 dark:text-slate-300 leading-relaxed">{it}</li>
+                ))}
+              </ul>
+            )}
+            {b.after?.map((p) => (
+              <p key={p} className="text-[15px] text-slate-700 dark:text-slate-300 leading-relaxed mt-3">{p}</p>
+            ))}
+          </section>
+        );
       case 'links':
         return (
           <section key={i} className="space-y-3">
@@ -188,7 +207,7 @@ export const TopicPage: React.FC<TopicPageProps> = ({ topicKey, setActivePage, o
   };
 
   return (
-    <div className="pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <div dir={t.rtl ? 'rtl' : undefined} lang={t.rtl ? 'ur' : undefined} className="pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
       <nav aria-label="Breadcrumb" className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
         <a href="/" onClick={(e) => go(e, '/')} className="hover:text-gold-600">Home</a>
         {t.breadcrumbParent && (
@@ -207,6 +226,13 @@ export const TopicPage: React.FC<TopicPageProps> = ({ topicKey, setActivePage, o
         <div>
           <span className="text-xs uppercase font-bold tracking-widest text-gold-600 dark:text-gold-400">{t.eyebrow}</span>
           <h1 className="text-3xl sm:text-5xl font-heading font-extrabold text-slate-900 dark:text-white mt-2">{t.h1}</h1>
+          {t.article && (
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-3">
+              By the MTE engineering team · Updated{' '}
+              <time dateTime={t.article.updated}>{new Date(t.article.updated + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}</time>{' '}
+              · {t.article.readMins} min read
+            </p>
+          )}
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-4 leading-relaxed">{t.lead}</p>
           <div className="flex flex-wrap gap-3 mt-6">
             <button

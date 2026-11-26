@@ -136,7 +136,7 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
               {/* Quick Architectural Proof Metrics Bar */}
               <div className="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-slate-300/80 dark:border-slate-800/80">
                 <div className="p-3 rounded-xl bg-white/70 dark:bg-navy-900/40 border border-slate-200 dark:border-slate-800/80">
-                  <div className="text-2xl sm:text-3xl font-heading font-black text-slate-900 dark:text-white">120+</div>
+                  <div className="text-2xl sm:text-3xl font-heading font-black text-slate-900 dark:text-white">{company.projectsCompleted}</div>
                   <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Executed Sites</div>
                 </div>
                 <div className="p-3 rounded-xl bg-white/70 dark:bg-navy-900/40 border border-slate-200 dark:border-slate-800/80">

@@ -100,8 +100,8 @@ export const LocationsSection: React.FC<LocationsSectionProps> = ({ initialCity 
               <strong className="text-sm font-bold text-gold-600 dark:text-gold-400">{city.stats.warranty}</strong>
             </div>
             <div className="p-2.5 rounded-lg bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 shadow-xs">
-              <span className="text-[10px] text-slate-500 uppercase block">Client Rating</span>
-              <strong className="text-sm font-bold text-emerald-600 dark:text-emerald-400">{city.stats.rating}</strong>
+              <span className="text-[10px] text-slate-500 uppercase block">Site Survey</span>
+              <strong className="text-sm font-bold text-emerald-600 dark:text-emerald-400">Free</strong>
             </div>
           </div>
 

@@ -750,7 +750,7 @@ export const locations: Record<string, LocationData> = {
       },
       {
         "question": "What is the warranty period for tensile structures in Islamabad?",
-        "answer": "We provide an official 10 to 15-year warranty on German PVC/PVDF fabrics and a lifetime structural engineering warranty on all steel fabrication and welding connections."
+        "answer": "We provide an official 10 to 15-year warranty on German PVC/PVDF fabrics and a 15-year structural warranty on all steel fabrication and welding connections."
       }
     ],
     "email": "info@muzzayantensile.com"
@@ -1000,7 +1000,7 @@ export const engineeringFabrics = [
     "name": "Australian HDPE Commercial Shade Cloth",
     "tensile": "480 N/5cm",
     "tear": "110 N",
-    "lifespan": "8–12 Years",
+    "lifespan": "7–10 Years",
     "weight": "320–340 g/m²",
     "fire": "Class B2",
     "uses": "Residential car porch, swimming pool side, school playgrounds",

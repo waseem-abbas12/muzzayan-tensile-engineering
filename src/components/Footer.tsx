@@ -144,6 +144,12 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage, openSurveyModal }
                 ['/car-parking-shades-dha-lahore', 'Car Parking Shades DHA Lahore'],
                 ['/car-parking-shade-price', 'Car Parking Shade Price 2026'],
                 ['/cantilever-car-parking-shades', 'Cantilever Car Parking Shades'],
+                ['/car-parking-shades-bahria-town', 'Car Parking Shades Bahria Town'],
+                ['/car-porch-shades', 'Car Porch Shades'],
+                ['/swimming-pool-shades', 'Swimming Pool Shades'],
+                ['/tensile-marquee-structures', 'Tensile Marquee Structures'],
+                ['/padel-court-shades', 'Padel Court Shades'],
+                ['/blog', 'Guides & Blog'],
               ].map(([href, label]) => (
                 <li key={href}>
                   <a

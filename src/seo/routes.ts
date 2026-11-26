@@ -26,12 +26,14 @@ export type PageId =
   | 'about'
   | 'faq'
   | 'contact'
-  | 'city';
+  | 'city'
+  | 'serviceCity';
 
 export interface RouteDef {
   path: string;
   page: PageId;
   cityKey?: string;
+  serviceKey?: string;
   title: string;
   description: string;
   /** Breadcrumb label */
@@ -163,7 +165,60 @@ const cityRoutes: RouteDef[] = CITY_KEYS.map((key) => {
   };
 });
 
-export const routes: RouteDef[] = [...staticRoutes, ...cityRoutes];
+// Priority cities get dedicated service landing pages
+export const PRIORITY_CITY_KEYS = ['lahore', 'islamabad'] as const;
+
+export interface ServiceCityDef {
+  key: string;
+  solutionSlug: string;
+  name: string;
+  ogImage: string;
+  title: (city: string) => string;
+  description: (city: string) => string;
+}
+
+export const SERVICE_CITY_DEFS: ServiceCityDef[] = [
+  {
+    key: 'tensile-structures',
+    solutionSlug: 'tensile-roofs',
+    name: 'Tensile Structures',
+    ogImage: '/images/commercial.jpg',
+    title: (c) => `Tensile Structures ${c} | Membrane Roofs & Canopies | MTE`,
+    description: (c) =>
+      `Tensile membrane roofs, conical canopies, walkway and pool shades in ${c} — PVDF/PTFE fabric, FEA-designed steel, in-house fabrication. Free survey.`,
+  },
+  {
+    key: 'industrial-sheds',
+    solutionSlug: 'industrial-sheds',
+    name: 'Industrial Steel Sheds',
+    ogImage: '/images/project_industrial_warehouse.jpg',
+    title: (c) => `Industrial Sheds ${c} | Factory & Warehouse Steel Sheds | MTE`,
+    description: (c) =>
+      `Pre-engineered factory, warehouse and dairy steel sheds in ${c}: portal frames, PU sandwich panels, crane runway beams. Turnkey design & erection.`,
+  },
+];
+
+export const serviceCityPath = (serviceKey: string, cityKey: string) => `/${serviceKey}-${cityKey}`;
+
+const serviceCityRoutes: RouteDef[] = PRIORITY_CITY_KEYS.flatMap((cityKey) =>
+  SERVICE_CITY_DEFS.map((d) => {
+    const cityName = locations[cityKey].name;
+    return {
+      path: serviceCityPath(d.key, cityKey),
+      page: 'serviceCity' as const,
+      cityKey,
+      serviceKey: d.key,
+      label: `${d.name} ${cityName}`,
+      title: d.title(cityName),
+      description: d.description(cityName),
+      ogImage: d.ogImage,
+      priority: 0.8,
+      changefreq: 'monthly' as const,
+    };
+  })
+);
+
+export const routes: RouteDef[] = [...staticRoutes, ...cityRoutes, ...serviceCityRoutes];
 
 /** Old hash links (#solutions) and legacy paths → canonical route */
 export const legacyHashMap: Record<string, string> = {
@@ -180,6 +235,7 @@ export const legacyHashMap: Record<string, string> = {
 
 export const pathForPage = (page: PageId, cityKey?: string): string => {
   if (page === 'city' && cityKey) return cityPath(cityKey);
+  if (page === 'serviceCity') return '/solutions';
   return staticRoutes.find((r) => r.page === page)?.path ?? '/';
 };
 
@@ -206,7 +262,7 @@ function businessNode() {
     '@type': ['LocalBusiness', 'GeneralContractor'],
     '@id': BUSINESS_ID,
     name: company.name,
-    alternateName: ['MTE', 'Muzzayan Tensile Engineering (MTE)', 'MTE Tensile'],
+    alternateName: ['MTE', 'Muzzayan Tensile Engineering (MTE)', 'MTE Tensile', 'TSP Tensile', 'TSP Tensile Pakistan'],
     url: `${SITE_URL}/`,
     logo: abs('/favicon-512x512.png'),
     image: [abs('/images/hero.jpg'), abs('/images/commercial.jpg'), abs('/images/project_cantilever_parking.jpg')],
@@ -249,6 +305,7 @@ function businessNode() {
       { '@type': 'Country', name: 'Pakistan' },
     ],
     founder: { '@type': 'Person', name: ceo.name, jobTitle: ceo.title },
+    department: PRIORITY_CITY_KEYS.map((k) => branchNode(k)),
     knowsAbout: [
       'Cantilever car parking shades',
       'Tensile membrane structures',
@@ -269,6 +326,43 @@ function businessNode() {
   };
 }
 
+const BRANCH_ADDRESS: Record<string, { street: string; locality: string; region: string }> = {
+  lahore: { street: 'DHA Phase 5 Commercial, Main Boulevard', locality: 'Lahore', region: 'Punjab' },
+  islamabad: { street: 'F-8 Markaz', locality: 'Islamabad', region: 'Islamabad Capital Territory' },
+};
+
+function branchNode(key: string) {
+  const c = locations[key];
+  const a = BRANCH_ADDRESS[key];
+  return {
+    '@type': 'LocalBusiness',
+    '@id': `${SITE_URL}/#branch-${key}`,
+    name: `${company.name} — ${c.name}`,
+    url: abs(cityPath(key)),
+    image: abs('/images/hero.jpg'),
+    telephone: PHONE_E164,
+    email: company.email,
+    priceRange: 'PKR 350–3,500 per sq ft',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: a.street,
+      addressLocality: a.locality,
+      addressRegion: a.region,
+      addressCountry: 'PK',
+    },
+    areaServed: [{ '@type': 'City', name: c.name }, ...c.serviceAreas.map((x) => ({ '@type': 'Place', name: `${x}, ${c.name}` }))],
+    parentOrganization: { '@id': BUSINESS_ID },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '09:00',
+        closes: '18:00',
+      },
+    ],
+  };
+}
+
 function websiteNode() {
   return {
     '@type': 'WebSite',
@@ -284,6 +378,8 @@ function websiteNode() {
 function breadcrumbNode(route: RouteDef) {
   const items: { name: string; url: string }[] = [{ name: 'Home', url: `${SITE_URL}/` }];
   if (route.page === 'city') items.push({ name: 'Locations', url: `${SITE_URL}/locations` });
+  if (route.page === 'serviceCity' && route.cityKey)
+    items.push({ name: locations[route.cityKey].name, url: abs(cityPath(route.cityKey)) });
   if (route.path !== '/') items.push({ name: route.label, url: abs(route.path) });
   return {
     '@type': 'BreadcrumbList',
@@ -293,7 +389,7 @@ function breadcrumbNode(route: RouteDef) {
 }
 
 function webPageNode(route: RouteDef) {
-  const type = route.page === 'faq' ? ['WebPage', 'FAQPage'] : route.page === 'about' ? 'AboutPage' : route.page === 'contact' ? 'ContactPage' : 'WebPage';
+  const type = ['faq', 'city', 'serviceCity'].includes(route.page) ? ['WebPage', 'FAQPage'] : route.page === 'about' ? 'AboutPage' : route.page === 'contact' ? 'ContactPage' : 'WebPage';
   return {
     '@type': type,
     '@id': `${abs(route.path)}#webpage`,
@@ -330,7 +426,7 @@ function cityServiceNode(key: string) {
     name: `Car parking shades & tensile structures in ${c.name}`,
     serviceType: 'Car parking shades and tensile membrane structures',
     description: c.heroSub,
-    provider: { '@id': BUSINESS_ID },
+    provider: { '@id': (PRIORITY_CITY_KEYS as readonly string[]).includes(key) ? `${SITE_URL}/#branch-${key}` : BUSINESS_ID },
     areaServed: [{ '@type': 'City', name: c.name }, ...c.serviceAreas.map((a) => ({ '@type': 'Place', name: `${a}, ${c.name}` }))],
     offers: c.pricingGuide.map((p) => ({
       '@type': 'Offer',
@@ -348,6 +444,59 @@ function cityServiceNode(key: string) {
         };
       })(),
     })),
+  };
+}
+
+export function cityFaqs(cityKey: string) {
+  return locations[cityKey]?.faqs ?? [];
+}
+
+export function serviceCityFaqs(serviceKey: string, cityKey: string) {
+  const def = SERVICE_CITY_DEFS.find((d) => d.key === serviceKey)!;
+  const sol = solutions.find((x) => x.slug === def.solutionSlug)!;
+  const c = locations[cityKey];
+  const areas = c.serviceAreas.slice(0, 5).join(', ');
+  const common = [
+    {
+      question: `Do you build ${def.name.toLowerCase()} in ${c.name}?`,
+      answer: `Yes. ${company.name} designs, fabricates and installs ${sol.name.toLowerCase()} across ${c.name}, including ${areas}. Our engineers offer a free site survey anywhere in ${c.name}; call or WhatsApp ${company.phoneFormatted}.`,
+    },
+    {
+      question: `How long does a ${def.name.toLowerCase().replace(/s$/, '')} project take in ${c.name}?`,
+      answer: `It depends on size. After the free survey, design and approval drawings take a few days; fabrication is done in our own workshop and on-site erection follows. We confirm a written timeline with the quotation.`,
+    },
+  ];
+  if (def.key === 'tensile-structures') {
+    common.push({
+      question: `Which fabric is best for a tensile structure in ${c.name}?`,
+      answer: `For long-life architectural roofs we recommend PVDF membranes such as German Mehler or French Serge Ferrari (20–25+ years), or PTFE glass-fibre (30+ years). HDPE shade cloth is a budget option for residential and play areas. ${c.climateChallenge ?? ''}`.trim(),
+    });
+  } else {
+    common.push({
+      question: `What is included in an industrial steel shed in ${c.name}?`,
+      answer: `${sol.desc} Typical scope: ${sol.features.slice(0, 4).join('; ')}.`,
+    });
+  }
+  return common;
+}
+
+function faqEntities(list: { question: string; answer: string }[]) {
+  return list.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } }));
+}
+
+function serviceCityNode(route: RouteDef) {
+  const def = SERVICE_CITY_DEFS.find((d) => d.key === route.serviceKey)!;
+  const sol = solutions.find((x) => x.slug === def.solutionSlug)!;
+  const c = locations[route.cityKey!];
+  return {
+    '@type': 'Service',
+    '@id': `${abs(route.path)}#service`,
+    name: `${def.name} in ${c.name}`,
+    serviceType: sol.name,
+    description: sol.desc,
+    image: abs(def.ogImage),
+    provider: { '@id': `${SITE_URL}/#branch-${route.cityKey}` },
+    areaServed: [{ '@type': 'City', name: c.name }, ...c.serviceAreas.map((a) => ({ '@type': 'Place', name: `${a}, ${c.name}` }))],
   };
 }
 
@@ -376,7 +525,14 @@ function personNode() {
 export function buildJsonLd(route: RouteDef) {
   const graph: Record<string, unknown>[] = [businessNode(), websiteNode(), webPageNode(route), breadcrumbNode(route)];
   if (route.page === 'solutions' || route.page === 'home') graph.push(...serviceNodes());
-  if (route.page === 'city' && route.cityKey) graph.push(cityServiceNode(route.cityKey));
+  if (route.page === 'city' && route.cityKey) {
+    graph.push(cityServiceNode(route.cityKey));
+    Object.assign(graph[2], { mainEntity: faqEntities(cityFaqs(route.cityKey)) });
+  }
+  if (route.page === 'serviceCity' && route.cityKey && route.serviceKey) {
+    graph.push(serviceCityNode(route));
+    Object.assign(graph[2], { mainEntity: faqEntities(serviceCityFaqs(route.serviceKey, route.cityKey)) });
+  }
   if (route.page === 'about') graph.push(personNode());
   if (route.page === 'faq') {
     // merge FAQ entities into the WebPage/FAQPage node
@@ -449,6 +605,7 @@ export function buildLlmsTxt(): string {
   lines.push(`- Working hours: ${company.workingHours}`);
   lines.push(`- Offices: ${offices.map((o) => `${o.city} — ${o.address}`).join('; ')}`);
   lines.push('- Free site survey and quotation anywhere in Pakistan');
+  lines.push('- Formerly TSP Tensile (tsptensile.com), which now redirects here — same business, team and phone number');
   lines.push('');
   lines.push('## Services');
   for (const s of solutions) {

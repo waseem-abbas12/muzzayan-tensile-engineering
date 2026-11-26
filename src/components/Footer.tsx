@@ -135,6 +135,27 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage, openSurveyModal }
                   </a>
                 </li>
               ))}
+              {[
+                ['/tensile-structures-lahore', 'Tensile Structures Lahore'],
+                ['/tensile-structures-islamabad', 'Tensile Structures Islamabad'],
+                ['/industrial-sheds-lahore', 'Industrial Sheds Lahore'],
+                ['/industrial-sheds-islamabad', 'Industrial Sheds Islamabad'],
+              ].map(([href, label]) => (
+                <li key={href}>
+                  <a
+                    href={href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setActivePage(href);
+                      scrollToTop();
+                    }}
+                    className="hover:text-gold-400 transition-colors flex items-center gap-1.5"
+                  >
+                    <MapPin className="w-3 h-3 text-gold-400/80" />
+                    {label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 

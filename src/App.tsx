@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ThemeProvider, useTheme } from './context/ThemeContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { WhatsAppFloat } from './components/WhatsAppFloat';
@@ -19,39 +19,62 @@ import { AiAssistant } from './components/AiAssistant';
 import { DownloadAppModal } from './components/DownloadAppModal';
 import { Phone, MessageCircle } from 'lucide-react';
 import { company } from './data/siteData';
+import { CityPage } from './pages/CityPage';
+import { routes, findRoute, pathForPage, legacyHashMap, normalizePath, type RouteDef, type PageId } from './seo/routes';
+import { applyHead } from './seo/applyHead';
 
-function AppContent() {
-  const [activePage, setActivePage] = useState<string>('home');
+const homeRoute = routes[0];
+const resolveRoute = (path: string): RouteDef => findRoute(path) ?? homeRoute;
+
+function AppContent({ initialPath }: { initialPath: string }) {
+  const [route, setRoute] = useState<RouteDef>(() => resolveRoute(initialPath));
   const [surveyModalOpen, setSurveyModalOpen] = useState<boolean>(false);
   const [downloadModalOpen, setDownloadModalOpen] = useState<boolean>(false);
+  const activePage: string = route.page === 'city' ? 'locations' : route.page;
 
-  // Sync hash routing
+  // Real URL routing (History API) + backwards-compatible old #hash links
   useEffect(() => {
-    const handleHash = () => {
-      const hash = window.location.hash.replace('#', '').toLowerCase();
-      if (hash === 'app') {
-        setDownloadModalOpen(true);
-      } else if (['solutions', 'projects', 'calculator', 'engineering', 'process', 'locations', 'about', 'faq', 'contact'].includes(hash)) {
-        setActivePage(hash);
-      } else if (hash === '' || hash === 'home') {
-        setActivePage('home');
-      }
-    };
+    const hash = window.location.hash.replace('#', '').toLowerCase();
+    if (hash === 'app') {
+      setDownloadModalOpen(true);
+    } else if (normalizePath(window.location.pathname) === '/' && legacyHashMap[hash]) {
+      const target = resolveRoute(legacyHashMap[hash]);
+      window.history.replaceState({}, '', target.path);
+      setRoute(target);
+    }
 
-    window.addEventListener('hashchange', handleHash);
-    handleHash();
-    return () => window.removeEventListener('hashchange', handleHash);
+    const onPop = () => setRoute(resolveRoute(window.location.pathname));
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
   }, []);
 
-  const handlePageChange = (page: string) => {
-    setActivePage(page);
-    window.location.hash = page === 'home' ? '' : page;
+  // Keep <title>, meta description, canonical, OG and JSON-LD in sync on client navigation
+  useEffect(() => {
+    applyHead(route);
+  }, [route]);
+
+  /** Accepts a page id ('solutions') or a path ('/car-parking-shades-lahore') */
+  const handlePageChange = (target: string) => {
+    const path = target.startsWith('/') ? target : pathForPage(target as PageId);
+    const next = resolveRoute(path);
+    if (next.path !== route.path) {
+      window.history.pushState({}, '', next.path);
+    }
+    setRoute(next);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Render Page Content
   const renderContent = () => {
-    switch (activePage) {
+    switch (route.page) {
+      case 'city':
+        return (
+          <CityPage
+            cityKey={route.cityKey ?? 'lahore'}
+            setActivePage={handlePageChange}
+            openSurveyModal={() => setSurveyModalOpen(true)}
+          />
+        );
       case 'solutions':
         return <SolutionsPage openSurveyModal={() => setSurveyModalOpen(true)} />;
       case 'projects':
@@ -59,7 +82,7 @@ function AppContent() {
       case 'calculator':
         return (
           <div className="pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <CostCalculator openSurveyModal={() => setSurveyModalOpen(true)} />
+            <CostCalculator asPageHeading openSurveyModal={() => setSurveyModalOpen(true)} />
           </div>
         );
       case 'engineering':
@@ -67,7 +90,7 @@ function AppContent() {
       case 'process':
         return <ProcessPage openSurveyModal={() => setSurveyModalOpen(true)} />;
       case 'locations':
-        return <LocationsPage openSurveyModal={() => setSurveyModalOpen(true)} />;
+        return <LocationsPage setActivePage={handlePageChange} openSurveyModal={() => setSurveyModalOpen(true)} />;
       case 'about':
         return <AboutPage openSurveyModal={() => setSurveyModalOpen(true)} />;
       case 'faq':
@@ -160,10 +183,10 @@ function AppContent() {
   );
 }
 
-export function App() {
+export function App({ initialPath = '/' }: { initialPath?: string }) {
   return (
     <ThemeProvider>
-      <AppContent />
+      <AppContent initialPath={initialPath} />
     </ThemeProvider>
   );
 }

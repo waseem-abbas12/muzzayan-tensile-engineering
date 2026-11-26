@@ -16,7 +16,13 @@ const ThemeContext = createContext<ThemeContextType>({
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setThemeState] = useState<Theme>(() => {
-    const saved = localStorage.getItem('mte_theme') as Theme | null;
+    if (typeof window === 'undefined') return 'light';
+    let saved: Theme | null = null;
+    try {
+      saved = localStorage.getItem('mte_theme') as Theme | null;
+    } catch {
+      /* storage unavailable */
+    }
     // Always default to Light Architectural Daylighting; secondary option is dark
     if (saved === 'dark' || saved === 'light') {
       return saved;
@@ -25,7 +31,11 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   });
 
   useEffect(() => {
-    localStorage.setItem('mte_theme', theme);
+    try {
+      localStorage.setItem('mte_theme', theme);
+    } catch {
+      /* storage unavailable */
+    }
     const root = document.documentElement;
     if (theme === 'dark') {
       root.classList.add('dark');

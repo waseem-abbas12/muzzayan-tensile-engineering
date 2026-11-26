@@ -1,13 +1,15 @@
 import React from 'react';
 import { LocationsSection } from '../components/LocationsSection';
 import { locations, company } from '../data/siteData';
+import { cityPath } from '../seo/routes';
 import { ShieldCheck, MapPin, Phone, MessageCircle, Calendar } from 'lucide-react';
 
 interface LocationsPageProps {
   openSurveyModal: () => void;
+  setActivePage: (target: string) => void;
 }
 
-export const LocationsPage: React.FC<LocationsPageProps> = ({ openSurveyModal }) => {
+export const LocationsPage: React.FC<LocationsPageProps> = ({ openSurveyModal, setActivePage }) => {
   return (
     <div className="pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
       {/* Header */}
@@ -24,7 +26,7 @@ export const LocationsPage: React.FC<LocationsPageProps> = ({ openSurveyModal })
       </div>
 
       {/* Main Interactive Locations Switcher */}
-      <LocationsSection />
+      <LocationsSection onCitySelect={(key) => setActivePage(cityPath(key))} />
 
       {/* Detailed Pricing Matrix By Material */}
       <div className="glass-panel rounded-2xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 space-y-6">

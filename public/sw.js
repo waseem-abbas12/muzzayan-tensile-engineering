@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mte-cache-v1';
+const CACHE_NAME = 'mte-cache-v2';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -46,7 +46,7 @@ self.addEventListener('fetch', (event) => {
   // Network-first for HTML navigation, cache fallback
   if (event.request.mode === 'navigate') {
     event.respondWith(
-      fetch(event.request).catch(() => caches.match('/index.html') || caches.match('/'))
+      fetch(event.request).catch(() => caches.match(event.request).then((r) => r || caches.match('/')))
     );
     return;
   }

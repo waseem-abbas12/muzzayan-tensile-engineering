@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { company } from '../data/siteData';
+import { pathForPage, type PageId } from '../seo/routes';
 import { useTheme } from '../context/ThemeContext';
 import { Menu, X, Phone, MessageCircle, Sparkles, Sun, Moon, Download, Smartphone } from 'lucide-react';
 
@@ -36,7 +37,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
     { id: 'contact', label: 'Contact' },
   ];
 
-  const handleNavClick = (id: string) => {
+  const hrefFor = (id: string) => pathForPage(id as PageId);
+
+  const handleNavClick = (id: string, e?: React.MouseEvent) => {
+    e?.preventDefault();
     setActivePage(id);
     setMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -53,8 +57,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo Branding */}
-          <div
-            onClick={() => handleNavClick('home')}
+          <a
+            href="/"
+            aria-label="Muzzayan Tensile Engineering — Home"
+            onClick={(e) => handleNavClick('home', e)}
             className="flex items-center gap-3 cursor-pointer group"
           >
             {/* Geometric Tensile SVG Icon */}
@@ -90,23 +96,24 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
                 Tensile Engineering
               </div>
             </div>
-          </div>
+          </a>
 
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
-              <button
+              <a
                 key={item.id}
-                type="button"
-                onClick={() => handleNavClick(item.id)}
-                className={`px-3 py-2 rounded-lg text-xs font-semibold transition-all ${
+                href={hrefFor(item.id)}
+                aria-current={activePage === item.id ? 'page' : undefined}
+                onClick={(e) => handleNavClick(item.id, e)}
+                className={`inline-block text-center px-3 py-2 rounded-lg text-xs font-semibold transition-all ${
                   activePage === item.id
                     ? 'text-gold-600 dark:text-gold-400 bg-gold-500/10 border border-gold-500/30 font-bold'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40'
                 }`}
               >
                 {item.label}
-              </button>
+              </a>
             ))}
           </nav>
 
@@ -221,18 +228,19 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
 
           <div className="grid grid-cols-1 gap-1">
             {navItems.map((item) => (
-              <button
+              <a
                 key={item.id}
-                type="button"
-                onClick={() => handleNavClick(item.id)}
-                className={`w-full text-left py-2.5 px-4 rounded-xl text-sm font-semibold transition-all ${
+                href={hrefFor(item.id)}
+                aria-current={activePage === item.id ? 'page' : undefined}
+                onClick={(e) => handleNavClick(item.id, e)}
+                className={`block w-full text-left py-2.5 px-4 rounded-xl text-sm font-semibold transition-all ${
                   activePage === item.id
                     ? 'bg-gold-500/15 text-gold-600 dark:text-gold-400 border border-gold-500/30'
                     : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900'
                 }`}
               >
                 {item.label}
-              </button>
+              </a>
             ))}
           </div>
 

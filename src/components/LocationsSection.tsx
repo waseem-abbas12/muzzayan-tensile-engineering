@@ -15,10 +15,10 @@ export const LocationsSection: React.FC<LocationsSectionProps> = ({ initialCity 
   const city = locations[activeCityKey] || locations.lahore;
 
   const cityTabs = [
-    { key: 'lahore', name: 'Lahore', region: 'Punjab (Head Office)' },
+    { key: 'lahore', name: 'Lahore', region: 'Punjab (Head Office & Workshop)' },
     { key: 'islamabad', name: 'Islamabad', region: 'Capital Territory' },
     { key: 'rawalpindi', name: 'Rawalpindi', region: 'Potohar Region' },
-    { key: 'karachi', name: 'Karachi', region: 'Sindh (Coastal)' },
+    { key: 'karachi', name: 'Karachi', region: 'Sindh' },
   ];
 
   return (
@@ -125,11 +125,11 @@ export const LocationsSection: React.FC<LocationsSectionProps> = ({ initialCity 
         <div className="lg:col-span-5 flex flex-col justify-between bg-white dark:bg-slate-900/80 rounded-xl p-6 border border-slate-200 dark:border-slate-800 space-y-6 shadow-xs">
           <div>
             <span className="text-[11px] font-bold tracking-wider text-slate-500 dark:text-slate-400 uppercase block mb-1">
-              Local Office & Rapid Dispatch
+              {activeCityKey === 'lahore' || activeCityKey === 'islamabad' ? 'Local Workshop & Rapid Dispatch' : 'Service Coverage'}
             </span>
             <h5 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <Building2 className="w-4 h-4 text-gold-500" />
-              MTE {city.name} Branch
+              {activeCityKey === 'lahore' ? 'MTE Lahore Head Office & Workshop' : activeCityKey === 'islamabad' ? 'MTE Islamabad Workshop' : `MTE in ${city.name}`}
             </h5>
             <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 flex items-start gap-2">
               <MapPin className="w-4 h-4 text-gold-500 shrink-0 mt-0.5" />

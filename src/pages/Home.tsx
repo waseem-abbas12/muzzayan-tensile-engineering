@@ -12,7 +12,6 @@ import { CantileverComparison } from '../components/CantileverComparison';
 import { FabricInspector } from '../components/FabricInspector';
 import { ProjectGallery } from '../components/ProjectGallery';
 import { LocationsSection } from '../components/LocationsSection';
-import { CostCalculator } from '../components/CostCalculator';
 import { InteractiveSolutionsShowcase } from '../components/InteractiveSolutionsShowcase';
 import { FaqSection } from '../components/FaqSection';
 import { 
@@ -427,10 +426,6 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
         <FabricInspector />
       </section>
 
-      {/* 13B. INTERACTIVE TENSILE & STEEL COST CALCULATOR */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <CostCalculator openSurveyModal={openSurveyModal} />
-      </section>
 
       {/* 14. NATIONWIDE LOCATIONS SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

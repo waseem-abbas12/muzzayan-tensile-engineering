@@ -33,7 +33,7 @@ export const FaqSection: React.FC = () => {
           Frequently Asked Questions & Pricing Guide
         </h3>
         <p className="text-sm text-slate-600 dark:text-slate-400 mt-2">
-          Everything you need to know about rates per sq.ft, PVDF vs HDPE lifespan, and society approvals in Pakistan.
+          Everything you need to know about getting a quote, PVDF vs HDPE lifespan, and society approvals in Pakistan.
         </p>
 
         {/* Search Input */}
@@ -41,7 +41,7 @@ export const FaqSection: React.FC = () => {
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
           <input
             type="text"
-            placeholder="Search FAQs (e.g. price per sq ft, warranty, Mehler)..."
+            placeholder="Search FAQs (e.g. warranty, Mehler, installation)..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-slate-50 dark:bg-navy-900/90 border border-slate-200 dark:border-slate-800 focus:border-gold-500 rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 outline-none transition-all shadow-xs"

@@ -100,7 +100,7 @@ export const ARTICLES: TopicDef[] = [
         links: [
           ['/cantilever-car-parking-shades', 'Cantilever car parking shades'],
           ['/car-porch-shades', 'Car porch shades'],
-          ['/car-parking-shade-price', 'Car parking shade price 2026'],
+          ['/car-parking-shade-price', 'What decides the price'],
         ],
       },
     ],
@@ -112,12 +112,12 @@ export const ARTICLES: TopicDef[] = [
     key: 'blog-size',
     path: '/blog/car-parking-shade-size-guide',
     label: 'Car Parking Shade Size Guide',
-    title: 'Car Parking Shade Size: 1, 2, 4 or 10 Cars (With Cost) | MTE',
+    title: 'Car Parking Shade Size Guide: 1, 2, 4 or 10 Cars | MTE',
     description:
-      'How big should a car parking shade be? Typical sizes and square feet for 1, 2, 4 and 10 cars, with estimated cost in PKR for HDPE and PVC fabric.',
+      'How big should a car parking shade be? Typical sizes and square feet for 1, 2, 4 and 10 cars, plus how to measure your space in five minutes.',
     eyebrow: 'Guide · Sizing',
     h1: 'Car Parking Shade Size Guide: How Big for 1, 2, 4 or 10 Cars?',
-    lead: 'As a rule of thumb, plan about 3 m of width per car and 5.5 m of depth. That makes a 1-car shade roughly 180 sq ft, a 2-car shade about 330 sq ft, a 4-car shade about 650 sq ft and a 10-car double-row shade about 1,750 sq ft. Multiply the area by the rate for your fabric to get a first estimate.',
+    lead: 'As a rule of thumb, plan about 3 m of width per car and 5.5 m of depth. That makes a 1-car shade roughly 180 sq ft, a 2-car shade about 330 sq ft, a 4-car shade about 650 sq ft and a 10-car double-row shade about 1,750 sq ft. Send us the size and a few photos and we will suggest the right design.',
     ogImage: '/images/hero.jpg',
     breadcrumbParent: ['/blog', 'Blog'],
     article: { published: PUB, updated: PUB, readMins: 5 },
@@ -132,25 +132,23 @@ export const ARTICLES: TopicDef[] = [
       },
       {
         kind: 'compare',
-        h2: 'Typical sizes and estimated cost',
-        headers: ['Cars', 'Typical size', 'Area', 'HDPE (PKR 350–550/sq ft)', 'Mehler PVC (PKR 750–1,150/sq ft)'],
+        h2: 'Typical sizes',
+        headers: ['Cars', 'Typical size', 'Area (approx.)', 'Common design'],
         rows: [
-          ['1 car', '3 m × 5.5 m', '≈ 180 sq ft', '≈ 63,000 – 99,000', '≈ 135,000 – 207,000'],
-          ['2 cars', '5.5 m × 5.5 m', '≈ 330 sq ft', '≈ 115,000 – 180,000', '≈ 250,000 – 380,000'],
-          ['4 cars', '11 m × 5.5 m', '≈ 650 sq ft', '≈ 228,000 – 358,000', '≈ 488,000 – 748,000'],
-          ['10 cars (double row)', '15 m × 11 m', '≈ 1,750 sq ft', '≈ 613,000 – 963,000', '≈ 1.3 – 2.0 million'],
+          ['1 car', '3 m × 5.5 m', '≈ 180 sq ft', 'Single cantilever or wall-mounted'],
+          ['2 cars', '5.5 m × 5.5 m', '≈ 330 sq ft', 'Single cantilever'],
+          ['4 cars', '11 m × 5.5 m', '≈ 650 sq ft', 'Single cantilever, 2 bays'],
+          ['10 cars (double row)', '15 m × 11 m', '≈ 1,750 sq ft', 'Double cantilever or butterfly'],
         ],
       },
       {
         kind: 'section',
-        h2: 'Why the real price can differ',
-        paras: [
-          'These figures use Lahore rates and simple rectangles. A real quote changes with the span, the steel, the foundation and extras such as lights or gutters. For example, a standard 2-car cantilever shade in Lahore usually lands between PKR 140,000 and 260,000 complete.',
-        ],
+        h2: 'What changes the size you need',
         items: [
-          'Longer cantilever arms need heavier steel.',
-          'Sloped or soft ground needs bigger foundations.',
-          'PVDF and PTFE fabrics cost more but last much longer.',
+          'SUVs and pickups need more depth and front clearance than small cars.',
+          'Leave space to open doors fully, especially next to a wall.',
+          'A gate, a tree or a balcony may limit where columns can stand.',
+          'If you may add a car later, size the steel for the extra bay now.',
         ],
       },
       {
@@ -164,9 +162,9 @@ export const ARTICLES: TopicDef[] = [
         ],
         after: [`Send your measurements and photos to ${phone} and we will reply with a design suggestion and estimate.`],
       },
-      { kind: 'links', h2: 'Related', links: [['/cost-calculator', 'Online cost calculator'], ['/car-parking-shade-price', 'Car parking shade price 2026'], ['/blog/car-parking-shade-designs-pakistan', '7 car parking shade designs']] },
+      { kind: 'links', h2: 'Related', links: [['/car-parking-shade-price', 'What decides the price'], ['/blog/car-parking-shade-designs-pakistan', '7 car parking shade designs']] },
     ],
-    faqs: has([lhr.faqs?.find((f) => /cost/i.test(f.question)), faq('What information do I need to provide?')]),
+    faqs: has([faq('What information do I need to provide?'), faq('Do you visit the site before quoting?')]),
   },
 
   // 3 ─────────────────────────────────────────────────────────────
@@ -501,9 +499,9 @@ export const ARTICLES: TopicDef[] = [
     key: 'blog-what-is',
     path: '/blog/what-is-a-tensile-structure',
     label: 'What Is a Tensile Structure',
-    title: 'What Is a Tensile Structure? Types, Uses and Cost | MTE',
+    title: 'What Is a Tensile Structure? Types and Uses Explained | MTE',
     description:
-      'A tensile structure is a roof made of fabric held in tension by steel. How it works, the main shapes, where it is used in Pakistan and what it costs.',
+      'A tensile structure is a roof made of fabric held in tension by steel. How it works, the main shapes, fabrics and where it is used in Pakistan.',
     eyebrow: 'Guide · Basics',
     h1: 'What Is a Tensile Structure?',
     lead: 'A tensile structure is a roof or shade made of fabric that is stretched tight between steel masts, arches or cables. The fabric carries load only through tension — like a drum skin — which lets it cover large areas with very little material. In Pakistan you see them over car parks, school play areas, pool decks, building entrances, marquees and stadiums.',
@@ -530,10 +528,10 @@ export const ARTICLES: TopicDef[] = [
       },
       {
         kind: 'section',
-        h2: 'What it costs',
-        paras: ['Installed tensile shades in Pakistan typically cost from about PKR 350 per sq ft for HDPE up to PKR 3,500 per sq ft for PTFE, depending on fabric, span and steel. Our price guide lists current rates by city.'],
+        h2: 'What decides the cost',
+        paras: ['The cost depends on the fabric grade, the area and span, the steel and the foundations. We quote every structure for its own site after a free survey; our cost guide explains what moves the price.'],
       },
-      { kind: 'links', h2: 'Related', links: [['/tensile-structures', 'Tensile structures in Pakistan'], ['/blog/pvc-vs-pvdf-vs-hdpe-tensile-fabric', 'Fabric comparison'], ['/car-parking-shade-price', 'Price guide 2026']] },
+      { kind: 'links', h2: 'Related', links: [['/tensile-structures', 'Tensile structures in Pakistan'], ['/blog/pvc-vs-pvdf-vs-hdpe-tensile-fabric', 'Fabric comparison'], ['/car-parking-shade-price', 'Cost guide']] },
     ],
     faqs: has([faq('What materials do you use?'), faq('How much does a car parking shade cost in Pakistan?')]),
   },
@@ -543,24 +541,23 @@ export const ARTICLES: TopicDef[] = [
     key: 'blog-urdu-price',
     path: '/blog/car-parking-shade-price-urdu',
     label: 'کار پارکنگ شیڈ کی قیمت',
-    title: 'کار پارکنگ شیڈ کی قیمت 2026 — لاہور اور اسلام آباد | MTE',
+    title: 'کار پارکنگ شیڈ کی قیمت کیسے طے ہوتی ہے؟ لاہور اور اسلام آباد | MTE',
     description:
-      'لاہور، اسلام آباد اور راولپنڈی میں کار پارکنگ شیڈ اور ٹینسائل شیڈ کے ریٹ فی مربع فٹ — HDPE، PVC اور PVDF کپڑے کے حساب سے۔',
+      'لاہور، اسلام آباد اور راولپنڈی میں کار پارکنگ شیڈ کی قیمت کن چیزوں پر منحصر ہے — کپڑا، سائز، سٹیل اور جگہ — اور مفت تحریری قیمت کیسے لیں۔',
     eyebrow: 'رہنمائی · قیمت',
-    h1: 'کار پارکنگ شیڈ کی قیمت 2026: لاہور اور اسلام آباد',
-    lead: '2026 میں لاہور میں لگا ہوا کار پارکنگ شیڈ تقریباً 350 سے 550 روپے فی مربع فٹ (HDPE کپڑا)، 750 سے 1,150 روپے (جرمن Mehler PVC) اور 1,200 سے 1,850 روپے (PVDF) میں بنتا ہے۔ اسلام آباد میں ریٹ تھوڑے زیادہ ہیں۔ دو گاڑیوں کا عام کینٹی لیور شیڈ لاہور میں تقریباً 1,40,000 سے 2,60,000 روپے میں مکمل لگ جاتا ہے۔',
+    h1: 'کار پارکنگ شیڈ کی قیمت کیسے طے ہوتی ہے؟',
+    lead: 'کار پارکنگ شیڈ کی قیمت پانچ چیزوں پر منحصر ہوتی ہے: کپڑے کی قسم، شیڈ کا سائز اور بازو کی لمبائی، گاڑیوں کی تعداد، سٹیل کی موٹائی اور آپ کی جگہ کی حالت۔ ہر جگہ مختلف ہوتی ہے، اس لیے ہم کوئی مقررہ ریٹ نہیں لکھتے۔ ہمارے انجینئر مفت آ کر پیمائش کرتے ہیں اور ڈیزائن کے ساتھ تحریری قیمت دیتے ہیں۔',
     ogImage: '/images/project_cantilever_parking.jpg',
     breadcrumbParent: ['/blog', 'Blog'],
     article: { published: PUB, updated: PUB, readMins: 4 },
     rtl: true,
     blocks: [
-      { kind: 'cityPrices', h2: 'شہر کے حساب سے ریٹ (روپے فی مربع فٹ)', cities: ['lahore', 'islamabad', 'rawalpindi'] },
       {
         kind: 'section',
         h2: 'قیمت کن چیزوں پر منحصر ہے؟',
         items: [
-          'کپڑے کی قسم: HDPE سستا اور ہوادار ہے مگر بارش روکتا نہیں؛ PVC اور PVDF مکمل واٹر پروف ہیں۔',
-          'شیڈ کا سائز اور کینٹی لیور بازو کی لمبائی۔',
+          'کپڑے کی قسم: HDPE ہوادار ہے اور دھوپ روکتا ہے؛ PVC اور PVDF مکمل واٹر پروف ہیں اور زیادہ عرصہ چلتے ہیں۔',
+          'شیڈ کا سائز اور کینٹی لیور بازو کی لمبائی — لمبا بازو زیادہ مضبوط سٹیل مانگتا ہے۔',
           'گاڑیوں کی تعداد اور ڈیزائن (سنگل، ڈبل یا دیوار والا)۔',
           'سٹیل کی موٹائی، گیلوانائزنگ اور پینٹ۔',
           'زمین کی حالت اور فاؤنڈیشن۔',
@@ -568,10 +565,18 @@ export const ARTICLES: TopicDef[] = [
       },
       {
         kind: 'section',
-        h2: 'مفت سائٹ سروے',
-        paras: [`ہمارے انجینئر آپ کی جگہ پر آ کر مفت پیمائش کرتے ہیں اور ڈیزائن کے ساتھ تحریری قیمت دیتے ہیں۔ کال یا واٹس ایپ کریں: ${phone}`],
+        h2: 'ہمارے شیڈ کی کوالٹی',
+        paras: [
+          'ہم انٹرنیشنل معیار کا کپڑا استعمال کرتے ہیں جو ہیٹ پروف اور واٹر پروف ہے، اور 20 سال تک چلنے کے لیے ڈیزائن کیا جاتا ہے۔ سٹیل ہاٹ ڈِپ گیلوانائزڈ ہوتا ہے تاکہ زنگ نہ لگے۔',
+        ],
       },
-      { kind: 'links', h2: 'مزید پڑھیں', links: [['/car-parking-shade-price', 'Car Parking Shade Price (English)'], ['/car-parking-shades-lahore', 'Car Parking Shades Lahore'], ['/car-parking-shades-islamabad', 'Car Parking Shades Islamabad']] },
+      { kind: 'cityPrices', h2: 'کپڑے کی اقسام اور عمر', cities: ['lahore'] },
+      {
+        kind: 'section',
+        h2: 'مفت سائٹ سروے اور تحریری قیمت',
+        paras: [`ہماری ورکشاپس لاہور (فیروزپور روڈ) اور اسلام آباد (G-12/4) میں ہیں اور ہم پورے پاکستان میں کام کرتے ہیں۔ اپنی جگہ کی پیمائش اور دو تین تصویریں واٹس ایپ کریں، یا مفت سروے بک کریں: ${phone}`],
+      },
+      { kind: 'links', h2: 'مزید پڑھیں', links: [['/car-parking-shade-price', 'Car Parking Shade Price Guide (English)'], ['/car-parking-shades-lahore', 'Car Parking Shades Lahore'], ['/car-parking-shades-islamabad', 'Car Parking Shades Islamabad']] },
     ],
     faqs: [
       {
@@ -581,6 +586,10 @@ export const ARTICLES: TopicDef[] = [
       {
         question: 'شیڈ لگنے میں کتنا وقت لگتا ہے؟',
         answer: 'گھریلو کینٹی لیور شیڈ عام طور پر ورکشاپ میں 5 سے 7 دن میں تیار ہوتا ہے اور سائٹ پر ایک دن میں لگ جاتا ہے۔',
+      },
+      {
+        question: 'کیا آپ لاہور اور اسلام آباد کے علاوہ بھی کام کرتے ہیں؟',
+        answer: 'جی ہاں، ہم پورے پاکستان میں کام کرتے ہیں۔ ہماری ورکشاپس لاہور اور اسلام آباد میں ہیں۔',
       },
     ],
   },

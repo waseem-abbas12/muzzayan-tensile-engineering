@@ -14,7 +14,6 @@ import { LocationsPage } from './pages/LocationsPage';
 import { AboutPage } from './pages/AboutPage';
 import { FaqPage } from './pages/FaqPage';
 import { ContactPage } from './pages/ContactPage';
-import { CostCalculator } from './components/CostCalculator';
 import { AiAssistant } from './components/AiAssistant';
 import { DownloadAppModal } from './components/DownloadAppModal';
 import { Phone, MessageCircle } from 'lucide-react';
@@ -98,12 +97,6 @@ function AppContent({ initialPath }: { initialPath: string }) {
         return <SolutionsPage openSurveyModal={() => setSurveyModalOpen(true)} />;
       case 'projects':
         return <ProjectsPage openSurveyModal={() => setSurveyModalOpen(true)} />;
-      case 'calculator':
-        return (
-          <div className="pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <CostCalculator asPageHeading openSurveyModal={() => setSurveyModalOpen(true)} />
-          </div>
-        );
       case 'engineering':
         return <EngineeringPage openSurveyModal={() => setSurveyModalOpen(true)} />;
       case 'process':

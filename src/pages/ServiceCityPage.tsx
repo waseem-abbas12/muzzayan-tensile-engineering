@@ -128,7 +128,7 @@ export const ServiceCityPage: React.FC<ServiceCityPageProps> = ({ serviceKey, ci
       {/* Pricing */}
       <section className="glass-panel rounded-2xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 space-y-4">
         <h2 className="text-xl sm:text-2xl font-heading font-bold text-slate-900 dark:text-white">
-          {def.name} cost in {city.name}
+          Getting a quote for {def.name.toLowerCase()} in {city.name}
         </h2>
         {isIndustrial ? (
           <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
@@ -138,29 +138,12 @@ export const ServiceCityPage: React.FC<ServiceCityPageProps> = ({ serviceKey, ci
           </p>
         ) : (
           <>
-            <p className="text-sm text-slate-700 dark:text-slate-300">Indicative installed rates per square foot in {city.name}:</p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs border-collapse">
-                <thead>
-                  <tr className="border-b border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 uppercase tracking-wider text-[11px]">
-                    <th className="py-3 px-4">Fabric</th>
-                    <th className="py-3 px-4">Rate (PKR / sq ft)</th>
-                    <th className="py-3 px-4">Lifespan</th>
-                    <th className="py-3 px-4">Warranty</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-200 dark:divide-slate-800/80 text-slate-700 dark:text-slate-300">
-                  {city.pricingGuide.map((p) => (
-                    <tr key={p.material}>
-                      <td className="py-3 px-4 font-bold text-slate-900 dark:text-white">{p.material}</td>
-                      <td className="py-3 px-4 font-mono font-semibold text-gold-600 dark:text-gold-400">{p.priceRange}</td>
-                      <td className="py-3 px-4">{p.durability}</td>
-                      <td className="py-3 px-4">{p.warranty}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              The cost of a tensile structure in {city.name} depends on the covered area and span, the fabric grade (PVC, PVDF or
+              PTFE), the steel and the foundations. We use international-grade, heat proof and waterproof fabric designed for up
+              to 20 years of service. After a free site survey we send a written quotation with the design. Call or WhatsApp{' '}
+              {company.phoneFormatted}.
+            </p>
           </>
         )}
       </section>

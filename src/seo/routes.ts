@@ -1,7 +1,7 @@
 // Single source of truth for every public URL of the site:
 // path, page id, title, meta description and structured data.
 // Used by the client router, the build-time prerenderer, sitemap.xml and llms.txt.
-import { TOPICS } from './topics';
+import { ALL_TOPICS as TOPICS } from './topics';
 import {
   company,
   ceo,

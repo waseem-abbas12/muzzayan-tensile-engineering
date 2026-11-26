@@ -1,9 +1,10 @@
 import React from 'react';
 import { Award, Building, Users, MapPin } from 'lucide-react';
+import { company } from '../data/siteData';
 
 export const StatsCounterSection: React.FC = () => {
   const stats = [
-    { value: "120+", label: "Projects Delivered", sub: "Commercial, residential & defence across Pakistan", icon: Building },
+    { value: company.projectsCompleted, label: "Projects Delivered", sub: "Commercial, residential & defence across Pakistan", icon: Building },
     { value: "18+", label: "Years Experience", sub: "Saudi Arabia & Pakistan structural engineering", icon: Award },
     { value: "5+", label: "Metropolitans Served", sub: "Lahore, Islamabad, Rawalpindi, Karachi, Multan", icon: MapPin },
     { value: "100%", label: "In-House Team", sub: "Design, CNC fabrication, galvanizing & installation", icon: Users },

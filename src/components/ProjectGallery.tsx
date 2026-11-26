@@ -68,7 +68,7 @@ export const ProjectGallery: React.FC = () => {
           >
             {/* Image Preview Container */}
             <div className="relative aspect-[16/10] overflow-hidden bg-slate-900">
-              <img
+              <img loading="lazy" decoding="async"
                 src={p.image}
                 alt={p.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -139,7 +139,7 @@ export const ProjectGallery: React.FC = () => {
             </button>
 
             <div className="relative aspect-[16/9] w-full bg-slate-950 shrink-0">
-              <img
+              <img loading="lazy" decoding="async"
                 src={selectedProject.image}
                 alt={selectedProject.title}
                 className="w-full h-full object-cover"

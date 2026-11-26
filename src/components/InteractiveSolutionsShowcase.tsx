@@ -111,7 +111,7 @@ export const InteractiveSolutionsShowcase: React.FC<{
         {/* Left: Dynamic Large Image Card */}
         <div className="lg:col-span-7">
           <div className="relative aspect-[16/11] rounded-3xl overflow-hidden glass-panel border border-slate-200 dark:border-gold-500/30 shadow-2xl group">
-            <img
+            <img loading="lazy" decoding="async"
               key={active.image}
               src={active.image}
               alt={active.title}

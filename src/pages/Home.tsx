@@ -46,6 +46,8 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
           <img
             src="/images/hero_luxury.jpg"
             alt="Muzzayan Tensile Engineering Cantilever Architecture"
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover object-center scale-105 motion-safe:animate-pulse opacity-25 dark:opacity-20 filter contrast-125"
           />
           {/* Clean Executive Daylight Architectural Gradient Overlay */}
@@ -171,7 +173,7 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
 
                 {/* Visual Imagery */}
                 <div className="relative aspect-[16/11] rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="/images/hero.jpg"
                     alt="Cantilever Car Parking Engineering Demonstration"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -273,7 +275,7 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
               className="glass-panel rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:border-gold-500/40 transition-all duration-300 flex flex-col group"
             >
               <div className="relative aspect-[16/10] overflow-hidden bg-slate-900">
-                <img
+                <img loading="lazy" decoding="async"
                   src={sol.image}
                   alt={sol.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -527,7 +529,7 @@ export const Home: React.FC<HomeProps> = ({ setActivePage, openSurveyModal }) =>
             </button>
 
             <div className="relative aspect-[16/9] w-full bg-slate-900 shrink-0">
-              <img
+              <img loading="lazy" decoding="async"
                 src={selectedMarqueeProject.image}
                 alt={selectedMarqueeProject.title}
                 className="w-full h-full object-cover"

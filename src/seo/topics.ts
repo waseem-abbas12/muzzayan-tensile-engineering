@@ -1,4 +1,4 @@
-// Content for hub / topic landing pages. All facts come from siteData (prices, specs,
+// Content for hub / topic landing pages. All facts come from siteData (specs,
 // projects, FAQs) so the site never contradicts itself.
 import { solutions, locations, faqCategories, projects, company, engineeringFabrics } from '../data/siteData';
 
@@ -56,21 +56,15 @@ export const TOPICS: TopicDef[] = [
     key: 'car-parking-shade-price',
     path: '/car-parking-shade-price',
     label: 'Car Parking Shade Price',
-    title: 'Car Parking Shade Price in Pakistan 2026 (Per Sq Ft) | MTE',
+    title: 'Car Parking Shade Price in Pakistan: What Decides the Cost | MTE',
     description:
-      '2026 car parking shade rates per sq ft in Lahore, Islamabad, Rawalpindi and Karachi — HDPE, Mehler PVC, PVDF and PTFE — and what changes the price.',
-    eyebrow: 'Price guide 2026',
-    h1: 'Car Parking Shade Price in Pakistan (2026)',
-    lead: `In 2026 an installed car parking shade from ${company.name} costs about PKR 350–600 per sq ft with HDPE shade cloth, PKR 750–1,200 with German Mehler PVC and PKR 1,200–1,900 with PVDF fabric, depending on the city. ${lahoreCostFaq ? 'A standard 2-car cantilever shade in Lahore typically costs PKR 140,000–260,000 complete with fabrication, foundation and installation.' : ''}`,
+      'What decides the price of a car parking shade in Pakistan — fabric, size, span, steel and site — and how to get a free written quote from MTE.',
+    eyebrow: 'Cost guide',
+    h1: 'Car Parking Shade Price in Pakistan: What Decides the Cost',
+    lead: `The price of a car parking shade in Pakistan depends on five things: the fabric grade, the covered area and span, the number of car bays, the steel specification and the site itself. Because every site is different, ${company.name} does not publish fixed rates — our engineers measure your site for free and send a written quotation with the design.`,
     ogImage: '/images/project_cantilever_parking.jpg',
     solutionSlug: 'cantilever',
     blocks: [
-      {
-        kind: 'cityPrices',
-        h2: 'Rates per square foot by city',
-        intro: 'Indicative installed rates, including structural steel, fabric, paint finish and on-site tensioning. Final prices are confirmed after a free site survey.',
-        cities: ['lahore', 'islamabad', 'rawalpindi', 'karachi'],
-      },
       {
         kind: 'bullets',
         h2: 'What changes the price',
@@ -83,17 +77,26 @@ export const TOPICS: TopicDef[] = [
           'Extras such as LED lighting or rainwater gutters.',
         ],
       },
+      { kind: 'cityPrices', h2: 'Fabric options and how long they last', intro: 'We use international-grade, heat proof and waterproof fabric. Lifespan and warranty by grade:', cities: ['lahore'] },
+      {
+        kind: 'text',
+        h2: 'Why we do not publish fixed rates',
+        paras: [
+          'Two shades of the same size can differ a lot in cost: one may need a 7 m cantilever arm and deep foundations on soft ground, the other a short span on a firm driveway. A per-square-foot number copied from the internet rarely matches what you actually need, and cheap quotes often cut the steel or the fabric grade.',
+          'So we quote every job on its own drawings, with the fabric brand, steel size and warranty written on the quotation.',
+        ],
+      },
       {
         kind: 'text',
         h2: 'How to get an exact quote',
         paras: [
-          `Use the online cost calculator for a first estimate, then book a free site survey. Our engineers measure the site, propose a design and send a written quotation. Call or WhatsApp ${company.phoneFormatted}.`,
+          `Send us your location, rough measurements and two or three photos on WhatsApp, or book a free site survey. Our engineers measure the site, propose a design and send a written quotation. Call or WhatsApp ${company.phoneFormatted}.`,
         ],
       },
       {
         kind: 'links',
-        h2: 'City price pages',
-        links: [...cityLinks('car-parking-shades', ['lahore', 'islamabad', 'rawalpindi', 'karachi'], 'Car parking shades'), ['/cost-calculator', 'Cost calculator']],
+        h2: 'By city',
+        links: cityLinks('car-parking-shades', ['lahore', 'islamabad', 'rawalpindi', 'karachi'], 'Car parking shades'),
       },
     ],
     faqs: pick([faqByQ(PRICE_FAQ), faqByQ(AFFECTS_FAQ), lahoreCostFaq, faqByQ(FABRIC_FAQ)]),
@@ -140,10 +143,10 @@ export const TOPICS: TopicDef[] = [
     label: 'DHA Lahore',
     title: 'Car Parking Shades in DHA Lahore | Cantilever & Porch | MTE',
     description:
-      'Cantilever car parking and porch shades for DHA Lahore Phase 1–9 & Raya, designed to DHA setback and height rules. Head office in DHA Phase 5. Free survey.',
+      'Cantilever car parking and porch shades for DHA Lahore Phase 1–9 & Raya, designed to DHA setback and height rules. Lahore workshop on Ferozepur Road. Free survey.',
     eyebrow: 'DHA Lahore · Phase 1–9 & Raya',
     h1: 'Car Parking Shades in DHA Lahore',
-    lead: `${company.name} designs and installs cantilever car parking shades, porch canopies and driveway shades for homes and commercial buildings across DHA Lahore Phase 1–9 and Raya. Our Lahore head office is in DHA Phase 5 Commercial, so site surveys in DHA are free and quick.`,
+    lead: `${company.name} designs and installs cantilever car parking shades, porch canopies and driveway shades for homes and commercial buildings across DHA Lahore Phase 1–9 and Raya. Our Lahore workshop is on Ferozepur Road, so site surveys in DHA are free and quick.`,
     ogImage: '/images/project_cantilever_parking.jpg',
     solutionSlug: 'cantilever',
     breadcrumbParent: ['/car-parking-shades-lahore', 'Lahore'],
@@ -159,7 +162,7 @@ export const TOPICS: TopicDef[] = [
             .map((p) => ({ title: p.title, image: p.image, place: p.location, area: p.area, description: p.description })),
         ],
       },
-      { kind: 'cityPrices', h2: 'Car parking shade rates in DHA Lahore', intro: 'Same rates as the rest of Lahore, per square foot, installed:', cities: ['lahore'] },
+      { kind: 'cityPrices', h2: 'Fabric options for DHA homes', cities: ['lahore'] },
       { kind: 'solution', slug: 'cantilever', h2: 'Cantilever shade specifications' },
       {
         kind: 'links',
@@ -168,7 +171,7 @@ export const TOPICS: TopicDef[] = [
           ['/car-parking-shades-lahore', 'Car parking shades in Lahore'],
           ['/tensile-structures-lahore', 'Tensile structures in Lahore'],
           ['/cantilever-car-parking-shades', 'Cantilever car parking shades'],
-          ['/car-parking-shade-price', 'Car parking shade price guide'],
+          ['/car-parking-shade-price', 'Car parking shade cost guide'],
         ],
       },
     ]),
@@ -189,13 +192,13 @@ export const TOPICS: TopicDef[] = [
     blocks: [
       { kind: 'links', h2: 'Car parking shades by city', links: [...cityLinks('car-parking-shades', ['lahore', 'islamabad', 'rawalpindi', 'karachi'], 'Car parking shades'), ['/car-parking-shades-dha-lahore', 'Car parking shades in DHA Lahore']] },
       { kind: 'solution', slug: 'cantilever', h2: 'Cantilever car parking shades' },
-      { kind: 'cityPrices', h2: 'Prices per square foot', cities: ['lahore', 'islamabad'] },
+      { kind: 'cityPrices', h2: 'Fabric options', cities: ['lahore'] },
       {
         kind: 'projects',
         h2: 'Parking shade projects',
         items: projectCards((p) => /parking|driveway|cantilever/i.test(p.title)),
       },
-      { kind: 'links', h2: 'Guides', links: [['/car-parking-shade-price', 'Car parking shade price 2026'], ['/cantilever-car-parking-shades', 'Cantilever vs 4-post shades'], ['/engineering', 'PVC vs PVDF vs HDPE fabric']] },
+      { kind: 'links', h2: 'Guides', links: [['/car-parking-shade-price', 'What decides the price'], ['/cantilever-car-parking-shades', 'Cantilever vs 4-post shades'], ['/engineering', 'PVC vs PVDF vs HDPE fabric']] },
     ],
     faqs: pick([faqByQ(PRICE_FAQ), faqByQ(CANTI_FAQ), faqByQ(FABRIC_FAQ)]),
   },
@@ -296,7 +299,7 @@ export const MORE_TOPICS: TopicDef[] = [
     label: 'Car Porch Shades',
     title: 'Car Porch Shades for Homes in Lahore & Islamabad | MTE',
     description:
-      'Tensile car porch shades for 1–4 cars: cantilever or post-supported, HDPE, PVC or PVDF fabric, galvanized steel. Rates per sq ft and a free site survey.',
+      'Tensile car porch shades for 1–4 cars: cantilever or post-supported, HDPE, PVC or PVDF fabric, galvanized steel. Waterproof, heat proof fabric and a free site survey.',
     eyebrow: 'Residential car porch',
     h1: 'Car Porch Shades for Homes',
     lead: `A car porch shade from ${company.name} keeps one to four cars out of the sun and rain with a tensile fabric roof on a galvanized steel frame. For most homes we recommend a cantilever design, so no front poles block the gate or car doors; HDPE shade cloth suits budget porches and German Mehler PVC or PVDF suits waterproof, long-life porches.`,
@@ -304,10 +307,10 @@ export const MORE_TOPICS: TopicDef[] = [
     solutionSlug: 'cantilever',
     breadcrumbParent: ['/car-parking-shades', 'Car Parking Shades'],
     blocks: [
-      { kind: 'cityPrices', h2: 'Car porch shade rates', intro: 'Installed rates per square foot. HDPE is the usual choice for a residential porch; PVC and PVDF are fully waterproof.', cities: ['lahore', 'islamabad'] },
+      { kind: 'cityPrices', h2: 'Fabric options for car porches', intro: 'HDPE is the usual choice for a budget porch; PVC and PVDF are fully waterproof.', cities: ['lahore'] },
       { kind: 'solution', slug: 'cantilever', h2: 'Cantilever porch shade specifications' },
       { kind: 'projects', h2: 'Residential porch and driveway work', items: projectCards((p) => p.type === 'Residential' && /driveway|villa|porch/i.test(p.title)) },
-      { kind: 'links', h2: 'Related', links: [['/cantilever-car-parking-shades', 'Cantilever car parking shades'], ['/car-parking-shade-price', 'Car parking shade price'], ['/car-parking-shades-dha-lahore', 'Car parking shades in DHA Lahore'], ['/car-parking-shades-bahria-town', 'Car parking shades in Bahria Town']] },
+      { kind: 'links', h2: 'Related', links: [['/cantilever-car-parking-shades', 'Cantilever car parking shades'], ['/car-parking-shade-price', 'Car parking shade cost guide'], ['/car-parking-shades-dha-lahore', 'Car parking shades in DHA Lahore'], ['/car-parking-shades-bahria-town', 'Car parking shades in Bahria Town']] },
     ],
     faqs: pick([lahoreCostFaq, rwp2CarFaq, faqByQ(HDPE_PVC_FAQ), faqByQ(CANTI_FAQ)]),
   },
@@ -326,7 +329,7 @@ export const MORE_TOPICS: TopicDef[] = [
     breadcrumbParent: ['/car-parking-shades', 'Car Parking Shades'],
     blocks: pick<TopicBlock>([
       bylaws ? { kind: 'text', h2: bylaws.title, paras: [bylaws.desc] } : undefined,
-      { kind: 'cityPrices', h2: 'Rates in Bahria Town', intro: 'Bahria Town Lahore follows Lahore rates; Bahria Town Islamabad/Rawalpindi follows Rawalpindi rates.', cities: ['lahore', 'rawalpindi'] },
+      { kind: 'cityPrices', h2: 'Fabric options', cities: ['lahore'] },
       { kind: 'solution', slug: 'cantilever', h2: 'Cantilever shade specifications' },
       { kind: 'links', h2: 'City pages', links: [['/car-parking-shades-lahore', 'Car parking shades in Lahore'], ['/car-parking-shades-islamabad', 'Car parking shades in Islamabad'], ['/car-parking-shades-rawalpindi', 'Car parking shades in Rawalpindi'], ['/car-porch-shades', 'Car porch shades']] },
     ]),
@@ -348,7 +351,7 @@ export const MORE_TOPICS: TopicDef[] = [
     blocks: [
       { kind: 'solution', slug: 'pool-canopies', h2: 'Specifications and features' },
       { kind: 'projects', h2: 'Pool and walkway projects', items: projectCards((p) => /pool|walkway|entrance/i.test(p.title)) },
-      { kind: 'cityPrices', h2: 'Rates per square foot', cities: ['lahore', 'islamabad'] },
+      { kind: 'cityPrices', h2: 'Fabric options', cities: ['lahore'] },
       { kind: 'links', h2: 'By city', links: cityLinks('tensile-structures', ['lahore', 'islamabad', 'rawalpindi'], 'Tensile structures') },
     ],
     faqs: pick([faqByQ(FABRIC_FAQ), faqByQ(MAINT_FAQ), faqByQ(INSTALL_FAQ)]),
@@ -398,7 +401,7 @@ export const MORE_TOPICS: TopicDef[] = [
     path: '/blog',
     label: 'Blog',
     title: 'Tensile Shade & Car Parking Shade Guides | MTE Blog',
-    description: 'Practical guides on car parking shade prices, fabrics, lifespan and choosing a tensile shade company in Pakistan.',
+    description: 'Practical guides on car parking shade costs, designs, fabrics, lifespan and choosing a tensile shade company in Pakistan.',
     eyebrow: 'Guides',
     h1: 'Guides: Car Parking Shades and Tensile Structures',
     lead: 'Plain answers to the questions clients in Lahore, Islamabad and Rawalpindi ask most, written by our engineering team.',
@@ -408,7 +411,7 @@ export const MORE_TOPICS: TopicDef[] = [
         kind: 'links',
         h2: 'Articles',
         links: [
-          ['/car-parking-shade-price', 'Car Parking Shade Price in Pakistan (2026)'],
+          ['/car-parking-shade-price', 'Car Parking Shade Price: What Decides the Cost'],
           ['/blog/pvc-vs-pvdf-vs-hdpe-tensile-fabric', 'PVC vs PVDF vs HDPE: Which Tensile Fabric Should You Choose?'],
           ['/blog/how-long-does-a-tensile-shade-last', 'How Long Does a Tensile Shade Last in Pakistan?'],
           ['/blog/how-to-choose-a-tensile-shade-company', 'How to Choose a Tensile Shade Company: 10 Checks'],
@@ -423,7 +426,7 @@ export const MORE_TOPICS: TopicDef[] = [
           ['/blog/what-is-a-tensile-structure', 'What Is a Tensile Structure?'],
           ['/blog/peb-vs-conventional-steel-vs-rcc-sheds', 'PEB vs Conventional Steel vs RCC'],
           ['/blog/dairy-farm-shed-design-guide', 'Dairy Farm Shed Design Guide'],
-          ['/blog/car-parking-shade-price-urdu', 'کار پارکنگ شیڈ کی قیمت 2026 (اردو)'],
+          ['/blog/car-parking-shade-price-urdu', 'کار پارکنگ شیڈ کی قیمت کیسے طے ہوتی ہے (اردو)'],
         ],
       },
     ],
@@ -435,7 +438,7 @@ export const MORE_TOPICS: TopicDef[] = [
     path: '/blog/pvc-vs-pvdf-vs-hdpe-tensile-fabric',
     label: 'PVC vs PVDF vs HDPE',
     title: 'PVC vs PVDF vs HDPE Tensile Fabric: Which Is Best? | MTE',
-    description: 'Compare HDPE, PVC, PVDF and PTFE shade fabrics: lifespan, waterproofing, weight, fire rating and price per sq ft in Pakistan.',
+    description: 'Compare HDPE, PVC, PVDF and PTFE shade fabrics: lifespan, waterproofing, weight, fire rating and best uses in Pakistan.',
     eyebrow: 'Guide · Fabrics',
     h1: 'PVC vs PVDF vs HDPE: Which Tensile Fabric Should You Choose?',
     lead: 'HDPE is the cheapest and breathable but not waterproof (7–10 years); PVC is fully waterproof and lasts 15–20 years; PVDF adds a self-cleaning top coat and lasts 20–25+ years; PTFE glass-fibre lasts 30+ years for landmark roofs. For most homes HDPE or PVC is enough; for offices, plazas and premium villas PVDF is the best long-term value.',
@@ -448,7 +451,7 @@ export const MORE_TOPICS: TopicDef[] = [
         headers: ['Fabric', 'Origin', 'Lifespan', 'Weight', 'Fire rating', 'Typical uses'],
         rows: engineeringFabrics.map((f) => [f.name, f.origin, f.lifespan, f.weight, f.fire, f.uses]),
       },
-      { kind: 'cityPrices', h2: 'Price per square foot by fabric (Lahore)', cities: ['lahore'] },
+      { kind: 'cityPrices', h2: 'Lifespan and warranty by fabric', cities: ['lahore'] },
       {
         kind: 'bullets',
         h2: 'Which fabric for which job',
@@ -475,7 +478,7 @@ export const MORE_TOPICS: TopicDef[] = [
     ogImage: '/images/detail.jpg',
     breadcrumbParent: ['/blog', 'Blog'],
     blocks: pick<TopicBlock>([
-      { kind: 'cityPrices', h2: 'Lifespan and warranty by fabric', intro: 'Lifespan, warranty and installed rate for each fabric grade in Lahore:', cities: ['lahore'] },
+      { kind: 'cityPrices', h2: 'Lifespan and warranty by fabric', intro: 'Lifespan and warranty for each fabric grade:', cities: ['lahore'] },
       lahore.climateChallenge ? { kind: 'text', h2: "What Lahore's climate does to a shade", paras: [lahore.climateChallenge] } : undefined,
       locations.islamabad.climateChallenge ? { kind: 'text', h2: "Islamabad and Rawalpindi: storms and hail", paras: [locations.islamabad.climateChallenge] } : undefined,
       {

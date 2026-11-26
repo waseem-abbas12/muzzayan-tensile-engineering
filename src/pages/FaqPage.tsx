@@ -16,10 +16,10 @@ export const FaqPage: React.FC<FaqPageProps> = ({ openSurveyModal }) => {
           Clarity On Pricing, Materials & Logistics
         </span>
         <h1 className="text-3xl sm:text-5xl font-heading font-extrabold text-slate-900 dark:text-white mt-2">
-          Pricing Guide & Technical FAQs
+          Quotes & Technical FAQs
         </h1>
         <p className="text-base text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
-          Get transparent answers regarding per-square-foot rates, society approvals in DHA and Bahria Town, European PVDF warranty terms, and project installation timelines.
+          Get clear answers on quotes and site surveys, society approvals in DHA and Bahria Town, European PVDF warranty terms, and project installation timelines.
         </p>
       </div>
 

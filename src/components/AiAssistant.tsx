@@ -19,7 +19,7 @@ export const AiAssistant: React.FC<{ openSurveyModal?: () => void }> = ({ openSu
       sender: 'ai',
       text: 'Assalam-o-Alaikum! I am your MTE Tensile Architectural AI Consultant. How can I assist with your shading or steel structure project today?',
       options: [
-        'Car Parking Shade Rates',
+        'How to Get a Quote',
         'German Mehler vs Ferrari PVDF',
         'Book Free Laser Site Survey',
         'Industrial Factory Sheds'
@@ -56,23 +56,23 @@ export const AiAssistant: React.FC<{ openSurveyModal?: () => void }> = ({ openSu
       let opts: string[] | undefined = undefined;
 
       if (lower.includes('rate') || lower.includes('cost') || lower.includes('price') || lower.includes('sq ft') || lower.includes('parking')) {
-        reply = 'Our turnkey car parking shade rates in Pakistan range from:\n\n• HDPE Commercial Shade Net: PKR 350 – 520 / sq.ft (7–10 yrs lifespan)\n• German Mehler Valmex PVDF (900 GSM): PKR 680 – 950 / sq.ft (15-yr warranty, 100% waterproof)\n• French Serge Ferrari PVDF (1050 GSM): PKR 890 – 1,250 / sq.ft (20-yr warranty)\n\nAll rates include heavy-duty ASTM A53 steel pipes, hot-dip galvanizing, and on-site erection. Would you like a free laser measurement on your site?';
+        reply = 'Every shade is designed and quoted for its own site, so we do not publish fixed rates. Price depends on the fabric (HDPE, German Mehler PVC or PVDF), the size and span, the number of car bays and the steel. Book a free site survey or WhatsApp 0302 4001063 and our engineer will send a written quotation.';
         opts = ['Book Free Laser Site Survey', 'WhatsApp Chief Engineer', 'Calculate Dimensions'];
       } else if (lower.includes('mehler') || lower.includes('ferrari') || lower.includes('fabric') || lower.includes('pvdf')) {
         reply = 'We exclusively import authentic European architectural membranes:\n\n1. German Mehler Valmex (900 GSM): Featuring a dual-sided PVDF lacquer that prevents dirt adhesion and repels 98% of solar UV radiation.\n2. French Serge Ferrari (1050 GSM): Built with patented Précontraint tension technology, offering zero dimensional stretch under 140+ km/h squall winds.\n\nBoth fabrics carry official 10 to 15-year factory warranties against UV degradation, discoloration, and water leakage.';
-        opts = ['Car Parking Shade Rates', 'Book Free Laser Site Survey'];
+        opts = ['How to Get a Quote', 'Book Free Laser Site Survey'];
       } else if (lower.includes('survey') || lower.includes('book') || lower.includes('visit') || lower.includes('free')) {
         reply = `We provide 100% FREE on-site laser surveys and custom 3D design elevations across Lahore (DHA, Bahria, Gulberg), Islamabad (All Sectors), Rawalpindi, and Karachi. Our senior structural engineer visits your location with fabric samples and laser meters.`;
         if (openSurveyModal) {
           openSurveyModal();
         }
-        opts = ['WhatsApp Chief Engineer', 'Car Parking Shade Rates'];
+        opts = ['WhatsApp Chief Engineer', 'How to Get a Quote'];
       } else if (lower.includes('industrial') || lower.includes('warehouse') || lower.includes('factory') || lower.includes('shed')) {
         reply = 'We design and erect heavy-duty Pre-Engineered Steel Buildings (PEB), factory trusses, warehouse sheds, and logistics canopies. Engineered with hot-rolled structural steel, certified high-strength bolt assemblies, and anti-corrosive polyurethane industrial coatings.';
         opts = ['Book Free Laser Site Survey', 'WhatsApp Chief Engineer'];
       } else {
         reply = `Thank you for your inquiry regarding "${query}". At Muzzayan Tensile Engineering (MTE), we have executed over 100+ landmark projects across Pakistan with an unblemished 18-year engineering record. Would you like to speak directly with our Chief Engineer or book a complimentary site survey?`;
-        opts = ['Book Free Laser Site Survey', 'WhatsApp Chief Engineer', 'Car Parking Shade Rates'];
+        opts = ['Book Free Laser Site Survey', 'WhatsApp Chief Engineer', 'How to Get a Quote'];
       }
 
       const aiMsg: Message = {
@@ -205,7 +205,7 @@ export const AiAssistant: React.FC<{ openSurveyModal?: () => void }> = ({ openSu
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask about rates, fabrics, wind specs..."
+              placeholder="Ask about fabrics, designs, wind specs..."
               className="flex-1 px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-800 dark:text-slate-200 outline-none"
             />
             <button

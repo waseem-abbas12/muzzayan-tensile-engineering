@@ -83,16 +83,6 @@ const staticRoutes: RouteDef[] = [
     changefreq: 'monthly',
   },
   {
-    path: '/cost-calculator',
-    page: 'calculator',
-    label: 'Cost Calculator',
-    title: 'Car Parking Shade Cost Calculator (PKR per sq ft) | MTE',
-    description:
-      'Estimate the cost of a car parking shade or tensile canopy in PKR by size, bays and fabric — HDPE, Mehler PVC, Serge Ferrari PVDF or PTFE.',
-    priority: 0.8,
-    changefreq: 'monthly',
-  },
-  {
     path: '/engineering',
     page: 'engineering',
     label: 'Engineering',
@@ -137,9 +127,9 @@ const staticRoutes: RouteDef[] = [
     path: '/faq',
     page: 'faq',
     label: 'Pricing & FAQs',
-    title: 'Car Parking Shade Price & Tensile FAQs (Pakistan) | MTE',
+    title: 'Car Parking Shade & Tensile Structure FAQs (Pakistan) | MTE',
     description:
-      'Per-sq-ft rates, HDPE vs PVC vs PVDF, installation time, warranty and maintenance — clear answers on tensile shades and steel sheds in Pakistan.',
+      'HDPE vs PVC vs PVDF, quotes and site surveys, installation time, warranty and maintenance — clear answers on tensile shades and steel sheds in Pakistan.',
     priority: 0.8,
     changefreq: 'monthly',
   },
@@ -242,7 +232,7 @@ export const routes: RouteDef[] = [...staticRoutes, ...cityRoutes, ...serviceCit
 export const legacyHashMap: Record<string, string> = {
   solutions: '/solutions',
   projects: '/projects',
-  calculator: '/cost-calculator',
+  calculator: '/contact',
   engineering: '/engineering',
   process: '/process',
   locations: '/locations',
@@ -285,15 +275,14 @@ function businessNode() {
     logo: abs('/favicon-512x512.png'),
     image: [abs('/images/hero.jpg'), abs('/images/commercial.jpg'), abs('/images/project_cantilever_parking.jpg')],
     description:
-      'Muzzayan Tensile Engineering (MTE) designs, fabricates and installs cantilever car parking shades, tensile membrane roofs, swimming pool canopies, marquee structures and industrial steel sheds across Pakistan.',
+      'Muzzayan Tensile Engineering (MTE) designs, fabricates and installs cantilever car parking shades, tensile membrane roofs, swimming pool canopies, marquee structures and industrial steel sheds across Pakistan, using international-grade heat proof and waterproof fabric with a service life of up to 20 years. Workshops in Lahore and Islamabad.',
     slogan: company.tagline,
     telephone: PHONE_E164,
     email: company.email,
-    priceRange: 'PKR 350–3,500 per sq ft',
     currenciesAccepted: 'PKR',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'DHA Phase 5 Commercial, Main Boulevard',
+      streetAddress: 'Salman Park, Ashiana Road, Bank Stop, Ferozepur Road',
       addressLocality: 'Lahore',
       addressRegion: 'Punjab',
       addressCountry: 'PK',
@@ -345,8 +334,8 @@ function businessNode() {
 }
 
 const BRANCH_ADDRESS: Record<string, { street: string; locality: string; region: string }> = {
-  lahore: { street: 'DHA Phase 5 Commercial, Main Boulevard', locality: 'Lahore', region: 'Punjab' },
-  islamabad: { street: 'F-8 Markaz', locality: 'Islamabad', region: 'Islamabad Capital Territory' },
+  lahore: { street: 'Salman Park, Ashiana Road, Bank Stop, Ferozepur Road', locality: 'Lahore', region: 'Punjab' },
+  islamabad: { street: 'G-12/4, near Suzuki Stop', locality: 'Islamabad', region: 'Islamabad Capital Territory' },
 };
 
 function branchNode(key: string) {
@@ -355,12 +344,11 @@ function branchNode(key: string) {
   return {
     '@type': 'LocalBusiness',
     '@id': `${SITE_URL}/#branch-${key}`,
-    name: `${company.name} — ${c.name}`,
+    name: key === 'lahore' ? `${company.name} — Lahore Head Office & Workshop` : `${company.name} — ${c.name} Workshop`,
     url: abs(cityPath(key)),
     image: abs('/images/hero.jpg'),
     telephone: PHONE_E164,
     email: company.email,
-    priceRange: 'PKR 350–3,500 per sq ft',
     address: {
       '@type': 'PostalAddress',
       streetAddress: a.street,
@@ -451,22 +439,6 @@ function cityServiceNode(key: string) {
     description: c.heroSub,
     provider: { '@id': (PRIORITY_CITY_KEYS as readonly string[]).includes(key) ? `${SITE_URL}/#branch-${key}` : BUSINESS_ID },
     areaServed: [{ '@type': 'City', name: c.name }, ...c.serviceAreas.map((a) => ({ '@type': 'Place', name: `${a}, ${c.name}` }))],
-    offers: c.pricingGuide.map((p) => ({
-      '@type': 'Offer',
-      name: p.material,
-      description: `${p.bestFor}. Lifespan ${p.durability}, warranty ${p.warranty}.`,
-      priceCurrency: 'PKR',
-      priceSpecification: (() => {
-        const nums = p.priceRange.replace(/,/g, '').match(/\d+/g)?.map(Number) ?? [];
-        return {
-          '@type': 'UnitPriceSpecification',
-          priceCurrency: 'PKR',
-          minPrice: nums[0],
-          maxPrice: nums[1] ?? nums[0],
-          unitText: 'per square foot',
-        };
-      })(),
-    })),
   };
 }
 
@@ -652,7 +624,7 @@ export function buildLlmsTxt(): string {
   const lines: string[] = [];
   lines.push(`# ${company.name} (MTE)`, '');
   lines.push(
-    `> ${company.name} (MTE) is a Pakistani engineering company that designs, fabricates and installs cantilever car parking shades, tensile membrane roofs, swimming pool and walkway shades, marquee/banquet canopies and pre-engineered industrial steel sheds. Head office in Lahore, with teams serving Islamabad, Rawalpindi, Karachi and the rest of Pakistan.`,
+    `> ${company.name} (MTE) is a Pakistani engineering company that designs, fabricates and installs cantilever car parking shades, tensile membrane roofs, swimming pool and walkway shades, marquee/banquet canopies and pre-engineered industrial steel sheds. Workshops in Lahore (Ferozepur Road) and Islamabad (G-12/4); projects anywhere in Pakistan.`,
     ''
   );
   lines.push('## Key facts');
@@ -662,8 +634,9 @@ export function buildLlmsTxt(): string {
   lines.push(`- Phone / WhatsApp: ${company.phoneFormatted}`);
   lines.push(`- Email: ${company.email}`);
   lines.push(`- Working hours: ${company.workingHours}`);
-  lines.push(`- Offices: ${offices.map((o) => `${o.city} — ${o.address}`).join('; ')}`);
-  lines.push('- Free site survey and quotation anywhere in Pakistan');
+  lines.push(`- Workshops: ${offices.map((o) => `${o.city} — ${o.address}`).join('; ')}`);
+  lines.push('- Free site survey and written quotation anywhere in Pakistan (prices are not published; every project is quoted for its site)');
+  lines.push('- Fabric: international-grade, heat proof and waterproof, service life up to 20 years');
   lines.push('- Formerly TSP Tensile (tsptensile.com), which now redirects here — same business, team and phone number');
   lines.push('');
   lines.push('## Services');
@@ -671,11 +644,6 @@ export function buildLlmsTxt(): string {
     lines.push(`- **${s.name}**: ${s.desc} Ideal for: ${s.idealFor}`);
   }
   lines.push('');
-  lines.push('## Indicative prices in Pakistan (PKR per sq ft, installed)');
-  for (const p of lahore.pricingGuide) {
-    lines.push(`- ${p.material}: ${p.priceRange} — lifespan ${p.durability}, warranty ${p.warranty}. Best for: ${p.bestFor}`);
-  }
-  lines.push('- Final price depends on span, number of bays, steel specification and site conditions; confirmed after a free site survey.');
   lines.push('');
   lines.push('## Fabrics');
   for (const f of engineeringFabrics) {

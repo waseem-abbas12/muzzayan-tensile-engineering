@@ -86,19 +86,6 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage, openSurveyModal }
               ))}
               <li>
                 <a
-                  href="/cost-calculator"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setActivePage('calculator');
-                    scrollToTop();
-                  }}
-                  className="hover:text-gold-400 transition-colors text-left font-semibold text-gold-400"
-                >
-                  Instant Tensile Cost Calculator →
-                </a>
-              </li>
-              <li>
-                <a
                   href="/engineering"
                   onClick={(e) => {
                     e.preventDefault();
@@ -142,7 +129,7 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage, openSurveyModal }
                 ['/industrial-sheds-islamabad', 'Industrial Sheds Islamabad'],
                 ['/tensile-structures-rawalpindi', 'Tensile Structures Rawalpindi'],
                 ['/car-parking-shades-dha-lahore', 'Car Parking Shades DHA Lahore'],
-                ['/car-parking-shade-price', 'Car Parking Shade Price 2026'],
+                ['/car-parking-shade-price', 'Car Parking Shade Cost Guide'],
                 ['/cantilever-car-parking-shades', 'Cantilever Car Parking Shades'],
                 ['/car-parking-shades-bahria-town', 'Car Parking Shades Bahria Town'],
                 ['/car-porch-shades', 'Car Porch Shades'],
@@ -176,16 +163,16 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage, openSurveyModal }
             </h4>
             <div className="space-y-3 text-xs text-slate-400">
               <div>
-                <strong className="text-white block">Lahore Head Office:</strong>
-                <span>DHA Phase 5 Commercial, Main Boulevard, Lahore</span>
+                <strong className="text-white block">Lahore Head Office & Workshop:</strong>
+                <span>Salman Park, Ashiana Road, Bank Stop, Ferozepur Road, Lahore, Punjab</span>
               </div>
               <div>
-                <strong className="text-white block">Islamabad & Rawalpindi:</strong>
-                <span>Sector I-9 Industrial Area & F-8 Markaz, Islamabad</span>
+                <strong className="text-white block">Islamabad Workshop:</strong>
+                <span>G-12/4, near Suzuki Stop, Islamabad</span>
               </div>
               <div>
-                <strong className="text-white block">Karachi Coastal Branch:</strong>
-                <span>DHA Phase 6 Commercial, Karachi</span>
+                <strong className="text-white block">Nationwide:</strong>
+                <span>Projects across Pakistan</span>
               </div>
             </div>
 

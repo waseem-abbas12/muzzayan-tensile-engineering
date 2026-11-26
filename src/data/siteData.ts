@@ -66,7 +66,6 @@ export interface LocationData {
   };
   pricingGuide: {
     material: string;
-    priceRange: string;
     durability: string;
     warranty: string;
     bestFor: string;
@@ -385,11 +384,11 @@ export const testimonials = [
 ];
 export const faqCategories = [
   {
-    "name": "Pricing & Costs",
+    "name": "Quotes & Costs",
     "faqs": [
       {
         "question": "How much does a car parking shade cost in Pakistan?",
-        "answer": "An installed car parking shade in Pakistan typically costs PKR 350–550 per sq ft with Australian HDPE shade cloth, PKR 750–1,150 per sq ft with German Mehler PVC (900 GSM), PKR 1,200–1,850 per sq ft with French Serge Ferrari PVDF, and PKR 2,200–3,500 per sq ft with PTFE glass-fibre membrane. Rates include steel fabrication, fabric, paint finish and on-site tensioning; the final price is confirmed after a free site survey."
+        "answer": "Every shade is quoted for its own site, because the price depends on the fabric grade (HDPE, Mehler PVC, PVDF or PTFE), the covered area and cantilever span, the number of car bays, the steel specification and the foundation. We do not publish fixed rates; after a free site survey anywhere in Pakistan we send a detailed written quotation. Call or WhatsApp 0302 4001063."
       },
       {
         "question": "What affects the price of a tensile shade structure?",
@@ -484,26 +483,14 @@ export const faqCategories = [
 ];
 export const offices = [
   {
-    "city": "Lahore (Head Office)",
-    "address": "DHA Phase 5 Commercial, Main Boulevard, Lahore, Punjab",
+    "city": "Lahore Head Office & Workshop",
+    "address": "Salman Park, Ashiana Road, Bank Stop, Ferozepur Road, Lahore, Punjab",
     "phone": "0302 4001063",
     "email": "info@muzzayantensile.com"
   },
   {
-    "city": "Islamabad Regional Office",
-    "address": "Sector I-9 Industrial Area & F-8 Markaz, Islamabad, ICT",
-    "phone": "0302 4001063",
-    "email": "info@muzzayantensile.com"
-  },
-  {
-    "city": "Rawalpindi Branch",
-    "address": "Saddar Commercial & Bahria Town Phase 7, Rawalpindi, Punjab",
-    "phone": "0302 4001063",
-    "email": "info@muzzayantensile.com"
-  },
-  {
-    "city": "Karachi Coastal Operations",
-    "address": "DHA Phase 6 Commercial & Shahrah-e-Faisal, Karachi, Sindh",
+    "city": "Islamabad Workshop",
+    "address": "G-12/4, near Suzuki Stop, Islamabad",
     "phone": "0302 4001063",
     "email": "info@muzzayantensile.com"
   }
@@ -520,7 +507,7 @@ export const locations: Record<string, LocationData> = {
     "heroSub": "Custom engineered cantilever car parking shades, swimming pool canopies, entrance walkways and tensile membrane roofs built for Lahore's 48°C extreme summer heat. DHA and Bahria Town approved structural standards.",
     "phone": "0302 4001063",
     "whatsapp": "923024001063",
-    "address": "DHA Phase 5 Commercial, Lahore, Punjab",
+    "address": "Salman Park, Ashiana Road, Bank Stop, Ferozepur Road, Lahore, Punjab",
     "serviceAreas": [
       "DHA Lahore (Phase 1–9 & Raya)",
       "Bahria Town Lahore",
@@ -542,28 +529,24 @@ export const locations: Record<string, LocationData> = {
     "pricingGuide": [
       {
         "material": "Australian HDPE Commercial Shade Cloth",
-        "priceRange": "PKR 350 – 550 / sq ft",
         "durability": "7–10 Years",
         "warranty": "5 Years",
         "bestFor": "Residential car porch, swimming pool side, garden sunshade"
       },
       {
         "material": "German Mehler PVC Fabric (900 GSM)",
-        "priceRange": "PKR 750 – 1,150 / sq ft",
         "durability": "15–20 Years",
         "warranty": "10 Years",
         "bestFor": "Cantilever parking bays, DHA residences, commercial drop-offs"
       },
       {
         "material": "French Serge Ferrari PVDF Membrane",
-        "priceRange": "PKR 1,200 – 1,850 / sq ft",
         "durability": "25+ Years",
         "warranty": "15 Years",
         "bestFor": "Executive plazas, sports arenas, architectural conic canopies"
       },
       {
         "material": "PTFE Glass Fibre Architectural Membrane",
-        "priceRange": "PKR 2,200 – 3,500 / sq ft",
         "durability": "30+ Years",
         "warranty": "20 Years",
         "bestFor": "Institutional landmarks, stadiums, airport-grade terminals"
@@ -617,7 +600,7 @@ export const locations: Record<string, LocationData> = {
     "faqs": [
       {
         "question": "How much does a car parking shade cost in Lahore?",
-        "answer": "The price of car parking shades in Lahore ranges from PKR 350 to PKR 1,150 per square foot depending on fabric quality (HDPE shade net vs. German Mehler PVC) and structural steel design (cantilever arch vs. post-supported). A standard 2-car cantilever shade typically costs between PKR 140,000 to PKR 260,000 complete with fabrication, foundation, and installation."
+        "answer": "The cost of a car parking shade in Lahore depends on the fabric (HDPE shade cloth, German Mehler PVC or PVDF), the structure (cantilever or post-supported), the number of cars and the site. Our engineers visit free of charge anywhere in Lahore, measure the site and send a written quotation with the design."
       },
       {
         "question": "Does DHA Lahore allow cantilever car parking shades outside the house?",
@@ -645,7 +628,7 @@ export const locations: Record<string, LocationData> = {
     "heroSub": "Engineered tensile membrane roofs, cantilever car parking canopies, entrance walkways and rooftop pergolas designed for the architectural elegance and weather conditions of Islamabad and the Capital Territory.",
     "phone": "0302 4001063",
     "whatsapp": "923024001063",
-    "address": "F-8 Markaz, Islamabad, ICT",
+    "address": "G-12/4, near Suzuki Stop, Islamabad",
     "serviceAreas": [
       "Blue Area Commercial Hub",
       "Sectors F-6, F-7, F-8, F-10, F-11",
@@ -667,28 +650,24 @@ export const locations: Record<string, LocationData> = {
     "pricingGuide": [
       {
         "material": "Australian HDPE Commercial Shade Cloth",
-        "priceRange": "PKR 380 – 580 / sq ft",
         "durability": "7–10 Years",
         "warranty": "5 Years",
         "bestFor": "Residential driveway shade, garden canopy, school play zones"
       },
       {
         "material": "German Mehler PVC Fabric (900 GSM)",
-        "priceRange": "PKR 780 – 1,200 / sq ft",
         "durability": "15–20 Years",
         "warranty": "10 Years",
         "bestFor": "Cantilever parking bays, embassy villas, corporate plazas"
       },
       {
         "material": "French Serge Ferrari PVDF Membrane",
-        "priceRange": "PKR 1,250 – 1,900 / sq ft",
         "durability": "25+ Years",
         "warranty": "15 Years",
         "bestFor": "Luxury villas in F-sectors & Chak Shahzad, institutional buildings"
       },
       {
         "material": "Architectural Polycarbonate Canopies",
-        "priceRange": "PKR 850 – 1,400 / sq ft",
         "durability": "12–15 Years",
         "warranty": "8 Years",
         "bestFor": "Waterproof walkways, security check posts, modern car porches"
@@ -742,7 +721,7 @@ export const locations: Record<string, LocationData> = {
     "faqs": [
       {
         "question": "Do you offer car parking shade fabrication in Islamabad?",
-        "answer": "Yes, Muzzayan Tensile Engineering (MTE) has an active installation footprint and representative office in F-8 Markaz Islamabad. We offer free on-site survey and laser measurement across all F, G, E, and H sectors, Blue Area, DHA Islamabad, and Bahria Town."
+        "answer": "Yes, Muzzayan Tensile Engineering (MTE) has its own workshop in G-12/4 (near Suzuki Stop), Islamabad. We offer free on-site survey and laser measurement across all F, G, E, and H sectors, Blue Area, DHA Islamabad, and Bahria Town."
       },
       {
         "question": "Can tensile shades withstand hailstorms in Islamabad?",
@@ -762,11 +741,11 @@ export const locations: Record<string, LocationData> = {
     "h1": "Car Parking Sheds & Tensile Structures in Rawalpindi",
     "tagline": "Heavy-Duty Cantilever Sheds & Tensile Membrane Roofing / Rawalpindi",
     "metaTitle": "Car Parking Sheds Rawalpindi | Tensile Structure Fabricator",
-    "metaDescription": "Best car parking shades & cantilever sheds in Rawalpindi & Bahria Town. Low cost per sq ft, 15-year warranty, free on-site survey. Call 0302 4001063.",
+    "metaDescription": "Best car parking shades & cantilever sheds in Rawalpindi & Bahria Town. Heat proof, waterproof fabric, 15-year warranty, free on-site survey. Call 0302 4001063.",
     "heroSub": "Heavy-duty cantilever car parking sheds, residential porch canopies, commercial shopfront shades, and industrial warehouse tensile roofs across Rawalpindi Cantt, Saddar, and Bahria Town Phase 1–8.",
     "phone": "0302 4001063",
     "whatsapp": "923024001063",
-    "address": "Saddar Commercial, Rawalpindi, Punjab",
+    "address": "Served from our Islamabad workshop (G-12/4, near Suzuki Stop, Islamabad)",
     "serviceAreas": [
       "Bahria Town Rawalpindi (Phase 1–8)",
       "DHA Rawalpindi (Phase 1 & Phase 2)",
@@ -788,21 +767,18 @@ export const locations: Record<string, LocationData> = {
     "pricingGuide": [
       {
         "material": "Heavy Commercial HDPE Shade Net",
-        "priceRange": "PKR 350 – 520 / sq ft",
         "durability": "7–10 Years",
         "warranty": "5 Years",
         "bestFor": "Home car porch, school playground, commercial parking lot"
       },
       {
         "material": "Waterproof PVC Tensile Fabric (850 GSM)",
-        "priceRange": "PKR 750 – 1,100 / sq ft",
         "durability": "15–20 Years",
         "warranty": "10 Years",
         "bestFor": "Cantilever parking bays, Bahria Town & DHA porches"
       },
       {
         "material": "Architectural Curved PVDF Membrane",
-        "priceRange": "PKR 1,200 – 1,750 / sq ft",
         "durability": "25+ Years",
         "warranty": "15 Years",
         "bestFor": "Commercial plazas, luxury villas, car showrooms"
@@ -860,7 +836,7 @@ export const locations: Record<string, LocationData> = {
       },
       {
         "question": "How much does a 2-car parking shade cost in Rawalpindi?",
-        "answer": "A standard 2-car cantilever shade (approx 360 to 400 sq ft) typically costs between PKR 150,000 and PKR 280,000 depending on whether you choose high-density HDPE shade net or heavy-duty German waterproof PVC."
+        "answer": "A 2-car cantilever shade usually covers about 360 to 400 sq ft. The final cost depends on the fabric grade, steel and foundation, so we quote after a free site visit anywhere in Rawalpindi, with the design and a written price."
       },
       {
         "question": "Do you provide repair and fabric replacement for existing shades in Rawalpindi?",
@@ -880,7 +856,7 @@ export const locations: Record<string, LocationData> = {
     "heroSub": "Coastal marine-grade tensile membrane structures, cantilever car parking canopies, rooftop restaurant pergolas, and industrial shades engineered to withstand Karachi's humid salt-air corrosion and high summer UV radiation.",
     "phone": "0302 4001063",
     "whatsapp": "923024001063",
-    "address": "DHA Phase 6 Commercial, Karachi, Sindh",
+    "address": "Served from our Lahore workshop (Salman Park, Ashiana Road, Bank Stop, Ferozepur Road, Lahore, Punjab)",
     "serviceAreas": [
       "DHA Karachi (Phase 1–8 & Creek Vista)",
       "Clifton (Blocks 1–9 & Sea View)",
@@ -902,21 +878,18 @@ export const locations: Record<string, LocationData> = {
     "pricingGuide": [
       {
         "material": "German Mehler Marine PVDF (Anti-Fungal)",
-        "priceRange": "PKR 850 – 1,350 / sq ft",
         "durability": "15–20 Years",
         "warranty": "10 Years",
         "bestFor": "DHA & Clifton coastal villas, commercial parking, hotel drops"
       },
       {
         "material": "French Serge Ferrari Marine Grade Fabric",
-        "priceRange": "PKR 1,350 – 2,100 / sq ft",
         "durability": "25+ Years",
         "warranty": "15 Years",
         "bestFor": "Luxury beachfront residences, yacht clubs, corporate towers"
       },
       {
         "material": "Australian UV Commercial HDPE Cloth",
-        "priceRange": "PKR 380 – 600 / sq ft",
         "durability": "7–10 Years",
         "warranty": "5 Years",
         "bestFor": "Air-permeable rooftop shades, schools, sports courts"

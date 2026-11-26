@@ -12,11 +12,6 @@ interface CityPageProps {
 
 export const CityPage: React.FC<CityPageProps> = ({ cityKey, setActivePage, openSurveyModal }) => {
   const city = locations[cityKey] ?? locations.lahore;
-  const minPrice = (range: string) => Number(range.replace(/,/g, '').match(/\d+/)?.[0] ?? 0);
-  const byPrice = [...city.pricingGuide].sort((a, b) => minPrice(a.priceRange) - minPrice(b.priceRange));
-  const cheapest = byPrice[0];
-  const premium = byPrice[byPrice.length - 1];
-  const popular = byPrice[1] ?? cheapest;
 
   const go = (e: React.MouseEvent, target: string) => {
     e.preventDefault();
@@ -65,14 +60,13 @@ export const CityPage: React.FC<CityPageProps> = ({ cityKey, setActivePage, open
       {/* Direct answer block (answer-engine friendly) */}
       <section className="glass-panel rounded-2xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 space-y-3">
         <h2 className="text-xl sm:text-2xl font-heading font-bold text-slate-900 dark:text-white">
-          Car parking shade prices in {city.name} at a glance
+          Why choose MTE for car parking shades in {city.name}?
         </h2>
         <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-          In {city.name}, an installed car parking shade or tensile canopy from {company.name} typically costs{' '}
-          <strong>{cheapest.priceRange}</strong> with {cheapest.material},{' '}
-          <strong>{popular.priceRange}</strong> with {popular.material}, and up to <strong>{premium.priceRange}</strong> for{' '}
-          {premium.material}. The final price depends on span, number of car bays, steel specification and site
-          conditions, and is confirmed after a free on-site survey anywhere in {city.name}.
+          {company.name} builds car parking shades and tensile structures in {city.name} with international-grade fabric that is
+          heat proof and waterproof, on hot-dip galvanized steel, designed for a service life of up to 20 years. Every project is
+          measured, designed and quoted after a free site survey anywhere in {city.name}, and we work across Pakistan from our
+          workshops in Lahore and Islamabad.
         </p>
       </section>
 
@@ -112,13 +106,13 @@ export const CityPage: React.FC<CityPageProps> = ({ cityKey, setActivePage, open
       <section className="glass-panel rounded-2xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 space-y-6">
         <div>
           <span className="text-xs font-bold text-gold-600 dark:text-gold-400 uppercase tracking-wider">
-            {city.name} Price Guide
+            {city.name} Fabric Options
           </span>
           <h2 className="text-2xl font-heading font-bold text-slate-900 dark:text-white mt-1">
-            Tensile Shade Rates per Square Foot in {city.name}
+            Fabric Options for Shades in {city.name}
           </h2>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Rates include structural steel fabrication, fabric, primer/paint finish and on-site tensioning.
+            Every option includes steel fabrication, paint finish and on-site tensioning. Exact prices are quoted after a free site survey.
           </p>
         </div>
         <div className="overflow-x-auto">
@@ -126,7 +120,6 @@ export const CityPage: React.FC<CityPageProps> = ({ cityKey, setActivePage, open
             <thead>
               <tr className="border-b border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 uppercase tracking-wider text-[11px]">
                 <th className="py-3 px-4">Fabric</th>
-                <th className="py-3 px-4">Rate (PKR / sq ft)</th>
                 <th className="py-3 px-4">Lifespan</th>
                 <th className="py-3 px-4">Warranty</th>
                 <th className="py-3 px-4">Best for</th>
@@ -136,7 +129,6 @@ export const CityPage: React.FC<CityPageProps> = ({ cityKey, setActivePage, open
               {city.pricingGuide.map((item, idx) => (
                 <tr key={idx}>
                   <td className="py-3.5 px-4 font-bold text-slate-900 dark:text-white">{item.material}</td>
-                  <td className="py-3.5 px-4 font-mono font-semibold text-gold-600 dark:text-gold-400">{item.priceRange}</td>
                   <td className="py-3.5 px-4">{item.durability}</td>
                   <td className="py-3.5 px-4 text-emerald-600 dark:text-emerald-400 font-semibold">{item.warranty}</td>
                   <td className="py-3.5 px-4 text-slate-600 dark:text-slate-400">{item.bestFor}</td>

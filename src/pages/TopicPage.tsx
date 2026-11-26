@@ -88,11 +88,11 @@ export const TopicPage: React.FC<TopicPageProps> = ({ topicKey, setActivePage, o
           <section key={i} className={`${panel} space-y-4`}>
             <h2 className={h2c}>{b.h2}</h2>
             {b.intro && <p className="text-sm text-slate-600 dark:text-slate-400">{b.intro}</p>}
-            {b.cities.map((ck) => {
+            {b.cities.slice(0, 1).map((ck) => {
               const c = locations[ck];
               return (
                 <div key={ck} dir="ltr" className="overflow-x-auto">
-                  {b.cities.length > 1 && (
+                  {false && (
                     <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-2">
                       <a href={`/car-parking-shades-${ck}`} onClick={(e) => go(e, `/car-parking-shades-${ck}`)} className="hover:text-gold-600">
                         {c.name}
@@ -103,7 +103,6 @@ export const TopicPage: React.FC<TopicPageProps> = ({ topicKey, setActivePage, o
                     <thead>
                       <tr className="border-b border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 uppercase tracking-wider text-[11px]">
                         <th className="py-2.5 px-3">Fabric</th>
-                        <th className="py-2.5 px-3">Rate (PKR / sq ft)</th>
                         <th className="py-2.5 px-3">Lifespan</th>
                         <th className="py-2.5 px-3">Warranty</th>
                         <th className="py-2.5 px-3">Best for</th>
@@ -113,7 +112,6 @@ export const TopicPage: React.FC<TopicPageProps> = ({ topicKey, setActivePage, o
                       {c.pricingGuide.map((p) => (
                         <tr key={p.material}>
                           <td className="py-2.5 px-3 font-bold text-slate-900 dark:text-white">{p.material}</td>
-                          <td className="py-2.5 px-3 font-mono font-semibold text-gold-600 dark:text-gold-400">{p.priceRange}</td>
                           <td className="py-2.5 px-3">{p.durability}</td>
                           <td className="py-2.5 px-3">{p.warranty}</td>
                           <td className="py-2.5 px-3 text-slate-600 dark:text-slate-400">{p.bestFor}</td>

@@ -28,17 +28,17 @@ export const LocationsPage: React.FC<LocationsPageProps> = ({ openSurveyModal, s
       {/* Main Interactive Locations Switcher */}
       <LocationsSection onCitySelect={(key) => setActivePage(cityPath(key))} />
 
-      {/* Detailed Pricing Matrix By Material */}
+      {/* Fabric options by material */}
       <div className="glass-panel rounded-2xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 space-y-6">
         <div>
           <span className="text-xs font-bold text-gold-600 dark:text-gold-400 uppercase tracking-wider">
-            Transparent Pricing Matrix
+            Fabric Guide
           </span>
           <h3 className="text-2xl font-heading font-bold text-slate-900 dark:text-white mt-1">
-            Current Rate Estimates Per Square Foot (Pakistan Market)
+            Fabric Options, Lifespan & Warranty
           </h3>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Rates include structural steel fabrication, high-grade fabric, primer/paint finish, and on-site tensioning erection.
+            Every structure includes steel fabrication, international-grade fabric, primer/paint finish and on-site tensioning. Prices are quoted after a free site survey.
           </p>
         </div>
 
@@ -47,7 +47,6 @@ export const LocationsPage: React.FC<LocationsPageProps> = ({ openSurveyModal, s
             <thead>
               <tr className="border-b border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 uppercase tracking-wider text-[11px]">
                 <th className="py-3 px-4">Material Specification</th>
-                <th className="py-3 px-4">Estimated Rate (PKR / sq.ft)</th>
                 <th className="py-3 px-4">Lifespan</th>
                 <th className="py-3 px-4">Warranty</th>
                 <th className="py-3 px-4">Ideal Application</th>
@@ -57,7 +56,6 @@ export const LocationsPage: React.FC<LocationsPageProps> = ({ openSurveyModal, s
               {locations.lahore.pricingGuide.map((item, idx) => (
                 <tr key={idx} className="hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
                   <td className="py-3.5 px-4 font-bold text-slate-900 dark:text-white">{item.material}</td>
-                  <td className="py-3.5 px-4 font-mono font-semibold text-gold-600 dark:text-gold-400">{item.priceRange}</td>
                   <td className="py-3.5 px-4">{item.durability}</td>
                   <td className="py-3.5 px-4 text-emerald-600 dark:text-emerald-400 font-semibold">{item.warranty}</td>
                   <td className="py-3.5 px-4 text-slate-600 dark:text-slate-400">{item.bestFor}</td>

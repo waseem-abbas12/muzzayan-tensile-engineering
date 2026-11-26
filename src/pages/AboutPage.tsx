@@ -31,7 +31,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ openSurveyModal }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-4">
             <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl">
-              <img
+              <img loading="lazy" decoding="async"
                 src="/images/detail.jpg"
                 alt={ceo.name}
                 className="w-full h-full object-cover"

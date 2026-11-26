@@ -61,7 +61,7 @@ export const VideoGallerySection: React.FC<VideoGallerySectionProps> = ({ openSu
             >
               <div>
                 <div className="relative aspect-[16/10] overflow-hidden bg-slate-900">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={item.poster}
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -120,7 +120,7 @@ export const VideoGallerySection: React.FC<VideoGallerySectionProps> = ({ openSu
             </button>
 
             <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-950 mb-4 flex items-center justify-center border border-slate-200 dark:border-slate-800">
-              <img
+              <img loading="lazy" decoding="async"
                 src={showcases.find(s => s.id === activeModal)?.poster}
                 alt="Showcase Preview"
                 className="w-full h-full object-cover opacity-80"

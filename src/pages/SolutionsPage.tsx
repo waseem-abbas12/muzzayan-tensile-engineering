@@ -60,7 +60,7 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({ openSurveyModal })
                 {/* Left/Right alternating images */}
                 <div className={`lg:col-span-6 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                   <div className="relative aspect-[16/11] rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl">
-                    <img
+                    <img loading="lazy" decoding="async"
                       src={sol.image}
                       alt={sol.name}
                       className="w-full h-full object-cover"

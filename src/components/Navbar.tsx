@@ -58,7 +58,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
           {/* Logo Branding */}
           <a
             href="/"
-            aria-label="Muzzayan Tensile Engineering — Home"
             onClick={(e) => handleNavClick('home', e)}
             className="flex items-center gap-3 cursor-pointer group"
           >
@@ -177,6 +176,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
               onClick={toggleTheme}
               className="p-2 rounded-lg bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-gold-400 border border-slate-200 dark:border-slate-800"
               title="Toggle Theme"
+              aria-label="Toggle dark mode"
             >
               {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-700" />}
             </button>
@@ -192,6 +192,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, setActivePage, openS
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileMenuOpen}
               className="p-2 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

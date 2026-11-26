@@ -186,7 +186,7 @@ export const LocationsSection: React.FC<LocationsSectionProps> = ({ initialCity 
                 className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-navy-900 flex flex-col group shadow-xs"
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-slate-950">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={p.image}
                     alt={p.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

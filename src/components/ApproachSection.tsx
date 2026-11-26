@@ -56,7 +56,7 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onLearnProcess
           <div className="lg:col-span-5">
             <div className="relative rounded-3xl overflow-hidden glass-panel p-2.5 border border-slate-200 dark:border-gold-500/35 shadow-2xl">
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-slate-950">
-                <img
+                <img loading="lazy" decoding="async"
                   src="/images/luxury_pool.jpg"
                   alt="MTE Tensile Engineering Approach"
                   className="w-full h-full object-cover"

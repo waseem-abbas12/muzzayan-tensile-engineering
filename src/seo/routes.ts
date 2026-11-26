@@ -262,7 +262,7 @@ function businessNode() {
     '@type': ['LocalBusiness', 'GeneralContractor'],
     '@id': BUSINESS_ID,
     name: company.name,
-    alternateName: ['MTE', 'Muzzayan Tensile Engineering (MTE)', 'MTE Tensile'],
+    alternateName: ['MTE', 'Muzzayan Tensile Engineering (MTE)', 'MTE Tensile', 'TSP Tensile', 'TSP Tensile Pakistan'],
     url: `${SITE_URL}/`,
     logo: abs('/favicon-512x512.png'),
     image: [abs('/images/hero.jpg'), abs('/images/commercial.jpg'), abs('/images/project_cantilever_parking.jpg')],
@@ -605,6 +605,7 @@ export function buildLlmsTxt(): string {
   lines.push(`- Working hours: ${company.workingHours}`);
   lines.push(`- Offices: ${offices.map((o) => `${o.city} — ${o.address}`).join('; ')}`);
   lines.push('- Free site survey and quotation anywhere in Pakistan');
+  lines.push('- Formerly TSP Tensile (tsptensile.com), which now redirects here — same business, team and phone number');
   lines.push('');
   lines.push('## Services');
   for (const s of solutions) {

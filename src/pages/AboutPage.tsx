@@ -20,6 +20,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ openSurveyModal }) => {
         <p className="text-base text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
           Founded on Gulf-grade structural steel and architectural membrane standards, MTE delivers turnkey cantilever car parking canopies, commercial tensile roofs, and heavy industrial sheds across Pakistan.
         </p>
+        <p className="text-sm text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+          <strong className="text-slate-900 dark:text-white">Formerly TSP Tensile.</strong> TSP Tensile (tsptensile.com) is now
+          part of Muzzayan Tensile Engineering — same team, same workshop and the same number, {company.phoneFormatted}.
+        </p>
       </div>
 
       {/* CEO / Leadership Card */}

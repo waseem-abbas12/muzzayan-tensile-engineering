@@ -1,7 +1,7 @@
 import React from 'react';
 import { LocationsSection } from '../components/LocationsSection';
 import { locations, company, solutions } from '../data/siteData';
-import { cityPath, CITY_KEYS, SERVICE_CITY_DEFS, PRIORITY_CITY_KEYS, serviceCityPath, cityFaqs } from '../seo/routes';
+import { cityPath, CITY_KEYS, SERVICE_CITY_DEFS, SERVICE_CITY_KEYS, serviceCityPath, cityFaqs } from '../seo/routes';
 import { MapPin, MessageCircle, Calendar, ChevronRight, CloudSun, ShieldCheck, HelpCircle } from 'lucide-react';
 
 interface CityPageProps {
@@ -171,7 +171,7 @@ export const CityPage: React.FC<CityPageProps> = ({ cityKey, setActivePage, open
       </section>
 
       {/* Dedicated service pages for priority cities */}
-      {(PRIORITY_CITY_KEYS as readonly string[]).includes(cityKey) && (
+      {(SERVICE_CITY_KEYS as readonly string[]).includes(cityKey) && (
         <section className="space-y-3">
           <h2 className="text-lg font-heading font-bold text-slate-900 dark:text-white">More {city.name} services</h2>
           <div className="flex flex-wrap gap-2">

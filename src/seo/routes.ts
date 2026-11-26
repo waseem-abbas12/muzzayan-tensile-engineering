@@ -1,6 +1,7 @@
 // Single source of truth for every public URL of the site:
 // path, page id, title, meta description and structured data.
 // Used by the client router, the build-time prerenderer, sitemap.xml and llms.txt.
+import { TOPICS } from './topics';
 import {
   company,
   ceo,
@@ -27,13 +28,15 @@ export type PageId =
   | 'faq'
   | 'contact'
   | 'city'
-  | 'serviceCity';
+  | 'serviceCity'
+  | 'topic';
 
 export interface RouteDef {
   path: string;
   page: PageId;
   cityKey?: string;
   serviceKey?: string;
+  topicKey?: string;
   title: string;
   description: string;
   /** Breadcrumb label */
@@ -200,7 +203,10 @@ export const SERVICE_CITY_DEFS: ServiceCityDef[] = [
 
 export const serviceCityPath = (serviceKey: string, cityKey: string) => `/${serviceKey}-${cityKey}`;
 
-const serviceCityRoutes: RouteDef[] = PRIORITY_CITY_KEYS.flatMap((cityKey) =>
+// Service landing pages exist for the priority cities plus Rawalpindi (no office there, so no branch)
+export const SERVICE_CITY_KEYS = ['lahore', 'islamabad', 'rawalpindi'] as const;
+
+const serviceCityRoutes: RouteDef[] = SERVICE_CITY_KEYS.flatMap((cityKey) =>
   SERVICE_CITY_DEFS.map((d) => {
     const cityName = locations[cityKey].name;
     return {
@@ -218,7 +224,19 @@ const serviceCityRoutes: RouteDef[] = PRIORITY_CITY_KEYS.flatMap((cityKey) =>
   })
 );
 
-export const routes: RouteDef[] = [...staticRoutes, ...cityRoutes, ...serviceCityRoutes];
+const topicRoutes: RouteDef[] = TOPICS.map((t) => ({
+  path: t.path,
+  page: 'topic' as const,
+  topicKey: t.key,
+  label: t.label,
+  title: t.title,
+  description: t.description,
+  ogImage: t.ogImage,
+  priority: 0.9,
+  changefreq: 'monthly' as const,
+}));
+
+export const routes: RouteDef[] = [...staticRoutes, ...cityRoutes, ...serviceCityRoutes, ...topicRoutes];
 
 /** Old hash links (#solutions) and legacy paths → canonical route */
 export const legacyHashMap: Record<string, string> = {
@@ -235,7 +253,7 @@ export const legacyHashMap: Record<string, string> = {
 
 export const pathForPage = (page: PageId, cityKey?: string): string => {
   if (page === 'city' && cityKey) return cityPath(cityKey);
-  if (page === 'serviceCity') return '/solutions';
+  if (page === 'serviceCity' || page === 'topic') return '/solutions';
   return staticRoutes.find((r) => r.page === page)?.path ?? '/';
 };
 
@@ -380,6 +398,10 @@ function breadcrumbNode(route: RouteDef) {
   if (route.page === 'city') items.push({ name: 'Locations', url: `${SITE_URL}/locations` });
   if (route.page === 'serviceCity' && route.cityKey)
     items.push({ name: locations[route.cityKey].name, url: abs(cityPath(route.cityKey)) });
+  if (route.page === 'topic') {
+    const parent = TOPICS.find((t) => t.key === route.topicKey)?.breadcrumbParent;
+    if (parent) items.push({ name: parent[1], url: abs(parent[0]) });
+  }
   if (route.path !== '/') items.push({ name: route.label, url: abs(route.path) });
   return {
     '@type': 'BreadcrumbList',
@@ -389,7 +411,8 @@ function breadcrumbNode(route: RouteDef) {
 }
 
 function webPageNode(route: RouteDef) {
-  const type = ['faq', 'city', 'serviceCity'].includes(route.page) ? ['WebPage', 'FAQPage'] : route.page === 'about' ? 'AboutPage' : route.page === 'contact' ? 'ContactPage' : 'WebPage';
+  const topicHasFaq = route.page === 'topic' && (TOPICS.find((t) => t.key === route.topicKey)?.faqs.length ?? 0) > 0;
+  const type = ['faq', 'city', 'serviceCity'].includes(route.page) || topicHasFaq ? ['WebPage', 'FAQPage'] : route.page === 'about' ? 'AboutPage' : route.page === 'contact' ? 'ContactPage' : 'WebPage';
   return {
     '@type': type,
     '@id': `${abs(route.path)}#webpage`,
@@ -495,7 +518,9 @@ function serviceCityNode(route: RouteDef) {
     serviceType: sol.name,
     description: sol.desc,
     image: abs(def.ogImage),
-    provider: { '@id': `${SITE_URL}/#branch-${route.cityKey}` },
+    provider: {
+      '@id': (PRIORITY_CITY_KEYS as readonly string[]).includes(route.cityKey!) ? `${SITE_URL}/#branch-${route.cityKey}` : BUSINESS_ID,
+    },
     areaServed: [{ '@type': 'City', name: c.name }, ...c.serviceAreas.map((a) => ({ '@type': 'Place', name: `${a}, ${c.name}` }))],
   };
 }
@@ -534,6 +559,26 @@ export function buildJsonLd(route: RouteDef) {
     Object.assign(graph[2], { mainEntity: faqEntities(serviceCityFaqs(route.serviceKey, route.cityKey)) });
   }
   if (route.page === 'about') graph.push(personNode());
+  if (route.page === 'topic') {
+    const t = TOPICS.find((x) => x.key === route.topicKey);
+    if (t) {
+      if (t.solutionSlug) {
+        const sv = solutions.find((x) => x.slug === t.solutionSlug);
+        if (sv)
+          graph.push({
+            '@type': 'Service',
+            '@id': `${abs(route.path)}#service`,
+            name: t.h1,
+            serviceType: sv.name,
+            description: t.lead,
+            image: abs(t.ogImage),
+            provider: { '@id': BUSINESS_ID },
+            areaServed: { '@type': 'Country', name: 'Pakistan' },
+          });
+      }
+      if (t.faqs.length) Object.assign(graph[2], { mainEntity: faqEntities(t.faqs) });
+    }
+  }
   if (route.page === 'faq') {
     // merge FAQ entities into the WebPage/FAQPage node
     const page = graph[2] as Record<string, unknown>;

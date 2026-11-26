@@ -27,6 +27,17 @@ for (const route of routes) {
   console.log(`prerendered ${route.path.padEnd(32)} ${(html.length / 1024).toFixed(0)} KB`);
 }
 
+// Real 404 page (served by Vercel with HTTP 404 for unknown URLs; no JS, noindex)
+const notFound = template
+  .replace(/<!--seo-start-->[\s\S]*?<!--seo-end-->/, '<title>Page not found | Muzzayan Tensile Engineering</title>\n    <meta name="robots" content="noindex" />')
+  .replace(/<script type="module"[^>]*><\/script>/g, '')
+  .replace('<div id="root"></div>', `<div id="root"><main style="font-family:system-ui,sans-serif;max-width:640px;margin:15vh auto;padding:0 24px;text-align:center">
+    <h1 style="font-size:28px;margin:0 0 12px">Page not found</h1>
+    <p style="color:#475569;line-height:1.6">The page you are looking for does not exist or has moved.</p>
+    <p style="margin-top:24px"><a href="/" style="color:#b8860b;font-weight:700">Go to the homepage</a> &middot; <a href="/car-parking-shades" style="color:#b8860b;font-weight:700">Car parking shades</a> &middot; <a href="/contact" style="color:#b8860b;font-weight:700">Contact</a></p>
+  </main></div>`);
+fs.writeFileSync(path.join(dist, '404.html'), notFound);
+
 const today = new Date().toISOString().slice(0, 10);
 fs.writeFileSync(path.join(dist, 'sitemap.xml'), buildSitemap(today));
 fs.writeFileSync(path.join(dist, 'llms.txt'), buildLlmsTxt());

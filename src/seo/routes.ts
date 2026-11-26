@@ -2,6 +2,7 @@
 // path, page id, title, meta description and structured data.
 // Used by the client router, the build-time prerenderer, sitemap.xml and llms.txt.
 import { ALL_TOPICS as TOPICS } from './topics';
+import { getServiceLocal } from './serviceLocal';
 import {
   company,
   ceo,
@@ -206,7 +207,7 @@ const serviceCityRoutes: RouteDef[] = SERVICE_CITY_KEYS.flatMap((cityKey) =>
       serviceKey: d.key,
       label: `${d.name} ${cityName}`,
       title: d.title(cityName),
-      description: d.description(cityName),
+      description: getServiceLocal(d.key, cityKey)?.description ?? d.description(cityName),
       ogImage: d.ogImage,
       priority: 0.8,
       changefreq: 'monthly' as const,
@@ -451,7 +452,9 @@ export function serviceCityFaqs(serviceKey: string, cityKey: string) {
   const sol = solutions.find((x) => x.slug === def.solutionSlug)!;
   const c = locations[cityKey];
   const areas = c.serviceAreas.slice(0, 5).join(', ');
+  const local = getServiceLocal(serviceKey, cityKey);
   const common = [
+    ...(local?.faqs ?? []),
     {
       question: `Do you build ${def.name.toLowerCase()} in ${c.name}?`,
       answer: `Yes. ${company.name} designs, fabricates and installs ${sol.name.toLowerCase()} across ${c.name}, including ${areas}. Our engineers offer a free site survey anywhere in ${c.name}; call or WhatsApp ${company.phoneFormatted}.`,

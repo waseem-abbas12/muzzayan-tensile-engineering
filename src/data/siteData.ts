@@ -813,16 +813,16 @@ export const locations: Record<string, LocationData> = {
     "climateChallenge": "Rawalpindi faces harsh monsoon showers, sudden summer dust squalls, and severe sun intensity that damages vehicle paint and upholstery. Our heavy-gauge steel structures are powder-coated or hot-dip galvanized with zero rust risk, guaranteed for decades of reliable shade.",
     "whyChoosePoints": [
       {
-        "title": "Local Workshop & Fast Installation",
-        "desc": "Rapid turnaround times with direct on-site delivery and professional installation crew operating right in Rawalpindi."
+        "title": "Workshop Next Door in Islamabad",
+        "desc": "Rawalpindi is served from our G-12/4 Islamabad workshop, close enough for quick surveys, delivery and installation by our own crew."
       },
       {
         "title": "Specialized Bahria Town & Askari Designs",
-        "desc": "Proven track record with over 40 successful installations across Bahria Town Phase 1–8 and Askari housing schemes."
+        "desc": "Designs that suit the rules and house layouts of Bahria Town, DHA Rawalpindi and Askari housing schemes."
       },
       {
-        "title": "Cost-Effective Factory Direct Rates",
-        "desc": "Direct manufacturer pricing without middlemen or third-party agent markups."
+        "title": "Direct From the Manufacturer",
+        "desc": "You deal with the people who design, fabricate and install the shade, with no middlemen or agents."
       },
       {
         "title": "Corrosion-Resistant Steel Framing",
@@ -832,7 +832,7 @@ export const locations: Record<string, LocationData> = {
     "faqs": [
       {
         "question": "Can you install car parking shades in Bahria Town Phase 8 Rawalpindi?",
-        "answer": "Yes, we have completed dozens of installations across Bahria Town Phase 1 through Phase 8, Safari Valley, and DHA Rawalpindi. We provide free site measurement visits throughout Rawalpindi."
+        "answer": "Yes. We install across Bahria Town Phase 1 to 8, Safari Valley and DHA Rawalpindi from our nearby Islamabad workshop (G-12/4), and the site measurement visit is free anywhere in Rawalpindi."
       },
       {
         "question": "How much does a 2-car parking shade cost in Rawalpindi?",
@@ -937,7 +937,7 @@ export const locations: Record<string, LocationData> = {
       },
       {
         "title": "Nationwide Turnkey Execution",
-        "desc": "Precision prefabricated in our central facility and installed by our certified engineering riggers on site in Karachi."
+        "desc": "Fabricated at our Lahore workshop and installed on site in Karachi by our own crew."
       }
     ],
     "faqs": [

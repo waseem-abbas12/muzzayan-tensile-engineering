@@ -325,7 +325,10 @@ export const GUIDES: Record<string, PageGuideDef> = {
         paras: [
           'For most Lahore projects we recommend a coated PVC or PVDF membrane: heat proof, waterproof and designed for up to 20 years. HDPE shade cloth is a lighter, breathable option for play areas and nurseries, but it is not waterproof. We show you samples during the survey.',
         ],
-        links: [{ label: 'PVC vs PVDF vs HDPE fabric', href: '/blog/pvc-vs-pvdf-vs-hdpe-tensile-fabric' }],
+        links: [
+          { label: 'PVC fabric shades', href: '/pvc-fabric-shades' },
+          { label: 'PVC vs PVDF vs HDPE fabric', href: '/blog/pvc-vs-pvdf-vs-hdpe-tensile-fabric' },
+        ],
       },
       {
         h2: 'Mosque, school and cafe roof sheds in Lahore',
@@ -442,7 +445,10 @@ export const GUIDES: Record<string, PageGuideDef> = {
         paras: [
           'Not every "PVC shade" is waterproof. HDPE shade cloth is a woven net: it blocks most of the sun and lets hot air out, but rain passes through. Coated PVC and PVDF membranes are fully waterproof and reflect heat. Our international-grade fabric is heat proof and waterproof and is designed for up to 20 years of service. Ask any supplier which of these you are actually getting.',
         ],
-        links: [{ label: 'PVC vs PVDF vs HDPE fabric', href: '/blog/pvc-vs-pvdf-vs-hdpe-tensile-fabric' }],
+        links: [
+          { label: 'PVC fabric shades', href: '/pvc-fabric-shades' },
+          { label: 'PVC vs PVDF vs HDPE fabric', href: '/blog/pvc-vs-pvdf-vs-hdpe-tensile-fabric' },
+        ],
       },
     ],
     faqs: [

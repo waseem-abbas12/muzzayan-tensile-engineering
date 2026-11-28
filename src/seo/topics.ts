@@ -396,6 +396,108 @@ export const MORE_TOPICS: TopicDef[] = [
     ],
     faqs: pick([faqByQ(FABRIC_FAQ), faqByQ(INSTALL_FAQ), faqByQ(QUOTE_FAQ)]),
   },
+  {
+    key: 'pvc-fabric-shades',
+    path: '/pvc-fabric-shades',
+    label: 'PVC Fabric Shades',
+    title: 'PVC Fabric Shades & PVC Tensile Sheds in Lahore & Islamabad | MTE',
+    description:
+      'PVC tensile fabric shades and sheds for car parking, porches, schools, mosques and plazas in Lahore and Islamabad. Heat proof, waterproof fabric, own workshops. Free survey.',
+    eyebrow: 'PVC tensile fabric',
+    h1: 'PVC Fabric Shades and PVC Tensile Sheds',
+    lead: `A PVC fabric shade is a coated polyester fabric stretched over a steel frame. It is waterproof, reflects most of the sun’s heat and stays quiet in rain, which is why it is the most popular choice for car parking sheds, porches and courtyards in Pakistan. ${company.name} fabricates PVC tensile sheds at its own workshops in Lahore (Ferozepur Road) and Islamabad (G-12/4) and installs them across Pakistan.`,
+    ogImage: '/images/detail.jpg',
+    solutionSlug: 'cantilever',
+    breadcrumbParent: ['/tensile-structures', 'Tensile Structures'],
+    blocks: [
+      {
+        kind: 'section',
+        h2: 'What is PVC tensile fabric?',
+        paras: [
+          'PVC tensile fabric is a strong woven polyester base coated on both sides with PVC. The coating makes it waterproof and protects it from UV; a top lacquer helps it shed dust and keep its colour. Thicker, better-coated grades last longer and stay tight on the frame.',
+          'Our international-grade PVC fabric is heat proof and waterproof and is designed for up to 20 years of service with basic care.',
+        ],
+      },
+      {
+        kind: 'bullets',
+        h2: 'Where PVC fabric shades are used',
+        items: [
+          'Car parking sheds: cantilever, pole parking and wall mounted.',
+          'Car porch and garage shades for homes.',
+          'Mosque courtyards, school assembly grounds and walkways.',
+          'Restaurant rooftops, cafes and food courts.',
+          'Swimming pool and padel court covers.',
+          'Plaza, hospital and office drop-off canopies.',
+          'Marquee and event structures.',
+        ],
+      },
+      {
+        kind: 'compare',
+        h2: 'PVC vs HDPE vs fiberglass sheet',
+        headers: ['', 'PVC fabric', 'HDPE shade net', 'Fiberglass sheet'],
+        rows: [
+          ['Rain', 'Waterproof', 'Rain passes through', 'Waterproof'],
+          ['Heat underneath', 'Cool (reflects sun)', 'Cool (breathable)', 'Hot (traps heat)'],
+          ['Noise in rain', 'Quiet', 'Quiet', 'Loud'],
+          ['Look', 'Clean, modern shapes', 'Simple', 'Flat panels'],
+          ['Best for', 'Parking, porches, courtyards', 'Play areas, nurseries', 'Low-budget covers'],
+        ],
+      },
+      {
+        kind: 'section',
+        h2: 'PVC fabric shades in Lahore and Islamabad',
+        paras: [
+          'In Lahore, PVC is chosen for its heat reflection and monsoon protection; we fabricate at our Ferozepur Road workshop and install across DHA, Bahria Town, Gulberg, Johar Town and the rest of the city.',
+          'In Islamabad and Rawalpindi, PVC is tensioned with more slope so heavy rain and hail slide off; these jobs are run from our G-12/4 workshop.',
+        ],
+        items: [],
+      },
+      {
+        kind: 'section',
+        h2: 'How to check PVC fabric quality',
+        items: [
+          'Ask for the fabric brand and grade in writing, not just “PVC”.',
+          'Look at the coating: good fabric has an even, smooth surface on both sides.',
+          'Check the seams: they should be welded, not just stitched.',
+          'Ask about fabric colour options and how the colour holds up in sun.',
+          'Get the warranty on fabric and on steel in writing.',
+        ],
+        after: [`For a free survey and fabric samples, call or WhatsApp ${company.phoneFormatted}.`],
+      },
+      {
+        kind: 'links',
+        h2: 'Related',
+        links: [
+          ['/car-parking-shades-lahore', 'PVC car parking shades in Lahore'],
+          ['/car-parking-shades-islamabad', 'PVC car parking shades in Islamabad'],
+          ['/car-porch-shades', 'Car porch and wall mounted shades'],
+          ['/blog/pvc-vs-pvdf-vs-hdpe-tensile-fabric', 'PVC vs PVDF vs HDPE fabric'],
+          ['/blog/tensile-shade-maintenance-guide', 'How to clean PVC fabric'],
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Is PVC fabric shade waterproof?',
+        answer: 'Yes. Coated PVC fabric is fully waterproof, unlike HDPE shade net, which lets rain pass through.',
+      },
+      {
+        question: 'PVC fabric shade kitne saal chalta hai?',
+        answer:
+          'Hamara international PVC fabric heat proof aur waterproof hai aur theek dekh bhaal ke saath takreeban 20 saal tak chalne ke liye banaya gaya hai.',
+      },
+      {
+        question: 'Do you make PVC tensile sheds in Lahore and Islamabad?',
+        answer:
+          'Yes. We fabricate at our own workshops in Lahore (Salman Park, Ashiana Road, Ferozepur Road) and Islamabad (G-12/4, near Suzuki Stop) and install across Pakistan.',
+      },
+      {
+        question: 'PVC fabric aur HDPE mein kya farq hai?',
+        answer:
+          'PVC fabric waterproof hota hai aur barish se bachata hai. HDPE ek jaali (net) hai jo dhoop rokti hai aur hawa guzarne deti hai, lekin barish ka pani neeche aa jata hai.',
+      },
+    ],
+  },
   // ---------------- Blog ----------------
   {
     key: 'blog',

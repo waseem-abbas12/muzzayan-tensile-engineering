@@ -136,6 +136,7 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage, openSurveyModal }
                 ['/swimming-pool-shades', 'Swimming Pool Shades'],
                 ['/tensile-marquee-structures', 'Tensile Marquee Structures'],
                 ['/padel-court-shades', 'Padel Court Shades'],
+                ['/pvc-fabric-shades', 'PVC Fabric Shades'],
                 ['/blog', 'Guides & Blog'],
               ].map(([href, label]) => (
                 <li key={href}>

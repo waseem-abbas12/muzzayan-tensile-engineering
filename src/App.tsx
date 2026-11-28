@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { trackPageView } from './analytics';
 import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
@@ -60,6 +61,7 @@ function AppContent({ initialPath }: { initialPath: string }) {
     const next = resolveRoute(path);
     if (next.path !== route.path) {
       window.history.pushState({}, '', next.path);
+      setTimeout(() => trackPageView(next.path), 300);
     }
     setRoute(next);
     window.scrollTo({ top: 0, behavior: 'smooth' });

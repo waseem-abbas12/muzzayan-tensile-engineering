@@ -484,7 +484,7 @@ export const faqCategories = [
 export const offices = [
   {
     "city": "Lahore Head Office & Workshop",
-    "address": "Salman Park, Ashiana Road, Bank Stop, Ferozepur Road, Lahore, Punjab",
+    "address": "House 10, Street No. 1, Salman Park, Ashiana Road, Bank Stop, Ferozepur Road, Lahore, Punjab",
     "phone": "0302 4001063",
     "email": "info@muzzayantensile.com"
   },
@@ -507,7 +507,7 @@ export const locations: Record<string, LocationData> = {
     "heroSub": "Custom engineered cantilever car parking shades, swimming pool canopies, entrance walkways and tensile membrane roofs built for Lahore's 48°C extreme summer heat. DHA and Bahria Town approved structural standards.",
     "phone": "0302 4001063",
     "whatsapp": "923024001063",
-    "address": "Salman Park, Ashiana Road, Bank Stop, Ferozepur Road, Lahore, Punjab",
+    "address": "House 10, Street No. 1, Salman Park, Ashiana Road, Bank Stop, Ferozepur Road, Lahore, Punjab",
     "serviceAreas": [
       "DHA Lahore (Phase 1–9 & Raya)",
       "Bahria Town Lahore",

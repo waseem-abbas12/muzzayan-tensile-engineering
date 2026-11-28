@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { trackLead } from '../analytics';
 import { company, offices } from '../data/siteData';
 import { MapPin, Phone, Mail, Clock, MessageCircle, Send, CheckCircle2, Building, ShieldCheck } from 'lucide-react';
 
@@ -20,6 +21,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ openSurveyModal }) => 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
+    trackLead('form', 'contact');
     const text = `Assalam-o-Alaikum MTE! Contact Form Brief:%0A- Name: ${formData.name}%0A- Phone: ${formData.phone}%0A- Email: ${formData.email || 'N/A'}%0A- City: ${formData.city}%0A- Type: ${formData.projectType}%0A- Message: ${formData.message}`;
     window.open(`https://wa.me/${company.whatsapp}?text=${text}`, '_blank');
   };

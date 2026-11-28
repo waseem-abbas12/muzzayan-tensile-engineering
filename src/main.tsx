@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
+import { initAnalytics } from './analytics';
 
 // The page HTML is pre-rendered at build time (for Google & AI crawlers).
 // Hydrate it in place so the first paint is kept (fast LCP); fall back to a
@@ -21,6 +22,8 @@ if (rootEl.hasChildNodes()) {
 } else {
   ReactDOM.createRoot(rootEl).render(app);
 }
+
+initAnalytics();
 
 // Register PWA Service Worker
 if ('serviceWorker' in navigator && window.location.protocol === 'https:') {

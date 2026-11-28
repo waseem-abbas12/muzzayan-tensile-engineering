@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { trackLead } from '../analytics';
 import { X, CheckCircle, MessageCircle, MapPin, Phone, User, Calendar, ShieldCheck } from 'lucide-react';
 import { company } from '../data/siteData';
 
@@ -23,6 +24,7 @@ export const SiteSurveyModal: React.FC<SiteSurveyModalProps> = ({ isOpen, onClos
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
+    trackLead('form', 'survey');
     // Open WhatsApp with populated message
     const msg = `Assalam-o-Alaikum MTE! I am booking a Free Site Survey:%0A- Name: ${formData.name}%0A- Phone: ${formData.phone}%0A- City: ${formData.city}%0A- Project: ${formData.projectType}%0A- Address / Area: ${formData.location}%0A- Notes: ${formData.notes || 'N/A'}`;
     const url = `https://wa.me/${company.whatsapp}?text=${msg}`;

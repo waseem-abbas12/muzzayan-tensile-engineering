@@ -2,6 +2,8 @@
 // path, page id, title, meta description and structured data.
 // Used by the client router, the build-time prerenderer, sitemap.xml and llms.txt.
 import { ALL_TOPICS as TOPICS } from './topics';
+import { getServiceLocal } from './serviceLocal';
+import { guideFaqs } from './guides';
 import {
   company,
   ceo,
@@ -206,7 +208,7 @@ const serviceCityRoutes: RouteDef[] = SERVICE_CITY_KEYS.flatMap((cityKey) =>
       serviceKey: d.key,
       label: `${d.name} ${cityName}`,
       title: d.title(cityName),
-      description: d.description(cityName),
+      description: getServiceLocal(d.key, cityKey)?.description ?? d.description(cityName),
       ogImage: d.ogImage,
       priority: 0.8,
       changefreq: 'monthly' as const,
@@ -443,7 +445,7 @@ function cityServiceNode(key: string) {
 }
 
 export function cityFaqs(cityKey: string) {
-  return locations[cityKey]?.faqs ?? [];
+  return [...(locations[cityKey]?.faqs ?? []), ...guideFaqs(cityPath(cityKey))];
 }
 
 export function serviceCityFaqs(serviceKey: string, cityKey: string) {
@@ -451,7 +453,9 @@ export function serviceCityFaqs(serviceKey: string, cityKey: string) {
   const sol = solutions.find((x) => x.slug === def.solutionSlug)!;
   const c = locations[cityKey];
   const areas = c.serviceAreas.slice(0, 5).join(', ');
+  const local = getServiceLocal(serviceKey, cityKey);
   const common = [
+    ...(local?.faqs ?? []),
     {
       question: `Do you build ${def.name.toLowerCase()} in ${c.name}?`,
       answer: `Yes. ${company.name} designs, fabricates and installs ${sol.name.toLowerCase()} across ${c.name}, including ${areas}. Our engineers offer a free site survey anywhere in ${c.name}; call or WhatsApp ${company.phoneFormatted}.`,
@@ -472,7 +476,7 @@ export function serviceCityFaqs(serviceKey: string, cityKey: string) {
       answer: `${sol.desc} Typical scope: ${sol.features.slice(0, 4).join('; ')}.`,
     });
   }
-  return common;
+  return [...common, ...guideFaqs(serviceCityPath(serviceKey, cityKey))];
 }
 
 function faqEntities(list: { question: string; answer: string }[]) {

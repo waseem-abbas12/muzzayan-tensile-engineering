@@ -1,3 +1,4 @@
+import { guideFaqs } from './guides';
 // Content for hub / topic landing pages. All facts come from siteData (specs,
 // projects, FAQs) so the site never contradicts itself.
 import { solutions, locations, faqCategories, projects, company, engineeringFabrics } from '../data/siteData';
@@ -538,5 +539,7 @@ export const MORE_TOPICS: TopicDef[] = [
 ];
 
 import { ARTICLES } from './articles';
-export const ALL_TOPICS: TopicDef[] = [...TOPICS, ...MORE_TOPICS, ...ARTICLES];
+export const ALL_TOPICS: TopicDef[] = [...TOPICS, ...MORE_TOPICS, ...ARTICLES].map((t) =>
+  guideFaqs(t.path).length ? { ...t, faqs: [...t.faqs, ...guideFaqs(t.path)] } : t
+);
 export const findTopic = (key?: string) => ALL_TOPICS.find((t) => t.key === key);

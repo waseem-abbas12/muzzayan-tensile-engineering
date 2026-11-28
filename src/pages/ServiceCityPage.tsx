@@ -1,4 +1,5 @@
 import React from 'react';
+import { PageGuide } from '../components/PageGuide';
 import { locations, company, solutions, projects } from '../data/siteData';
 import {
   cityPath,
@@ -7,6 +8,7 @@ import {
   SERVICE_CITY_DEFS,
   SERVICE_CITY_KEYS,
 } from '../seo/routes';
+import { getServiceLocal } from '../seo/serviceLocal';
 import { MapPin, MessageCircle, Calendar, ChevronRight, Check, HelpCircle } from 'lucide-react';
 
 interface ServiceCityPageProps {
@@ -26,9 +28,9 @@ export const ServiceCityPage: React.FC<ServiceCityPageProps> = ({ serviceKey, ci
   const isIndustrial = def.key === 'industrial-sheds';
   const faqs = serviceCityFaqs(def.key, cityKey);
 
-  const areas = isIndustrial
-    ? [...city.serviceAreas.filter((a) => /industrial|estate|i-9|i-10|sundar/i.test(a)), ...city.serviceAreas.filter((a) => !/industrial|estate|i-9|i-10|sundar/i.test(a))]
-    : city.serviceAreas;
+  const local = getServiceLocal(def.key, cityKey);
+  const filtered = local?.areaFilter ? city.serviceAreas.filter((a) => local.areaFilter!.test(a)) : [];
+  const areas = filtered.length ? filtered : city.serviceAreas;
 
   const cityProjects = [
     ...projects.filter((p) => p.city === city.name).map((p) => ({ title: p.title, image: p.image, location: city.name, area: p.area, description: p.description })),
@@ -61,7 +63,7 @@ export const ServiceCityPage: React.FC<ServiceCityPageProps> = ({ serviceKey, ci
           </h1>
           <p className="text-base font-semibold text-slate-800 dark:text-slate-200 mt-3">{sol.tagline}</p>
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
-            {company.name} designs, fabricates and installs {sol.name.toLowerCase()} across {city.name}. {sol.desc}
+            {local?.lead ?? `${company.name} designs, fabricates and installs ${sol.name.toLowerCase()} across ${city.name}. ${sol.desc}`}
           </p>
           <div className="flex flex-wrap gap-3 mt-6">
             <button
@@ -88,6 +90,26 @@ export const ServiceCityPage: React.FC<ServiceCityPageProps> = ({ serviceKey, ci
           loading="lazy"
         />
       </header>
+
+      {local && (
+        <section className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+          <div className="lg:col-span-3 glass-panel rounded-2xl p-6 md:p-8 border border-slate-200 dark:border-slate-800">
+            <h2 className="text-xl sm:text-2xl font-heading font-bold text-slate-900 dark:text-white">{local.needsTitle}</h2>
+            <ul className="mt-4 space-y-3">
+              {local.needs.map((n) => (
+                <li key={n} className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                  <Check className="w-4 h-4 text-gold-500 shrink-0 mt-0.5" /> {n}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="lg:col-span-2 glass-panel rounded-2xl p-6 md:p-8 border border-slate-200 dark:border-slate-800">
+            <h2 className="text-xl sm:text-2xl font-heading font-bold text-slate-900 dark:text-white">{local.usesTitle}</h2>
+            <p className="text-sm text-slate-700 dark:text-slate-300 mt-4 leading-relaxed">{local.uses}</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-4">{sol.desc}</p>
+          </div>
+        </section>
+      )}
 
       {/* Features + specs */}
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -116,7 +138,7 @@ export const ServiceCityPage: React.FC<ServiceCityPageProps> = ({ serviceKey, ci
               ))}
             </tbody>
           </table>
-          {city.climateChallenge && !isIndustrial && (
+          {city.climateChallenge && !isIndustrial && !local && (
             <>
               <h3 className="text-sm font-bold text-slate-900 dark:text-white mt-6">Engineered for {city.name}&apos;s climate</h3>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">{city.climateChallenge}</p>
@@ -184,6 +206,8 @@ export const ServiceCityPage: React.FC<ServiceCityPageProps> = ({ serviceKey, ci
           </div>
         </section>
       )}
+
+      <PageGuide path={serviceCityPath(def.key, cityKey)} setActivePage={setActivePage} />
 
       {/* FAQs */}
       <section className="space-y-4">

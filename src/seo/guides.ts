@@ -86,6 +86,7 @@ export const GUIDES: Record<string, PageGuideDef> = {
         ],
         links: [{ label: 'How to choose a tensile shade company', href: '/blog/how-to-choose-a-tensile-shade-company' }],
       },
+
     ],
     faqs: [
       {
@@ -102,6 +103,11 @@ export const GUIDES: Record<string, PageGuideDef> = {
         question: 'Do you cover all areas of Lahore?',
         answer:
           'Yes. We work across Lahore, including DHA, Bahria Town, Gulberg, Johar Town, Model Town, Lake City, Valencia, Wapda Town, Cantt and the industrial areas, with a free site survey everywhere.',
+      },
+      {
+        question: 'Kya aap dome shed, hyper shed aur folding shade bhi banate hain?',
+        answer:
+          'Dome, hyper aur pyramid shapes hum banate hain. Folding shade ke liye survey mein batayein; hum imaandari se bata dete hain ke aap ki jagah ke liye fixed ya folding design behtar hai.',
       },
     ],
   },
@@ -150,6 +156,7 @@ export const GUIDES: Record<string, PageGuideDef> = {
         ],
         links: [{ label: 'DHA, LDA and CDA approval guide', href: '/blog/car-shade-approval-dha-lda-cda' }],
       },
+
     ],
     faqs: [
       {
@@ -165,6 +172,11 @@ export const GUIDES: Record<string, PageGuideDef> = {
         question: 'Do you install car shades in Rawalpindi too?',
         answer:
           'Yes. Rawalpindi, including Bahria Town, DHA Rawalpindi, Cantt, Saddar and Chaklala, is served from our Islamabad workshop with a free site survey.',
+      },
+      {
+        question: 'Heat proof aur waterproof shade mein kaun sa fabric hota hai?',
+        answer:
+          'Coated PVC ya PVDF fabric waterproof bhi hota hai aur garmi bhi wapas phenkta hai. HDPE net dhoop rokta hai lekin barish ka pani guzarne deta hai. Hamara international fabric heat proof aur waterproof hai.',
       },
     ],
   },
@@ -314,6 +326,15 @@ export const GUIDES: Record<string, PageGuideDef> = {
         ],
         links: [{ label: 'PVC vs PVDF vs HDPE fabric', href: '/blog/pvc-vs-pvdf-vs-hdpe-tensile-fabric' }],
       },
+      {
+        h2: 'Mosque, school and cafe roof sheds in Lahore',
+        bullets: [
+          'Mosque sheds: a high, well-ventilated fabric roof over the sahn keeps worshippers cool at Jumma and Eid, and the shade can be planned around existing minarets and wudu areas.',
+          'School sheds: shade over assembly grounds, play areas and pick-up points. HDPE cloth is often chosen for play areas because it breathes; PVC for areas that must stay dry.',
+          'Cafe roof sheds: rooftop and courtyard seating in Gulberg, MM Alam Road and Johar Town stays usable in summer and light rain, with hyper, pyramid or barrel-vault shapes for a distinctive look.',
+        ],
+        links: [{ label: 'Tensile structures in Pakistan', href: '/tensile-structures' }],
+      },
     ],
     faqs: [
       {
@@ -339,6 +360,12 @@ export const GUIDES: Record<string, PageGuideDef> = {
         links: [
           { label: 'Car parking shades in Islamabad', href: '/car-parking-shades-islamabad' },
           { label: 'Padel court shades', href: '/padel-court-shades' },
+        ],
+      },
+      {
+        h2: 'Mosque, school and cafe shades in the capital',
+        paras: [
+          'Islamabad mosques and schools often need shade that also keeps out rain, so we usually recommend coated PVC with good slope. For cafes and restaurant terraces in F-6, F-7 and the Blue Area, hyper and pyramid shapes give a modern look that suits the city’s architecture.',
         ],
       },
     ],
@@ -382,6 +409,35 @@ export const GUIDES: Record<string, PageGuideDef> = {
           'As a rule of thumb, plan about 3 m of width and 5.5 m of depth per car (roughly 180 sq ft), a little more for SUVs. Leave extra width where doors open next to a wall or pole. Our size guide explains layouts for 1, 2, 4 and 10 cars.',
         ],
         links: [{ label: 'Car parking shade size guide', href: '/blog/car-parking-shade-size-guide' }],
+      },
+      {
+        h2: 'Shade designs and the names people search for',
+        paras: [
+          'Sellers and buyers use many names for the same few designs. This is what each one means, so you can compare like with like:',
+        ],
+        bullets: [
+          'Garage shade or car roof shade: any fabric roof over a parking space. It can be a cantilever, pole or wall mounted design.',
+          'Car porch shade: a garage shade at the front of a house, designed to match the elevation.',
+          'Pole parking or pole shed: the frame stands on its own poles, 2 or 4 per bay. Simple, strong and easy to extend.',
+          'Wall mounted shed: fixed to a boundary or house wall with brackets, so no poles in a narrow driveway.',
+          'Canopy shed: a general name for a free-standing fabric roof, over parking, a gate, a walkway or a cafe.',
+          'Dome shed and barrel vault: the fabric is pulled over curved arches, giving a rounded roof that sheds rain well.',
+          'Hyper shed (hypar): a twisted four-point sail, with two high and two low corners. A modern look for porches, cafes and gardens.',
+          'Pyramid or conical shade: the fabric rises to a central peak. Popular over single bays, play areas and seating.',
+          'Folding or retractable shade: the fabric can be pulled back. Tell us during the survey if you want this, and we will say honestly whether a fixed or folding design suits your site better.',
+          'Awning: a small shade over a window, door or shopfront, fixed to the wall.',
+        ],
+        links: [
+          { label: '7 car parking shade designs with photos', href: '/blog/car-parking-shade-designs-pakistan' },
+          { label: 'Car porch and wall mounted shades', href: '/car-porch-shades' },
+        ],
+      },
+      {
+        h2: 'Heat proof and waterproof: what it really means',
+        paras: [
+          'Not every "PVC shade" is waterproof. HDPE shade cloth is a woven net: it blocks most of the sun and lets hot air out, but rain passes through. Coated PVC and PVDF membranes are fully waterproof and reflect heat. Our international-grade fabric is heat proof and waterproof and is designed for up to 20 years of service. Ask any supplier which of these you are actually getting.',
+        ],
+        links: [{ label: 'PVC vs PVDF vs HDPE fabric', href: '/blog/pvc-vs-pvdf-vs-hdpe-tensile-fabric' }],
       },
     ],
     faqs: [
@@ -466,12 +522,24 @@ export const GUIDES: Record<string, PageGuideDef> = {
           { label: 'Car porch shades in Islamabad', href: '/car-parking-shades-islamabad' },
         ],
       },
+      {
+        h2: 'Garage shade, car roof shade or porch shade?',
+        paras: [
+          'They are the same idea with different names. Whether you call it a garage shade, a car roof shade or a car porch shade, what matters is the design underneath: wall mounted for narrow fronts, cantilever for a clean look with no front poles, or pole-supported for open fronts. We also build dome, hyper and pyramid shapes for porches where you want something different.',
+        ],
+        links: [{ label: 'All shade designs explained', href: '/car-parking-shades' }],
+      },
     ],
     faqs: [
       {
         question: 'Kya 5 marla ghar mein car porch shade lag sakta hai?',
         answer:
           'Ji haan. Chhote gharon mein aksar wall mounted shade lagaya jata hai jo deewar ke saath fix hota hai aur driveway mein jagah nahi gherta.',
+      },
+      {
+        question: 'Garage shade aur car porch shade mein kya farq hai?',
+        answer:
+          'Asal mein koi farq nahi: dono gari ke upar fabric ki chhat hain. Farq design ka hota hai: wall mounted, cantilever ya pole wala. Survey mein aap ki jagah dekh kar sahi design batate hain.',
       },
     ],
   },
@@ -567,6 +635,17 @@ export const GUIDES: Record<string, PageGuideDef> = {
           { label: 'Tensile structures Rawalpindi', href: '/tensile-structures-rawalpindi' },
           { label: 'What is a tensile structure?', href: '/blog/what-is-a-tensile-structure' },
         ],
+      },
+      {
+        h2: 'Tensile shapes: hyper, dome, pyramid and barrel vault',
+        bullets: [
+          'Hyper (hypar) shade: a twisted sail with two high and two low corners.',
+          'Dome and barrel vault: fabric over curved arches, good for long walkways and parking.',
+          'Pyramid and conical: fabric rising to a central peak, ideal over single bays and seating.',
+          'Cantilever: fabric hanging from one side, with no front columns.',
+          'Sail shades: overlapping triangles or squares, used over gardens and pools.',
+        ],
+        links: [{ label: 'What is a tensile structure?', href: '/blog/what-is-a-tensile-structure' }],
       },
     ],
     faqs: [],

@@ -224,6 +224,7 @@ export const GUIDES: Record<string, PageGuideDef> = {
         links: [
           { label: 'PEB vs conventional steel vs RCC', href: '/blog/peb-vs-conventional-steel-vs-rcc-sheds' },
           { label: 'Dairy farm shed design guide', href: '/blog/dairy-farm-shed-design-guide' },
+          { label: 'Warehouse shed construction guide', href: '/blog/warehouse-shed-construction-guide' },
           { label: 'All industrial sheds', href: '/industrial-sheds' },
         ],
       },
@@ -333,7 +334,11 @@ export const GUIDES: Record<string, PageGuideDef> = {
           'School sheds: shade over assembly grounds, play areas and pick-up points. HDPE cloth is often chosen for play areas because it breathes; PVC for areas that must stay dry.',
           'Cafe roof sheds: rooftop and courtyard seating in Gulberg, MM Alam Road and Johar Town stays usable in summer and light rain, with hyper, pyramid or barrel-vault shapes for a distinctive look.',
         ],
-        links: [{ label: 'Tensile structures in Pakistan', href: '/tensile-structures' }],
+        links: [
+          { label: 'Mosque shade guide', href: '/blog/mosque-shade-guide' },
+          { label: 'School shade guide', href: '/blog/school-shade-structures-guide' },
+          { label: 'Tensile structures in Pakistan', href: '/tensile-structures' },
+        ],
       },
     ],
     faqs: [

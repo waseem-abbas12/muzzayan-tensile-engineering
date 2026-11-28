@@ -593,4 +593,262 @@ export const ARTICLES: TopicDef[] = [
       },
     ],
   },
+
+  // 12 ─────────────────────────────────────────────────────────────
+  {
+    key: 'blog-mosque',
+    path: '/blog/mosque-shade-guide',
+    label: 'Mosque Shade Guide',
+    title: 'Mosque Shade (Sahn Shed) Guide for Pakistan: Designs & Fabric | MTE',
+    description:
+      'How to shade a mosque courtyard in Pakistan: tensile vs steel sheet, height, ventilation, rain, Jumma and Eid crowds, and what to ask a contractor.',
+    eyebrow: 'Guide · Mosques',
+    h1: 'Mosque Shade Guide: How to Cover a Sahn in Pakistan',
+    lead: 'The best mosque shade in Pakistan is usually a high tensile fabric roof over the sahn: it keeps worshippers cool in June, lets hot air escape, stays quiet in rain and leaves the courtyard open and bright. A metal sheet roof is cheaper to put up but turns the courtyard into an oven and is loud in monsoon rain.',
+    ogImage: '/images/walkway.jpg',
+    breadcrumbParent: ['/blog', 'Blog'],
+    article: { published: '2026-11-28', updated: '2026-11-28', readMins: 6 },
+    blocks: [
+      {
+        kind: 'section',
+        h2: 'Why the sahn needs shade',
+        paras: [
+          'On Jumma, in Ramadan and on Eid, the courtyard fills with people who sit on hot marble or tiles for a long time. In Lahore and the rest of Punjab, summer afternoons regularly pass 45°C, and an open sahn becomes unusable for Zuhr and Asr.',
+          'A good shade makes the whole courtyard usable for prayer, lowers the floor temperature and protects carpets and mats from sun damage.',
+        ],
+      },
+      {
+        kind: 'section',
+        h2: 'Tensile fabric vs metal sheet for a mosque',
+        items: [
+          'Heat: light-coloured coated fabric reflects most of the sun; metal sheet absorbs it and radiates heat down onto worshippers.',
+          'Noise: fabric is quiet in rain; metal sheet is loud during monsoon showers, which disturbs prayer and khutbah.',
+          'Light: fabric lets soft daylight through, so the sahn does not feel dark.',
+          'Look: tensile shapes can be designed to sit respectfully around domes and minarets.',
+          'Life: our international-grade fabric is heat proof and waterproof and designed for up to 20 years of service with basic care.',
+        ],
+      },
+      {
+        kind: 'section',
+        h2: 'Design points that matter',
+        items: [
+          'Height: keep the roof high so hot air can rise and escape. Low roofs trap heat.',
+          'Fabric choice: coated PVC or PVDF if the sahn must stay dry for prayer in rain; HDPE net only where rain protection is not needed.',
+          'Drainage: plan where rainwater will fall so it does not flow onto prayer areas or the wudu khana.',
+          'Columns: place them along the edges or on the qibla line so rows (saff) are not broken.',
+          'Fans and lights: decide early, so mounting points can be built into the frame.',
+          'Approvals: for a permanent structure, the mosque committee may need permission from the local authority or society.',
+        ],
+      },
+      {
+        kind: 'section',
+        h2: 'Questions to ask any contractor',
+        items: [
+          'Which fabric brand and grade, and is it waterproof?',
+          'What steel sizes, and how is it protected from rust?',
+          'How are the foundations designed for wind?',
+          'Is the warranty on fabric and steel given in writing?',
+          'Who fabricates: do they have their own workshop?',
+        ],
+        after: [`For a free site survey of your mosque in Lahore, Islamabad or anywhere in Pakistan, call or WhatsApp ${phone}.`],
+      },
+      {
+        kind: 'links',
+        h2: 'Related',
+        links: [
+          ['/tensile-structures-lahore', 'Tensile structures in Lahore'],
+          ['/tensile-structures-islamabad', 'Tensile structures in Islamabad'],
+          ['/blog/pvc-vs-pvdf-vs-hdpe-tensile-fabric', 'PVC vs PVDF vs HDPE fabric'],
+          ['/blog/can-tensile-shades-survive-storms', 'Can tensile shades survive storms?'],
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Masjid ke sahn ke liye kaun si shade behtar hai?',
+        answer:
+          'Aam taur par oonchi tensile fabric ki chhat sab se behtar hai: garmi wapas phenkti hai, barish mein shor nahi karti aur roshni andar aane deti hai. Agar sahn ko barish mein bhi sookha rakhna hai to waterproof PVC ya PVDF fabric lein.',
+      },
+      {
+        question: 'Will the columns break the prayer rows?',
+        answer:
+          'They don’t have to. We place columns along the edges or line them up with the rows during design, so the saff stays continuous.',
+      },
+    ],
+  },
+  // 13 ─────────────────────────────────────────────────────────────
+  {
+    key: 'blog-school',
+    path: '/blog/school-shade-structures-guide',
+    label: 'School Shade Guide',
+    title: 'School Shade Structures in Pakistan: Assembly, Play Area & Pick-up | MTE',
+    description:
+      'Shade for school assembly grounds, play areas, canteens and pick-up points in Pakistan: which fabric, how high, safety points and planning around exams and holidays.',
+    eyebrow: 'Guide · Schools',
+    h1: 'School Shade Structures: A Practical Guide for Pakistani Schools',
+    lead: 'Schools in Pakistan mostly need shade in four places: the assembly ground, play areas, the canteen and the gate where parents wait. Breathable HDPE shade cloth suits play areas, while waterproof coated PVC suits assembly grounds, walkways and pick-up points that must stay dry.',
+    ogImage: '/images/luxury_walkway.jpg',
+    breadcrumbParent: ['/blog', 'Blog'],
+    article: { published: '2026-11-28', updated: '2026-11-28', readMins: 6 },
+    blocks: [
+      {
+        kind: 'section',
+        h2: 'Where a school needs shade',
+        items: [
+          'Assembly ground: children stand in the morning sun, and in summer that becomes a health risk.',
+          'Play areas and sports courts: shade makes breaks and PT periods usable in hot months.',
+          'Canteen and seating: a covered area for lunch breaks.',
+          'Gate and pick-up point: parents and drivers wait here, often in sun or rain.',
+          'Walkways between blocks: covered paths keep children dry in monsoon rain.',
+        ],
+      },
+      {
+        kind: 'section',
+        h2: 'Which fabric for which area',
+        items: [
+          'HDPE shade cloth: breathable, lets hot air out, blocks most of the sun. Good for play areas, but rain passes through.',
+          'Coated PVC or PVDF: waterproof and heat proof. Good for assembly grounds, walkways and pick-up points.',
+          'Colour: lighter colours stay cooler underneath; school colours can be matched within a range.',
+        ],
+      },
+      {
+        kind: 'section',
+        h2: 'Safety points',
+        items: [
+          'No sharp edges: steel ends, cables and fittings should be covered or kept out of reach.',
+          'Padding on columns in play areas where children run.',
+          'Enough height so children cannot climb onto the fabric or frame.',
+          'Foundations and anchors designed for wind, especially on open grounds.',
+          'Fire-retardant fabric where the shade is close to buildings or canteens.',
+        ],
+      },
+      {
+        kind: 'section',
+        h2: 'Planning the work around the school year',
+        paras: [
+          'Most of the work happens in our workshop. Site installation is short, so it can be planned for summer or winter holidays, weekends or after school hours, without disturbing classes or exams.',
+          `For a free survey of your school in Lahore, Islamabad, Rawalpindi or anywhere in Pakistan, call or WhatsApp ${phone}.`,
+        ],
+      },
+      {
+        kind: 'links',
+        h2: 'Related',
+        links: [
+          ['/tensile-structures', 'Tensile structures in Pakistan'],
+          ['/padel-court-shades', 'Sports and padel court shades'],
+          ['/blog/pvc-vs-pvdf-vs-hdpe-tensile-fabric', 'PVC vs PVDF vs HDPE fabric'],
+          ['/blog/tensile-shade-maintenance-guide', 'Maintenance guide'],
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'School ke play area ke liye kaun sa fabric theek hai?',
+        answer:
+          'Play area ke liye HDPE shade cloth acha hai kyunke ye hawa guzarne deta hai aur thanda rehta hai. Jahan barish se bhi bachana ho, jaise assembly ground ya gate, wahan waterproof PVC fabric lagayein.',
+      },
+      {
+        question: 'Can installation be done during school holidays?',
+        answer:
+          'Yes. The frame is made in our workshop first, so the site work is short and can be scheduled for holidays, weekends or after school hours.',
+      },
+    ],
+  },
+  // 14 ─────────────────────────────────────────────────────────────
+  {
+    key: 'blog-warehouse',
+    path: '/blog/warehouse-shed-construction-guide',
+    label: 'Warehouse Shed Construction Guide',
+    title: 'Warehouse Shed Construction in Pakistan: Step-by-Step Guide | MTE',
+    description:
+      'How a warehouse or factory shed is built in Pakistan: planning, span and height, foundations, steel frame, roof and wall cladding, approvals and timeline.',
+    eyebrow: 'Guide · Industrial sheds',
+    h1: 'Warehouse Shed Construction in Pakistan: Step by Step',
+    lead: 'A warehouse shed in Pakistan is built in six stages: planning the use and layout, structural design, foundations, steel fabrication, erection, and roof and wall cladding. Getting the span, eave height and doors right at the planning stage matters more than anything else, because they decide how well the building works for the next 20+ years.',
+    ogImage: '/images/project_industrial_warehouse.jpg',
+    breadcrumbParent: ['/blog', 'Blog'],
+    article: { published: '2026-11-28', updated: '2026-11-28', readMins: 7 },
+    blocks: [
+      {
+        kind: 'section',
+        h2: '1. Plan around how the building will be used',
+        items: [
+          'What will be stored or made, and how is it moved: by hand, forklift, overhead crane or trucks?',
+          'Clear span: how wide must the floor be without columns?',
+          'Eave height: racking and forklifts usually need more height than people expect.',
+          'Doors and loading bays: how many trucks at once, and on which side?',
+          'Future growth: leave space and design the end wall so the shed can be extended.',
+        ],
+      },
+      {
+        kind: 'section',
+        h2: '2. Structural design',
+        paras: [
+          'The engineer sizes the portal frames, purlins, bracing and foundations for the span, height, wind, crane loads and roof type. Pre-engineered (PEB) design uses tapered members so steel is only as heavy as the loads need.',
+        ],
+      },
+      {
+        kind: 'section',
+        h2: '3. Foundations',
+        paras: [
+          'Column foundations and anchor bolts are cast first. Their exact position matters: a few millimetres out and the steel will not bolt up cleanly. The floor slab is usually cast later, designed for the forklift and racking loads.',
+        ],
+      },
+      {
+        kind: 'section',
+        h2: '4. Fabrication',
+        paras: [
+          'Columns, rafters and purlins are cut, welded, drilled and painted in the workshop, where quality is easier to control than on site. Our sheds are fabricated at our workshops in Lahore (Ferozepur Road) and Islamabad (G-12/4).',
+        ],
+      },
+      {
+        kind: 'section',
+        h2: '5. Erection',
+        paras: [
+          'The frames are lifted with a crane, bolted to the anchor bolts and braced. Purlins and girts follow, then the frame is checked for line and level before cladding.',
+        ],
+      },
+      {
+        kind: 'section',
+        h2: '6. Roof and wall cladding',
+        items: [
+          'Plain PPGI sheet: suitable for open storage and vehicle sheds.',
+          'Insulated PU sandwich panels: worth it in Punjab’s summer wherever people work inside or stock is heat-sensitive.',
+          'Ridge ventilators and skylights for air and daylight.',
+          'Gutters and downpipes sized for heavy monsoon rain.',
+        ],
+      },
+      {
+        kind: 'section',
+        h2: 'Approvals and timeline',
+        paras: [
+          'Inside industrial estates the estate management approves the drawings; elsewhere it is usually the development authority or local council. The timeline depends on size: we give a written schedule with the quotation after a free site survey.',
+          `Call or WhatsApp ${phone} to book a survey for a warehouse, factory or dairy shed anywhere in Pakistan.`,
+        ],
+      },
+      {
+        kind: 'links',
+        h2: 'Related',
+        links: [
+          ['/industrial-sheds-lahore', 'Industrial sheds in Lahore'],
+          ['/industrial-sheds-islamabad', 'Industrial sheds in Islamabad'],
+          ['/industrial-sheds-rawalpindi', 'Industrial sheds in Rawalpindi'],
+          ['/blog/peb-vs-conventional-steel-vs-rcc-sheds', 'PEB vs conventional steel vs RCC'],
+          ['/blog/dairy-farm-shed-design-guide', 'Dairy farm shed design guide'],
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Warehouse shed banane mein sab se pehle kya tay karna chahiye?',
+        answer:
+          'Sab se pehle ye ke building ka istemal kya hoga: span (columns ke baghair chaurai), height, darwaze aur loading bays. Yahi cheezein design aur kharche dono ko tay karti hain.',
+      },
+      {
+        question: 'Can an existing warehouse be extended later?',
+        answer:
+          'Yes, if it is planned. We design the end wall and connections so new bays can be added when the business grows.',
+      },
+    ],
+  },
 ];

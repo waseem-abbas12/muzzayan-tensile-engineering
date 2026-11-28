@@ -1,4 +1,5 @@
 import React from 'react';
+import { PageGuide } from '../components/PageGuide';
 import { locations, company, solutions, projects } from '../data/siteData';
 import {
   cityPath,
@@ -205,6 +206,8 @@ export const ServiceCityPage: React.FC<ServiceCityPageProps> = ({ serviceKey, ci
           </div>
         </section>
       )}
+
+      <PageGuide path={serviceCityPath(def.key, cityKey)} setActivePage={setActivePage} />
 
       {/* FAQs */}
       <section className="space-y-4">

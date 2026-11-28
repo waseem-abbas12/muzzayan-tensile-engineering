@@ -1,4 +1,5 @@
 import React from 'react';
+import { PageGuide } from '../components/PageGuide';
 import { company, locations, solutions } from '../data/siteData';
 import { findTopic, type TopicBlock } from '../seo/topics';
 import { Calendar, MessageCircle, ChevronRight, Check, HelpCircle } from 'lucide-react';
@@ -259,6 +260,8 @@ export const TopicPage: React.FC<TopicPageProps> = ({ topicKey, setActivePage, o
       </header>
 
       {t.blocks.map(renderBlock)}
+
+      <PageGuide path={t.path} setActivePage={setActivePage} />
 
       {t.faqs.length > 0 && (
         <section className="space-y-4">

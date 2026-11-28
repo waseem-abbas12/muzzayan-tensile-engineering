@@ -3,6 +3,7 @@
 // Used by the client router, the build-time prerenderer, sitemap.xml and llms.txt.
 import { ALL_TOPICS as TOPICS } from './topics';
 import { getServiceLocal } from './serviceLocal';
+import { guideFaqs } from './guides';
 import {
   company,
   ceo,
@@ -444,7 +445,7 @@ function cityServiceNode(key: string) {
 }
 
 export function cityFaqs(cityKey: string) {
-  return locations[cityKey]?.faqs ?? [];
+  return [...(locations[cityKey]?.faqs ?? []), ...guideFaqs(cityPath(cityKey))];
 }
 
 export function serviceCityFaqs(serviceKey: string, cityKey: string) {
@@ -475,7 +476,7 @@ export function serviceCityFaqs(serviceKey: string, cityKey: string) {
       answer: `${sol.desc} Typical scope: ${sol.features.slice(0, 4).join('; ')}.`,
     });
   }
-  return common;
+  return [...common, ...guideFaqs(serviceCityPath(serviceKey, cityKey))];
 }
 
 function faqEntities(list: { question: string; answer: string }[]) {

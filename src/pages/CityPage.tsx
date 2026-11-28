@@ -1,4 +1,5 @@
 import React from 'react';
+import { PageGuide } from '../components/PageGuide';
 import { LocationsSection } from '../components/LocationsSection';
 import { locations, company, solutions } from '../data/siteData';
 import { cityPath, CITY_KEYS, SERVICE_CITY_DEFS, SERVICE_CITY_KEYS, serviceCityPath, cityFaqs } from '../seo/routes';
@@ -180,6 +181,8 @@ export const CityPage: React.FC<CityPageProps> = ({ cityKey, setActivePage, open
           </div>
         </section>
       )}
+
+      <PageGuide path={cityPath(cityKey)} setActivePage={setActivePage} />
 
       {/* City FAQs (visible text matches FAQPage schema) */}
       {cityFaqs(cityKey).length > 0 && (

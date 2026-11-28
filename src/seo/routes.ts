@@ -284,11 +284,14 @@ function businessNode() {
     currenciesAccepted: 'PKR',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Salman Park, Ashiana Road, Bank Stop, Ferozepur Road',
+      streetAddress: 'House 10, Street No. 1, Muhallah Salman Park, Ashiana Road, Bank Stop, Ferozepur Road',
       addressLocality: 'Lahore',
       addressRegion: 'Punjab',
+      postalCode: '54000',
       addressCountry: 'PK',
     },
+    geo: { '@type': 'GeoCoordinates', latitude: 31.4370701, longitude: 74.3612292 },
+    hasMap: 'https://maps.app.goo.gl/Ueo4EpuDaLxNxf669',
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
@@ -336,7 +339,7 @@ function businessNode() {
 }
 
 const BRANCH_ADDRESS: Record<string, { street: string; locality: string; region: string }> = {
-  lahore: { street: 'Salman Park, Ashiana Road, Bank Stop, Ferozepur Road', locality: 'Lahore', region: 'Punjab' },
+  lahore: { street: 'House 10, Street No. 1, Muhallah Salman Park, Ashiana Road, Bank Stop, Ferozepur Road', locality: 'Lahore', region: 'Punjab' },
   islamabad: { street: 'G-12/4, near Suzuki Stop', locality: 'Islamabad', region: 'Islamabad Capital Territory' },
 };
 
@@ -358,6 +361,12 @@ function branchNode(key: string) {
       addressRegion: a.region,
       addressCountry: 'PK',
     },
+    ...(key === 'lahore'
+      ? {
+          geo: { '@type': 'GeoCoordinates', latitude: 31.4370701, longitude: 74.3612292 },
+          hasMap: 'https://maps.app.goo.gl/Ueo4EpuDaLxNxf669',
+        }
+      : {}),
     areaServed: [{ '@type': 'City', name: c.name }, ...c.serviceAreas.map((x) => ({ '@type': 'Place', name: `${x}, ${c.name}` }))],
     parentOrganization: { '@id': BUSINESS_ID },
     openingHoursSpecification: [

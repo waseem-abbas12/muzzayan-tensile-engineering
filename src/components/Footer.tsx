@@ -164,7 +164,7 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage, openSurveyModal }
             <div className="space-y-3 text-xs text-slate-400">
               <div>
                 <strong className="text-white block">Lahore Head Office & Workshop:</strong>
-                <span>Salman Park, Ashiana Road, Bank Stop, Ferozepur Road, Lahore, Punjab</span>
+                <a href="https://maps.app.goo.gl/Ueo4EpuDaLxNxf669" target="_blank" rel="noopener noreferrer" className="hover:text-gold-400">House 10, Street No. 1, Salman Park, Ashiana Road, Bank Stop, Ferozepur Road, Lahore</a>
               </div>
               <div>
                 <strong className="text-white block">Islamabad Workshop:</strong>

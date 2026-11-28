@@ -93,7 +93,7 @@ export const company = {
   "phoneFormatted": "+92 302 4001063",
   "email": "info@muzzayantensile.com",
   "whatsapp": "923024001063",
-  "workingHours": "Monday – Saturday, 9:00 am – 6:00 pm",
+  "workingHours": "Open 24 hours, 7 days a week",
   "experienceYears": "18+",
   "projectsCompleted": "100+",
   "clientSatisfaction": "99.4%",

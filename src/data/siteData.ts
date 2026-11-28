@@ -100,9 +100,9 @@ export const company = {
   "warrantyYears": "15"
 };
 export const ceo = {
-  "name": "Engr. Muzzayan Rauf",
+  "name": "Engr. Shaukat Rauf",
   "title": "Founder & Chief Executive Officer",
-  "intro": "Engr. Muzzayan Rauf is a Mechanical & Architectural Engineering professional with 18+ years of structural steel and tensile membrane experience spanning Saudi Arabia and Pakistan. After a distinguished career with industry giants including Haif Trading & Contracting (Riyadh), SAJCO, Sarwar & Company, FWO, and Descon Engineering, he founded Muzzayan Tensile Engineering to deliver uncompromising engineering precision.",
+  "intro": "Engr. Shaukat Rauf is a Mechanical & Architectural Engineering professional with 18+ years of structural steel and tensile membrane experience spanning Saudi Arabia and Pakistan. After a distinguished career with industry giants including Haif Trading & Contracting (Riyadh), SAJCO, Sarwar & Company, FWO, and Descon Engineering, he founded Muzzayan Tensile Engineering to deliver uncompromising engineering precision.",
   "message": "Tensile membrane architecture is not simply about stretching fabric over pipes — it is a precise science of dynamic form-finding, non-linear stress distribution, and rigorous metallurgical protection. At MTE, every structure is calculated to endure Pakistan's most severe 140+ km/h storms and 50°C summer heatwaves with zero compromise on elegance."
 };
 export const solutions: Solution[] = [

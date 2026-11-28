@@ -119,7 +119,7 @@ const staticRoutes: RouteDef[] = [
     path: '/about',
     page: 'about',
     label: 'About',
-    title: 'About MTE & Founder Engr. Muzzayan Rauf | Tensile Experts',
+    title: 'About MTE & Founder Engr. Shaukat Rauf | Tensile Experts',
     description:
       '18+ years of structural steel and tensile membrane experience across Saudi Arabia and Pakistan. Meet our founder and engineering principles.',
     priority: 0.6,

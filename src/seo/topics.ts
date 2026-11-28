@@ -184,7 +184,7 @@ export const TOPICS: TopicDef[] = [
     label: 'Car Parking Shades',
     title: 'Car Parking Shades in Pakistan | Cantilever & Tensile | MTE',
     description:
-      'Cantilever, porch and commercial car parking shades in Lahore, Islamabad, Rawalpindi and Karachi. HDPE, PVC and PVDF fabrics, galvanized steel, free survey.',
+      'Cantilever, pole parking, wall mounted, porch and commercial car parking shades in Lahore, Islamabad, Rawalpindi and Karachi. Heat proof, waterproof fabric. Free survey.',
     eyebrow: 'Car parking shades',
     h1: 'Car Parking Shades in Pakistan',
     lead: `${company.name} designs, fabricates and installs car parking shades for homes, offices, plazas, hospitals and government buildings across Pakistan — from single-car porch shades to multi-bay cantilever canopies.`,
@@ -298,7 +298,7 @@ export const MORE_TOPICS: TopicDef[] = [
     key: 'car-porch-shades',
     path: '/car-porch-shades',
     label: 'Car Porch Shades',
-    title: 'Car Porch Shades for Homes in Lahore & Islamabad | MTE',
+    title: 'Car Porch, Garage & Wall Mounted Shades | Lahore & Islamabad',
     description:
       'Tensile car porch shades for 1–4 cars: cantilever or post-supported, HDPE, PVC or PVDF fabric, galvanized steel. Waterproof, heat proof fabric and a free site survey.',
     eyebrow: 'Residential car porch',
